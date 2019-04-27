@@ -6,16 +6,16 @@
 
 std::mutex lock;
 
-net_service::tcp::TcpServer::TcpServer(io_service & service, boost::function<void(std::shared_ptr<boost::asio::ip::tcp::socket> psock)> accept_call_back, std::string ip, int port):\
+net_service::tcp::TcpServer::TcpServer(io_service & service, boost::function<void(TCP_HANDLE handle, std::shared_ptr<boost::asio::ip::tcp::socket> psock)> accept_call_back, std::string ip, int port, int accept_num ):\
 	service_(service), accept_handler_(accept_call_back), server_(service_)
 {
 	LOG(LINFO, "initing server£ºip=", ip, ":", port);
 
-	static TCP_HANDLE record = 0;
+	static TCP_HANDLE record = 1;
 	lock.lock();
 	record++;
 	if (record < 0)
-		record = 0;
+		record = 1;
 	handle_ = record;
 	lock.unlock();
 
@@ -52,8 +52,10 @@ net_service::tcp::TcpServer::TcpServer(io_service & service, boost::function<voi
 	//¼àÌý
 	server_.listen();
 	is_run = true;
+	
 	//½ÓÊÕ
-	accept();
+	for(int i=0;i<accept_num;i++)
+		accept();
 
 }
 net_service::tcp::TcpServer::~TcpServer()
@@ -102,7 +104,7 @@ void net_service::tcp::TcpServer::accept()
 							LOG(LERROR, "accept_handler_ is a nullptr");
 							return;
 						}
-						accept_handler_(client);
+						accept_handler_(handle_,client);
 					}
 					else
 					{

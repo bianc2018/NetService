@@ -12,7 +12,7 @@
 #include <boost/function.hpp>
 
 #define BOOST_ASIO_NO_DEPRECATED
-#include "tcp_define.h"
+#include "../tcp_define.h"
 
 namespace net_service
 {
@@ -32,14 +32,11 @@ namespace net_service
 		//接受 acceptor
 		typedef boost::asio::ip::tcp::acceptor acceptor;
 
-		
-		
-		
 		//表示一个服务器
 		class TcpServer :public boost::noncopyable
 		{
 		public:
-			TcpServer(io_service &service,boost::function<void(std::shared_ptr<boost::asio::ip::tcp::socket> psock)> accept_call_back, std::string ip, int port);
+			TcpServer(io_service &service,boost::function<void(TCP_HANDLE handle,std::shared_ptr<boost::asio::ip::tcp::socket> psock)> accept_call_back, std::string ip, int port,int accept_num=4);
 			
 			int stop();
 
@@ -56,7 +53,7 @@ namespace net_service
 			//接收连接
 			acceptor server_;
 			//回调
-			boost::function<void(std::shared_ptr<boost::asio::ip::tcp::socket> psock)> accept_handler_;
+			boost::function<void(TCP_HANDLE handle, std::shared_ptr<boost::asio::ip::tcp::socket> psock)> accept_handler_;
 			//is_run 1 run 0 stop
 			std::atomic<bool> is_run;
 		};

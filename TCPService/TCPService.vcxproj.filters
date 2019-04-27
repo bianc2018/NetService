@@ -13,42 +13,42 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
+    <Filter Include="include\log">
+      <UniqueIdentifier>{7b2aef51-1a9d-4cef-9072-155ee45d50c5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="tcp_service.cpp">
-      <Filter>资源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="src\service_impl.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="src\tcp_link.cpp">
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="src\tcp_server.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="include\log\log.cpp">
-      <Filter>include</Filter>
+    <ClCompile Include="..\include\log\log.cpp">
+      <Filter>include\log</Filter>
+    </ClCompile>
+    <ClCompile Include="tcp_service.cpp" />
+    <ClCompile Include="src\tcp_service_impl.cpp">
+      <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="tcp_service.h">
-      <Filter>资源文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\service_impl.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="src\tcp_define.h">
-      <Filter>src</Filter>
-    </ClInclude>
     <ClInclude Include="src\tcp_link.h">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\tcp_server.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="include\log\log.hpp">
-      <Filter>include</Filter>
+    <ClInclude Include="..\include\log\log.hpp">
+      <Filter>include\log</Filter>
     </ClInclude>
+    <ClInclude Include="tcp_service.h" />
+    <ClInclude Include="tcp_define.h" />
+    <ClInclude Include="src\tcp_service_impl.h">
+      <Filter>src</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
   </ItemGroup>
 </Project>

@@ -73,7 +73,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <TargetName>TCPSERVICE</TargetName>
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>./src;$(BOOST_1_68_0);$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <IncludePath>../include;./src;$(BOOST_1_68_0);$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
     <LibraryPath>$(BOOST_1_68_0)\lib;$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(NETFXKitsDir)Lib\um\x86</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -145,19 +145,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="include\log\log.hpp" />
-    <ClInclude Include="src\service_impl.h" />
-    <ClInclude Include="src\tcp_define.h" />
+    <ClInclude Include="..\include\log\log.hpp" />
+    <ClInclude Include="src\tcp_service_impl.h" />
     <ClInclude Include="src\tcp_link.h" />
     <ClInclude Include="src\tcp_server.h" />
+    <ClInclude Include="tcp_define.h" />
     <ClInclude Include="tcp_service.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="include\log\log.cpp" />
-    <ClCompile Include="src\service_impl.cpp" />
+    <ClCompile Include="..\include\log\log.cpp" />
+    <ClCompile Include="src\tcp_service_impl.cpp" />
     <ClCompile Include="src\tcp_link.cpp" />
     <ClCompile Include="src\tcp_server.cpp" />
     <ClCompile Include="tcp_service.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

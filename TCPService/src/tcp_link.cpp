@@ -8,11 +8,11 @@ std::mutex net_service::tcp::TcpLink::lock;
 
 net_service::tcp::TcpLink::TcpLink(std::shared_ptr<boost::asio::ip::tcp::socket> sock):sock_(sock)
 {
-	static TCP_HANDLE record = 0;
+	static TCP_HANDLE record = 1;
 	lock.lock();
 	record++;
 	if (record < 0)
-		record = 0;
+		record = 1;
 	handle_ = record;
 	lock.unlock();
 }
@@ -91,6 +91,11 @@ void net_service::tcp::TcpLink::async_send(SEND_HANDLER send_handler, std::share
 	};
 
 	sock_->async_write_some(boost::asio::buffer(buff_ptr.get() + begin, len), write_handler);
+}
+
+std::shared_ptr<boost::asio::ip::tcp::socket> net_service::tcp::TcpLink::get_sock_ptr()
+{
+	return sock_;
 }
 
 

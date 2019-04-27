@@ -8,7 +8,7 @@
 #include "boost/function.hpp"
 #include <boost/asio.hpp>
 
-#include "tcp_define.h"
+#include "../tcp_define.h"
 namespace net_service
 {
 	namespace tcp
