@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.28307.106
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NetService", "NetService\NetService.vcxproj", "{5A39A7D6-9A31-493B-956A-B161FE2A6C98}"
 	ProjectSection(ProjectDependencies) = postProject
-		{8A94273E-9A95-4674-BF72-669B58D55E5C} = {8A94273E-9A95-4674-BF72-669B58D55E5C}
+		{E19E0CB1-3D66-4540-8E0F-02B134214608} = {E19E0CB1-3D66-4540-8E0F-02B134214608}
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TCPService", "TCPService\TCPService.vcxproj", "{F3CA615D-F136-4914-ACC4-3F384CA5722A}"
@@ -20,6 +20,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HttpService", "HttpService\
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "third_dll", "third_dll", "{78444EB3-8A62-490A-8F3D-1BA3F3EA2A6D}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WebService", "WebService\WebService.vcxproj", "{E19E0CB1-3D66-4540-8E0F-02B134214608}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8A94273E-9A95-4674-BF72-669B58D55E5C} = {8A94273E-9A95-4674-BF72-669B58D55E5C}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +58,14 @@ Global
 		{8A94273E-9A95-4674-BF72-669B58D55E5C}.Release|x64.Build.0 = Release|x64
 		{8A94273E-9A95-4674-BF72-669B58D55E5C}.Release|x86.ActiveCfg = Release|Win32
 		{8A94273E-9A95-4674-BF72-669B58D55E5C}.Release|x86.Build.0 = Release|Win32
+		{E19E0CB1-3D66-4540-8E0F-02B134214608}.Debug|x64.ActiveCfg = Debug|x64
+		{E19E0CB1-3D66-4540-8E0F-02B134214608}.Debug|x64.Build.0 = Debug|x64
+		{E19E0CB1-3D66-4540-8E0F-02B134214608}.Debug|x86.ActiveCfg = Debug|Win32
+		{E19E0CB1-3D66-4540-8E0F-02B134214608}.Debug|x86.Build.0 = Debug|Win32
+		{E19E0CB1-3D66-4540-8E0F-02B134214608}.Release|x64.ActiveCfg = Release|x64
+		{E19E0CB1-3D66-4540-8E0F-02B134214608}.Release|x64.Build.0 = Release|x64
+		{E19E0CB1-3D66-4540-8E0F-02B134214608}.Release|x86.ActiveCfg = Release|Win32
+		{E19E0CB1-3D66-4540-8E0F-02B134214608}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,6 +73,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{F3CA615D-F136-4914-ACC4-3F384CA5722A} = {BD7194BF-9CA0-46F0-8317-098B1F8D86BD}
 		{8A94273E-9A95-4674-BF72-669B58D55E5C} = {BD7194BF-9CA0-46F0-8317-098B1F8D86BD}
+		{E19E0CB1-3D66-4540-8E0F-02B134214608} = {BD7194BF-9CA0-46F0-8317-098B1F8D86BD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E5E40507-2CBB-4BAD-A419-928449869921}

@@ -5,18 +5,44 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="头文件">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
     <Filter Include="资源文件">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="include">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="include\log">
+      <UniqueIdentifier>{a31894e8-0953-4dd7-8faf-1a10ce884e8b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\ini">
+      <UniqueIdentifier>{5c0ece9e-0c66-4dc5-a771-50ac4ebc5d59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\WebService">
+      <UniqueIdentifier>{fb924a53-6a98-4235-b916-6828f6733fa4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="NetService.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="..\include\log\log.cpp">
+      <Filter>include\log</Filter>
+    </ClCompile>
+    <ClCompile Include="..\include\ini\ini.cpp">
+      <Filter>include\ini</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\include\log\log.hpp">
+      <Filter>include\log</Filter>
+    </ClInclude>
+    <ClInclude Include="..\WebService\web_service.h">
+      <Filter>include\WebService</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\ini\ini.h">
+      <Filter>include\ini</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

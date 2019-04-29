@@ -6,7 +6,7 @@
 
 std::mutex lock;
 
-net_service::tcp::TcpServer::TcpServer(io_service & service, boost::function<void(TCP_HANDLE handle, std::shared_ptr<boost::asio::ip::tcp::socket> psock)> accept_call_back, std::string ip, int port, int accept_num ):\
+net_service::tcp::TcpServer::TcpServer(io_service & service, boost::function<void(TCP_HANDLE handle, std::shared_ptr<boost::asio::ip::tcp::socket> psock,int err)> accept_call_back, std::string ip, int port, int accept_num ):\
 	service_(service), accept_handler_(accept_call_back), server_(service_)
 {
 	LOG(LINFO, "initing server£ºip=", ip, ":", port);
@@ -104,7 +104,7 @@ void net_service::tcp::TcpServer::accept()
 							LOG(LERROR, "accept_handler_ is a nullptr");
 							return;
 						}
-						accept_handler_(handle_,client);
+						accept_handler_(handle_,client,TCP_ERROR_CODE_OK);
 					}
 					else
 					{
