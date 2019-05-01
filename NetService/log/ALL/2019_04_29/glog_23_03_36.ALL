@@ -1,0 +1,5 @@
+[ 22356 ][ 23:03:36 ][ ERROR ]  [ web_server.cpp 72 net_service::web::WebServer::load_handler ] json º”‘ÿ ß∞‹£°path= ./handlers.json ,ret= -1  
+[ 28148 ][ 23:03:39 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /index.html  
+[ 3076 ][ 23:03:43 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /index.html  
+[ 3076 ][ 23:03:43 ][ ERROR ]  [ web_server.cpp 146 net_service::web::WebServer::deal_default ] 404 uri= ./web_root/index.html  
+[ 3076 ][ 23:03:43 ][ DEBUG ]  [ net_service::web::WebServer::deal_default ] 404 handle= 3 0 0  

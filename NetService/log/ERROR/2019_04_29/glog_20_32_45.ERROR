@@ -1,0 +1,7 @@
+[28508][20:32:45][ERROR] [http_object.cpp232net_service::http::HttpObject::get_body]beg is out of range,beg=18446744073709551547,body_len=0
+[28508][20:32:45][ERROR] [http_service_impl.cpp228net_service::http::HttpServiceImpl::send_response]response err,code=-107
+[23008][20:32:45][ERROR] [http_object.cpp232net_service::http::HttpObject::get_body]beg is out of range,beg=18446744073709551547,body_len=0
+[23008][20:32:45][ERROR] [http_service_impl.cpp228net_service::http::HttpServiceImpl::send_response]response err,code=-107
+[23008][20:32:45][ERROR] [http_object.cpp232net_service::http::HttpObject::get_body]beg is out of range,beg=18446744073709551547,body_len=0
+[23008][20:32:45][ERROR] [http_service_impl.cpp228net_service::http::HttpServiceImpl::send_response]response err,code=-107
+[26876][20:36:01][ERROR] [http_service_impl.cpp197net_service::http::HttpServiceImpl::recv_request_handler]关闭一个连接 ret=-3

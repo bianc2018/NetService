@@ -1,0 +1,4 @@
+[ 8812 ][ 20:25:42 ][ DEBUG ]  [ SessionMgr::clear ] 21  session  UPDATE session SET status='0' WHERE username='' AND status!=0;  
+[ 8812 ][ 20:25:42 ][ DEBUG ]  [ SessionMgr::clear ] 0  session  SELECT * FROM session WHERE 1=1 AND status!=0;  
+[ 8812 ][ 20:25:42 ][ DEBUG ]  [ NewsMgr::clear ] new 
+ UPDATE news SET status='0' WHERE status=1;  

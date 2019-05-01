@@ -1,0 +1,27 @@
+[ 36464 ][ 22:35:06 ][ INFO ]  [ net_service::web::WebServer::load_handler ] load handle: ./NEWPUBLISH.dll : np_before ，type(前置过滤器) ok  
+[ 36464 ][ 22:35:06 ][ INFO ]  [ net_service::web::WebServer::load_handler ] load handle: ./NEWPUBLISH.dll : np_get_news ，type(处理器 绑定uri= /get_news.action ) ok  
+[ 36464 ][ 22:35:06 ][ INFO ]  [ net_service::web::WebServer::load_handler ] load handle: ./NEWPUBLISH.dll : np_get_now_user ，type(处理器 绑定uri= /get_now_user.action ) ok  
+[ 36464 ][ 22:35:06 ][ INFO ]  [ net_service::web::WebServer::load_handler ] load handle: ./NEWPUBLISH.dll : np_after ，type(后置过滤器) ok  
+[ 8164 ][ 22:35:14 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /index.html  
+[ 8164 ][ 22:35:14 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /index.html  
+[ 33140 ][ 22:35:14 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /css/common.css  
+[ 33140 ][ 22:35:14 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /css/common.css  
+[ 34804 ][ 22:35:14 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /css/index.css  
+[ 34804 ][ 22:35:14 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /css/index.css  
+[ 32400 ][ 22:35:14 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /js/jquery/jquery-3.3.1.min.js  
+[ 33140 ][ 22:35:14 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /js/session.js  
+[ 32400 ][ 22:35:14 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /js/jquery/jquery-3.3.1.min.js  
+[ 33140 ][ 22:35:14 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /js/session.js  
+[ 29408 ][ 22:35:14 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /js/common.js  
+[ 36604 ][ 22:35:14 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /js/user.js  
+[ 29408 ][ 22:35:14 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /js/common.js  
+[ 36604 ][ 22:35:14 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /js/user.js  
+[ 19588 ][ 22:35:15 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /image/index.jpg  
+[ 19588 ][ 22:35:15 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /image/index.jpg  
+[ 36592 ][ 22:35:15 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /get_now_user.action  
+[ 36608 ][ 22:35:15 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /get_news.action  
+[ 36592 ][ 22:35:15 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /get_now_user.action  
+[ 36608 ][ 22:35:15 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /get_news.action  
+Listening   
+[ 8164 ][ 22:35:14 ][ INFO ]  [ net_service::tcp::TcpServer::accept ] Start Listening   
+[ 19588 ][ 22:35:14 ][ INFO ]  [ net_service::tcp::TcpServer::accept ] Start Listening   

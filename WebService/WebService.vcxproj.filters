@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="include">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="include\HttpService">
+      <UniqueIdentifier>{bf7aa75e-f2a2-4fe5-bc7c-2eb2421adc8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\json">
+      <UniqueIdentifier>{258c8561-3486-42aa-a361-3a8c14a65e50}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\log">
+      <UniqueIdentifier>{ae6fac8c-604a-47ab-b5d0-092500de56a1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\HttpService\http_service.h">
+      <Filter>include\HttpService</Filter>
+    </ClInclude>
+    <ClInclude Include="web_server.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="web_service.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\json\json.h">
+      <Filter>include\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\json\cJSON.h">
+      <Filter>include\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\log\log.hpp">
+      <Filter>include\log</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="web_server.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\include\json\json.cpp">
+      <Filter>include\json</Filter>
+    </ClCompile>
+    <ClCompile Include="..\include\json\cJSON.c">
+      <Filter>include\json</Filter>
+    </ClCompile>
+    <ClCompile Include="web_service.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\include\log\log.cpp">
+      <Filter>include\log</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

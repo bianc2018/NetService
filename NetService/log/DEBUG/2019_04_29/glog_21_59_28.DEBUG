@@ -1,0 +1,7 @@
+[ 26108 ][ 22:00:36 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer 1  
+[ 26108 ][ 22:00:36 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer  
+eal_default ] 404 handle= 2 0 0  
+[ 11756 ][ 21:59:34 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /index.html  
+[ 11756 ][ 21:59:34 ][ DEBUG ]  [ net_service::web::WebServer::deal_default ] 404 handle= 2 0 0  
+[ 26376 ][ 21:59:35 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /index.html  
+[ 26376 ][ 21:59:35 ][ DEBUG ]  [ net_service::web::WebServer::deal_default ] 404 handle= 2 0 0  

@@ -1,0 +1,11 @@
+[ 30988 ][ 21:30:54 ][ INFO ]  [ NewPublishImpl::deal_get_news ] deal a /get_news_action  
+[ 35520 ][ 21:30:54 ][ INFO ]  [ NewPublishImpl::write_json ] write json
+ {
+	"result":	1,
+	"user":	{
+		"username":	"",
+		"password":	"",
+		"permission":	3,
+		"status":	0
+	}
+}  

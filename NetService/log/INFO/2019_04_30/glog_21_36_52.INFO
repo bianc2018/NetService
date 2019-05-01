@@ -1,0 +1,26 @@
+[ 27268 ][ 21:36:52 ][ INFO ]  [ net_service::web::WebServer::load_handler ] load handle: ./NEWPUBLISH.dll : np_before ，type(前置过滤器) ok  
+[ 27268 ][ 21:36:52 ][ INFO ]  [ net_service::web::WebServer::load_handler ] load handle: ./NEWPUBLISH.dll : np_get_news ，type(处理器 绑定uri= /get_news.action ) ok  
+[ 27268 ][ 21:36:52 ][ INFO ]  [ net_service::web::WebServer::load_handler ] load handle: ./NEWPUBLISH.dll : np_get_now_user ，type(处理器 绑定uri= /get_now_user.action ) ok  
+[ 27268 ][ 21:36:52 ][ INFO ]  [ net_service::web::WebServer::load_handler ] load handle: ./NEWPUBLISH.dll : np_after ，type(后置过滤器) ok  
+[ 35396 ][ 21:36:55 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /index.html  
+[ 35396 ][ 21:36:55 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /css/common.css  
+[ 35396 ][ 21:36:55 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /js/user.js  
+[ 32520 ][ 21:36:55 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /css/index.css  
+[ 35836 ][ 21:36:55 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /js/common.js  
+[ 20680 ][ 21:36:55 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /js/session.js  
+[ 24040 ][ 21:36:55 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /js/jquery/jquery-3.3.1.min.js  
+[ 35836 ][ 21:36:56 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /image/index.jpg  
+[ 35652 ][ 21:36:56 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /get_now_user.action  
+[ 32520 ][ 21:36:56 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /get_news.action  
+： 127.0.0.1 : 61843  
+[ 30812 ][ 21:36:55 ][ INFO ]  [ net_service::tcp::TcpServer::accept ] Start Listening   
+[ 30812 ][ 21:36:55 ][ INFO ]  [ net_service::tcp::TcpServer::accept::<lambda_0ec219ad3d51a39f9721aaf41fa238a8>::operator () ] 获得连接： 127.0.0.1 : 61844  
+[ 34572 ][ 21:36:55 ][ INFO ]  [ net_service::tcp::TcpServer::accept::<lambda_0ec219ad3d51a39f9721aaf41fa238a8>::operator () ] 获得连接： 127.0.0.1 : 61845  
+[ 33440 ][ 21:36:55 ][ INFO ]  [ net_service::tcp::TcpServer::accept::<lambda_0ec219ad3d51a39f9721aaf41fa238a8>::operator () ] 获得连接： 127.0.0.1 : 61846  
+[ 35532 ][ 21:36:55 ][ INFO ]  [ net_service::tcp::TcpServer::accept::<lambda_0ec219ad3d51a39f9721aaf41fa238a8>::operator () ] 获得连接： 127.0.0.1 : 61847  
+[ 33816 ][ 21:36:55 ][ INFO ]  [ net_service::tcp::TcpServer::accept::<lambda_0ec219ad3d51a39f9721aaf41fa238a8>::operator () ] 获得连接： 127.0.0.1 : 61848  
+[ 30812 ][ 21:36:55 ][ INFO ]  [ net_service::tcp::TcpServer::accept ] Start Listening   
+[ 34572 ][ 21:36:55 ][ INFO ]  [ net_service::tcp::TcpServer::accept ] Start Listening   
+[ 33440 ][ 21:36:55 ][ INFO ]  [ net_service::tcp::TcpServer::accept ] Start Listening   
+[ 35532 ][ 21:36:55 ][ INFO ]  [ net_service::tcp::TcpServer::accept ] Start Listening   
+[ 33816 ][ 21:36:55 ][ INFO ]  [ net_service::tcp::TcpServer::accept ] Start Listening   

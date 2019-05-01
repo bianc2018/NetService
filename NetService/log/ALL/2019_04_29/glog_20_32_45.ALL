@@ -1,0 +1,15 @@
+[28508][20:32:45][DEBUG] [net_service::http::HttpObject::parser]parser=2
+[28508][20:32:45][INFO] [net_service::http::HttpServiceImpl::recv_request_handler]接收到一个请求,3
+[28508][20:32:45][ERROR] [http_object.cpp232net_service::http::HttpObject::get_body]beg is out of range,beg=18446744073709551547,body_len=0
+[28508][20:32:45][ERROR] [http_service_impl.cpp228net_service::http::HttpServiceImpl::send_response]response err,code=-107
+[23008][20:32:45][DEBUG] [net_service::http::HttpObject::parser]parser=2
+[23008][20:32:45][INFO] [net_service::http::HttpServiceImpl::recv_request_handler]接收到一个请求,2
+[23008][20:32:45][ERROR] [http_object.cpp232net_service::http::HttpObject::get_body]beg is out of range,beg=18446744073709551547,body_len=0
+[23008][20:32:45][ERROR] [http_service_impl.cpp228net_service::http::HttpServiceImpl::send_response]response err,code=-107
+[23008][20:32:45][DEBUG] [net_service::http::HttpObject::parser]parser=2
+[23008][20:32:45][INFO] [net_service::http::HttpServiceImpl::recv_request_handler]接收到一个请求,4
+[23008][20:32:45][ERROR] [http_object.cpp232net_service::http::HttpObject::get_body]beg is out of range,beg=18446744073709551547,body_len=0
+[23008][20:32:45][ERROR] [http_service_impl.cpp228net_service::http::HttpServiceImpl::send_response]response err,code=-107
+[20340][20:34:15][DEBUG] [net_service::http::HttpObject::parser]parser=2
+[20340][20:34:15][INFO] [net_service::http::HttpServiceImpl::recv_request_handler]接收到一个请求,5
+[26876][20:36:01][ERROR] [http_service_impl.cpp197net_service::http::HttpServiceImpl::recv_request_handler]关闭一个连接 ret=-3

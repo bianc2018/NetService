@@ -1,0 +1,61 @@
+[ 28960 ][ 23:21:42 ][ DEBUG ]  [ net_service::http::HttpObject::parser ] parser= 2  
+[ 28960 ][ 23:21:42 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /index.html  
+[ 28928 ][ 23:21:42 ][ DEBUG ]  [ net_service::http::HttpServiceImpl::send_response ] 发送response handle= 2 ,code 404  
+[ 19128 ][ 23:21:47 ][ ERROR ]  [ http_service_impl.cpp 212 net_service::http::HttpServiceImpl::recv_request_handler ] 关闭一个连接 ret= -3  
+[ 28928 ][ 23:21:47 ][ ERROR ]  [ http_service_impl.cpp 212 net_service::http::HttpServiceImpl::recv_request_handler ] 关闭一个连接 ret= -2  
+[ 19128 ][ 23:21:47 ][ ERROR ]  [ http_service_impl.cpp 212 net_service::http::HttpServiceImpl::recv_request_handler ] 关闭一个连接 ret= -3  
+[ 28928 ][ 23:21:47 ][ ERROR ]  [ http_service_impl.cpp 212 net_service::http::HttpServiceImpl::recv_request_handler ] 关闭一个连接 ret= -2  
+[ 28960 ][ 23:21:51 ][ DEBUG ]  [ net_service::http::HttpObject::parser ] parser= 2  
+[ 28960 ][ 23:21:51 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /index.html  
+[ 19128 ][ 23:21:51 ][ DEBUG ]  [ net_service::http::HttpServiceImpl::send_response ] 发送response handle= 4 ,code 404  
+[ 19128 ][ 23:21:51 ][ DEBUG ]  [ net_service::http::HttpObject::parser ] parser= 2  
+[ 19128 ][ 23:21:51 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /index.html  
+[ 28960 ][ 23:21:51 ][ DEBUG ]  [ net_service::http::HttpServiceImpl::send_response ] 发送response handle= 4 ,code 404  
+[ 28960 ][ 23:21:52 ][ DEBUG ]  [ net_service::http::HttpObject::parser ] parser= 2  
+[ 28960 ][ 23:21:52 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /index.html  
+[ 28928 ][ 23:21:52 ][ DEBUG ]  [ net_service::http::HttpServiceImpl::send_response ] 发送response handle= 4 ,code 404  
+[ 28960 ][ 23:21:56 ][ ERROR ]  [ http_service_impl.cpp 212 net_service::http::HttpServiceImpl::recv_request_handler ] 关闭一个连接 ret= -3  
+[ 28928 ][ 23:21:56 ][ ERROR ]  [ http_service_impl.cpp 212 net_service::http::HttpServiceImpl::recv_request_handler ] 关闭一个连接 ret= -2  
+[ 28960 ][ 23:21:57 ][ ERROR ]  [ http_service_impl.cpp 212 net_service::http::HttpServiceImpl::recv_request_handler ] 关闭一个连接 ret= -3  
+[ 28928 ][ 23:21:57 ][ ERROR ]  [ http_service_impl.cpp 212 net_service::http::HttpServiceImpl::recv_request_handler ] 关闭一个连接 ret= -2  
+[ 28960 ][ 23:22:18 ][ DEBUG ]  [ net_service::http::HttpObject::parser ] parser= 2  
+[ 28960 ][ 23:22:18 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /index.html  
+[ 19128 ][ 23:22:18 ][ DEBUG ]  [ net_service::http::HttpServiceImpl::send_response ] 发送response handle= 7 ,code 404  
+[ 19128 ][ 23:22:19 ][ DEBUG ]  [ net_service::http::HttpObject::parser ] parser= 2  
+[ 19128 ][ 23:22:19 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /index.html  
+[ 28960 ][ 23:22:19 ][ DEBUG ]  [ net_service::http::HttpServiceImpl::send_response ] 发送response handle= 7 ,code 404  
+[ 28960 ][ 23:22:19 ][ DEBUG ]  [ net_service::http::HttpObject::parser ] parser= 2  
+[ 28960 ][ 23:22:19 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /index.html  
+[ 19128 ][ 23:22:20 ][ DEBUG ]  [ net_service::http::HttpServiceImpl::send_response ] 发送response handle= 7 ,code 404  
+[ 19128 ][ 23:22:20 ][ DEBUG ]  [ net_service::http::HttpObject::parser ] parser= 2  
+[ 19128 ][ 23:22:20 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /index.html  
+[ 28928 ][ 23:22:20 ][ DEBUG ]  [ net_service::http::HttpServiceImpl::send_response ] 发送response handle= 7 ,code 404  
+[ 28928 ][ 23:22:20 ][ DEBUG ]  [ net_service::http::HttpObject::parser ] parser= 2  
+[ 28928 ][ 23:22:20 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /index.html  
+[ 19128 ][ 23:22:20 ][ DEBUG ]  [ net_service::http::HttpServiceImpl::send_response ] 发送response handle= 7 ,code 404  
+[ 28928 ][ 23:22:23 ][ ERROR ]  [ http_service_impl.cpp 212 net_service::http::HttpServiceImpl::recv_request_handler ] 关闭一个连接 ret= -3  
+[ 19128 ][ 23:22:23 ][ ERROR ]  [ http_service_impl.cpp 212 net_service::http::HttpServiceImpl::recv_request_handler ] 关闭一个连接 ret= -2  
+[ 28928 ][ 23:22:25 ][ ERROR ]  [ http_service_impl.cpp 212 net_service::http::HttpServiceImpl::recv_request_handler ] 关闭一个连接 ret= -3  
+[ 19128 ][ 23:22:25 ][ ERROR ]  [ http_service_impl.cpp 212 net_service::http::HttpServiceImpl::recv_request_handler ] 关闭一个连接 ret= -2  
+[ 28960 ][ 23:22:30 ][ DEBUG ]  [ net_service::http::HttpObject::parser ] parser= 2  
+[ 28960 ][ 23:22:30 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /index.html  
+[ 19128 ][ 23:22:30 ][ DEBUG ]  [ net_service::http::HttpServiceImpl::send_response ] 发送response handle= 9 ,code 404  
+[ 19128 ][ 23:22:31 ][ DEBUG ]  [ net_service::http::HttpObject::parser ] parser= 2  
+[ 19128 ][ 23:22:31 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /index.html  
+[ 28928 ][ 23:22:31 ][ DEBUG ]  [ net_service::http::HttpServiceImpl::send_response ] 发送response handle= 9 ,code 404  
+[ 28928 ][ 23:22:31 ][ DEBUG ]  [ net_service::http::HttpObject::parser ] parser= 2  
+[ 28928 ][ 23:22:31 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /index.html  
+[ 28960 ][ 23:22:31 ][ DEBUG ]  [ net_service::http::HttpServiceImpl::send_response ] 发送response handle= 9 ,code 404  
+[ 28960 ][ 23:22:32 ][ DEBUG ]  [ net_service::http::HttpObject::parser ] parser= 2  
+[ 28960 ][ 23:22:32 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /index.html  
+[ 28928 ][ 23:22:32 ][ DEBUG ]  [ net_service::http::HttpServiceImpl::send_response ] 发送response handle= 9 ,code 404  
+[ 28928 ][ 23:22:32 ][ DEBUG ]  [ net_service::http::HttpObject::parser ] parser= 2  
+[ 28928 ][ 23:22:32 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /index.html  
+[ 19128 ][ 23:22:32 ][ DEBUG ]  [ net_service::http::HttpServiceImpl::send_response ] 发送response handle= 9 ,code 404  
+[ 19128 ][ 23:22:32 ][ DEBUG ]  [ net_service::http::HttpObject::parser ] parser= 2  
+[ 19128 ][ 23:22:32 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /index.html  
+[ 28928 ][ 23:22:32 ][ DEBUG ]  [ net_service::http::HttpServiceImpl::send_response ] 发送response handle= 9 ,code 404  
+[ 28960 ][ 23:22:35 ][ ERROR ]  [ http_service_impl.cpp 212 net_service::http::HttpServiceImpl::recv_request_handler ] 关闭一个连接 ret= -3  
+[ 28928 ][ 23:22:35 ][ ERROR ]  [ http_service_impl.cpp 212 net_service::http::HttpServiceImpl::recv_request_handler ] 关闭一个连接 ret= -2  
+[ 28904 ][ 23:22:37 ][ ERROR ]  [ http_service_impl.cpp 212 net_service::http::HttpServiceImpl::recv_request_handler ] 关闭一个连接 ret= -3  
+[ 28960 ][ 23:22:37 ][ ERROR ]  [ http_service_impl.cpp 212 net_service::http::HttpServiceImpl::recv_request_handler ] 关闭一个连接 ret= -2  

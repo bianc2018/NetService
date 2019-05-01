@@ -1,0 +1,58 @@
+[ 34136 ][ 20:41:41 ][ DEBUG ]  [ net_service::http::HttpObject::parser ] parser= 2  
+[ 34136 ][ 20:41:41 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /index.html  
+[ 31132 ][ 20:41:43 ][ DEBUG ]  [ net_service::http::HttpServiceImpl::send_response ] 发送response handle= 2 ,code 200  
+[ 32816 ][ 20:41:43 ][ DEBUG ]  [ net_service::http::HttpObject::parser ] parser= 2  
+[ 33280 ][ 20:41:43 ][ DEBUG ]  [ net_service::http::HttpObject::parser ] parser= 2  
+[ 31132 ][ 20:41:43 ][ DEBUG ]  [ net_service::http::HttpObject::parser ] parser= 2  
+[ 28880 ][ 20:41:43 ][ DEBUG ]  [ net_service::http::HttpObject::parser ] parser= 2  
+[ 32816 ][ 20:41:43 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /css/common.css  
+[ 35744 ][ 20:41:43 ][ DEBUG ]  [ net_service::http::HttpObject::parser ] parser= 2  
+[ 33280 ][ 20:41:43 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /css/index.css  
+[ 33188 ][ 20:41:43 ][ DEBUG ]  [ net_service::http::HttpObject::parser ] parser= 2  
+[ 31132 ][ 20:41:43 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /js/user.js  
+[ 28880 ][ 20:41:43 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /js/jquery/jquery-3.3.1.min.js  
+[ 35744 ][ 20:41:43 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /js/common.js  
+[ 33188 ][ 20:41:43 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /js/session.js  
+[ 33280 ][ 20:41:43 ][ DEBUG ]  [ net_service::http::HttpServiceImpl::send_response ] 发送response handle= 4 ,code 200  
+[ 31132 ][ 20:41:43 ][ DEBUG ]  [ net_service::http::HttpServiceImpl::send_response ] 发送response handle= 5 ,code 200  
+[ 34136 ][ 20:41:43 ][ DEBUG ]  [ net_service::http::HttpServiceImpl::send_response ] 发送response handle= 6 ,code 200  
+[ 32816 ][ 20:41:43 ][ DEBUG ]  [ net_service::http::HttpServiceImpl::send_response ] 发送response handle= 3 ,code 200  
+[ 35744 ][ 20:41:43 ][ DEBUG ]  [ net_service::http::HttpServiceImpl::send_response ] 发送response handle= 2 ,code 200  
+[ 28880 ][ 20:41:43 ][ DEBUG ]  [ net_service::http::HttpServiceImpl::send_response ] 发送response handle= 7 ,code 200  
+[ 31132 ][ 20:41:43 ][ DEBUG ]  [ net_service::http::HttpObject::parser ] parser= 2  
+[ 34136 ][ 20:41:43 ][ DEBUG ]  [ net_service::http::HttpObject::parser ] parser= 1  
+[ 35744 ][ 20:41:43 ][ DEBUG ]  [ net_service::http::HttpObject::parser ] parser= 1  
+[ 31132 ][ 20:41:43 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /image/index.jpg  
+[ 28880 ][ 20:41:43 ][ DEBUG ]  [ net_service::http::HttpObject::parser ] parser= 1  
+[ 34136 ][ 20:41:43 ][ DEBUG ]  [ net_service::http::HttpServiceImpl::send_response ] 发送response handle= 7 ,code 200  
+[ 33188 ][ 20:41:43 ][ DEBUG ]  [ net_service::http::HttpObject::parser ] parser= 1  
+[ 32816 ][ 20:41:48 ][ ERROR ]  [ http_service_impl.cpp 212 net_service::http::HttpServiceImpl::recv_request_handler ] 关闭一个连接 ret= -3  
+[ 33188 ][ 20:41:48 ][ ERROR ]  [ http_service_impl.cpp 212 net_service::http::HttpServiceImpl::recv_request_handler ] 关闭一个连接 ret= -2  
+[ 32816 ][ 20:41:48 ][ ERROR ]  [ http_service_impl.cpp 212 net_service::http::HttpServiceImpl::recv_request_handler ] 关闭一个连接 ret= -3  
+[ 34136 ][ 20:41:48 ][ ERROR ]  [ http_service_impl.cpp 212 net_service::http::HttpServiceImpl::recv_request_handler ] 关闭一个连接 ret= -3  
+[ 33188 ][ 20:41:48 ][ ERROR ]  [ http_service_impl.cpp 212 net_service::http::HttpServiceImpl::recv_request_handler ] 关闭一个连接 ret= -2  
+[ 32816 ][ 20:41:48 ][ ERROR ]  [ http_service_impl.cpp 212 net_service::http::HttpServiceImpl::recv_request_handler ] 关闭一个连接 ret= -2  
+[ 33188 ][ 20:41:48 ][ ERROR ]  [ http_service_impl.cpp 212 net_service::http::HttpServiceImpl::recv_request_handler ] 关闭一个连接 ret= -3  
+[ 33188 ][ 20:41:48 ][ DEBUG ]  [ net_service::http::HttpObject::parser ] parser= 1  
+[ 32816 ][ 20:41:48 ][ ERROR ]  [ http_service_impl.cpp 212 net_service::http::HttpServiceImpl::recv_request_handler ] 关闭一个连接 ret= -2  
+[ 34136 ][ 20:41:48 ][ DEBUG ]  [ net_service::http::HttpObject::parser ] parser= 1  
+[ 32816 ][ 20:41:48 ][ ERROR ]  [ http_service_impl.cpp 212 net_service::http::HttpServiceImpl::recv_request_handler ] 关闭一个连接 ret= -3  
+[ 34136 ][ 20:41:48 ][ ERROR ]  [ http_service_impl.cpp 212 net_service::http::HttpServiceImpl::recv_request_handler ] 关闭一个连接 ret= -2  
+[ 32816 ][ 20:41:48 ][ DEBUG ]  [ net_service::http::HttpObject::parser ] parser= 1  
+[ 34136 ][ 20:41:53 ][ ERROR ]  [ http_service_impl.cpp 212 net_service::http::HttpServiceImpl::recv_request_handler ] 关闭一个连接 ret= -3  
+[ 32816 ][ 20:41:53 ][ ERROR ]  [ http_service_impl.cpp 212 net_service::http::HttpServiceImpl::recv_request_handler ] 关闭一个连接 ret= -2  
+[ 34136 ][ 20:41:53 ][ DEBUG ]  [ net_service::http::HttpObject::parser ] parser= 1  
+[ 33188 ][ 20:41:53 ][ ERROR ]  [ http_service_impl.cpp 212 net_service::http::HttpServiceImpl::recv_request_handler ] 关闭一个连接 ret= -3  
+[ 34136 ][ 20:41:53 ][ ERROR ]  [ http_service_impl.cpp 212 net_service::http::HttpServiceImpl::recv_request_handler ] 关闭一个连接 ret= -2  
+[ 33188 ][ 20:41:58 ][ ERROR ]  [ http_service_impl.cpp 212 net_service::http::HttpServiceImpl::recv_request_handler ] 关闭一个连接 ret= -3  
+[ 34136 ][ 20:41:58 ][ ERROR ]  [ http_service_impl.cpp 212 net_service::http::HttpServiceImpl::recv_request_handler ] 关闭一个连接 ret= -2  
+[ 33188 ][ 20:42:13 ][ DEBUG ]  [ net_service::http::HttpObject::parser ] parser= 2  
+[ 32816 ][ 20:42:13 ][ DEBUG ]  [ net_service::http::HttpObject::parser ] parser= 2  
+[ 33188 ][ 20:42:13 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /css/common.css  
+[ 32816 ][ 20:42:13 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /css/index.css  
+[ 32816 ][ 20:42:13 ][ DEBUG ]  [ net_service::http::HttpServiceImpl::send_response ] 发送response handle= 11 ,code 200  
+[ 32816 ][ 20:42:13 ][ DEBUG ]  [ net_service::http::HttpServiceImpl::send_response ] 发送response handle= 10 ,code 200  
+[ 28880 ][ 20:42:18 ][ ERROR ]  [ http_service_impl.cpp 212 net_service::http::HttpServiceImpl::recv_request_handler ] 关闭一个连接 ret= -3  
+[ 32816 ][ 20:42:18 ][ ERROR ]  [ http_service_impl.cpp 212 net_service::http::HttpServiceImpl::recv_request_handler ] 关闭一个连接 ret= -2  
+[ 33188 ][ 20:42:18 ][ ERROR ]  [ http_service_impl.cpp 212 net_service::http::HttpServiceImpl::recv_request_handler ] 关闭一个连接 ret= -3  
+[ 32816 ][ 20:42:18 ][ ERROR ]  [ http_service_impl.cpp 212 net_service::http::HttpServiceImpl::recv_request_handler ] 关闭一个连接 ret= -2  

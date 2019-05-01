@@ -1,0 +1,16 @@
+[ 35800 ][ 21:21:02 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /index.html  
+[ 32544 ][ 21:21:02 ][ DEBUG ]  [ net_service::http::HttpServiceImpl::send_response ] 发送response handle= 2 ,code 200  
+[ 32544 ][ 21:21:02 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /css/common.css  
+[ 32280 ][ 21:21:02 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /js/jquery/jquery-3.3.1.min.js  
+[ 35796 ][ 21:21:02 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /js/common.js  
+[ 27396 ][ 21:21:02 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /js/user.js  
+[ 35380 ][ 21:21:02 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /js/session.js  
+[ 35800 ][ 21:21:02 ][ DEBUG ]  [ net_service::http::HttpServiceImpl::send_response ] 发送response handle= 2 ,code 200  
+[ 34328 ][ 21:21:02 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /css/index.css  
+[ 35800 ][ 21:21:02 ][ DEBUG ]  [ net_service::http::HttpServiceImpl::send_response ] 发送response handle= 4 ,code 200  
+[ 35380 ][ 21:21:02 ][ DEBUG ]  [ net_service::http::HttpServiceImpl::send_response ] 发送response handle= 6 ,code 200  
+[ 32280 ][ 21:21:02 ][ DEBUG ]  [ net_service::http::HttpServiceImpl::send_response ] 发送response handle= 5 ,code 200  
+[ 34328 ][ 21:21:02 ][ DEBUG ]  [ net_service::http::HttpServiceImpl::send_response ] 发送response handle= 7 ,code 200  
+[ 34328 ][ 21:21:02 ][ DEBUG ]  [ net_service::http::HttpServiceImpl::send_response ] 发送response handle= 3 ,code 200  
+[ 34328 ][ 21:21:02 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /image/index.jpg  
+[ 34328 ][ 21:21:02 ][ DEBUG ]  [ net_service::http::HttpServiceImpl::send_response ] 发送response handle= 3 ,code 200  

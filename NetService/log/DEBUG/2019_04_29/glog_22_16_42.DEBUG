@@ -1,0 +1,10 @@
+[ 28120 ][ 22:16:42 ][ DEBUG ]  [ net_service::http::HttpObject::parser ] parser= 2  
+[ 28120 ][ 22:16:42 ][ DEBUG ]  [ net_service::http::HttpServiceImpl::new_res ] new res addr= 56482112  
+[ 28120 ][ 22:16:42 ][ DEBUG ]  [ net_service::http::HttpServiceImpl::send_response ] get addr= 56482112 , res addr= 56482112  
+[ 21772 ][ 22:16:42 ][ DEBUG ]  [ net_service::http::HttpServiceImpl::send_response ] get addr= 56482112 , res addr= 56482112  
+[ 21772 ][ 22:16:42 ][ DEBUG ]  [ net_service::http::HttpServiceImpl::send_response ] ·¢ËÍresponse handle= 2 ,code 404  
+[ 21772 ][ 22:16:43 ][ DEBUG ]  [ net_service::http::HttpObject::parser ] parser= 2  
+[ 21772 ][ 22:16:43 ][ DEBUG ]  [ net_service::http::HttpServiceImpl::new_res ] new res addr= 56544200  
+[ 21772 ][ 22:16:43 ][ DEBUG ]  [ net_service::http::HttpServiceImpl::send_response ] get addr= 56482112 , res addr= 56544200  
+[ 28120 ][ 22:16:43 ][ DEBUG ]  [ net_service::http::HttpServiceImpl::send_response ] get addr= 56482112 , res addr= 56544200  
+[ 28120 ][ 22:16:43 ][ DEBUG ]  [ net_service::http::HttpServiceImpl::send_response ] ·¢ËÍresponse handle= 2 ,code 200  

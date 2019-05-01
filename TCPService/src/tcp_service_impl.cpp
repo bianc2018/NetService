@@ -11,7 +11,8 @@ net_service::tcp::TcpServiceImpl & net_service::tcp::TcpServiceImpl::instance()
 int net_service::tcp::TcpServiceImpl::start()
 {
 	SET_LOG_PATH(log_path_);
-	
+	SET_FILL(" ");
+	SET_OUTPUT_LV(5);
 	run_flag_ = true;
 	//运行工作线程
 	run_thread_vector_.reserve(thread_num_);
@@ -189,29 +190,49 @@ void net_service::tcp::TcpServiceImpl::close_server(TCP_HANDLE handle)
 {
 	{
 		std::lock_guard<std::mutex> lock(lock_servers_);
-		servers_.erase(handle);
+		auto p = servers_.find(handle);
+		if (p != servers_.end())
+			servers_.erase(p);
 	}
 	auto links = get_links_handle(handle);
 	{
-		std::lock_guard<std::mutex> lock1(lock_links_);
-		for (auto link : links)
 		{
-			links_.erase(link);
+			std::lock_guard<std::mutex> lock1(lock_links_);
+			for (auto link : links)
+			{
+				auto p = links_.find(link);
+				if (p != links_.end())
+					links_.erase(p);
+			}
 		}
-		std::lock_guard<std::mutex> lock2(lock_link_server_);
-		for (auto link : links)
 		{
-			link_server_.erase(link);
+			std::lock_guard<std::mutex> lock2(lock_link_server_);
+			for (auto link : links)
+			{
+				auto p = link_server_.find(link);
+				if (p != link_server_.end())
+					link_server_.erase(p);
+			}
 		}
 	}
 }
 
 void net_service::tcp::TcpServiceImpl::close_client(TCP_HANDLE handle)
 {
-	std::lock_guard<std::mutex> lock1(lock_links_);
-	links_.erase(handle);
-	std::lock_guard<std::mutex> lock2(lock_link_server_);
-	link_server_.erase(handle);
+	{
+		std::lock_guard<std::mutex> lock1(lock_links_);
+		auto p = links_.find(handle);
+		if(p!=links_.end())
+			links_.erase(p);
+	}
+	//LOG(LDEBUG, "close link");
+	{
+		std::lock_guard<std::mutex> lock2(lock_link_server_);
+		auto p = link_server_.find(handle);
+		if (p != link_server_.end())
+			link_server_.erase(p);
+	}
+	//LOG(LDEBUG, "close");
 }
 
 net_service::tcp::TcpServiceImpl::~TcpServiceImpl()

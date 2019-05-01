@@ -1,0 +1,38 @@
+[ 36812 ][ 22:52:03 ][ INFO ]  [ net_service::web::WebServer::load_handler ] load handle: ./NEWPUBLISH.dll : np_before ，type(前置过滤器) ok  
+[ 36812 ][ 22:52:03 ][ INFO ]  [ net_service::web::WebServer::load_handler ] load handle: ./NEWPUBLISH.dll : np_get_news ，type(处理器 绑定uri= /get_news.action ) ok  
+[ 36812 ][ 22:52:03 ][ INFO ]  [ net_service::web::WebServer::load_handler ] load handle: ./NEWPUBLISH.dll : np_get_now_user ，type(处理器 绑定uri= /get_now_user.action ) ok  
+[ 36812 ][ 22:52:03 ][ INFO ]  [ net_service::web::WebServer::load_handler ] load handle: ./NEWPUBLISH.dll : np_after ，type(后置过滤器) ok  
+[ 35744 ][ 22:52:10 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /index.html  
+[ 35592 ][ 22:52:10 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /css/index.css  
+[ 35332 ][ 22:52:10 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /css/common.css  
+[ 30964 ][ 22:52:10 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /js/jquery/jquery-3.3.1.min.js  
+[ 34708 ][ 22:52:10 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /js/common.js  
+[ 36572 ][ 22:52:10 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /js/session.js  
+[ 6220 ][ 22:52:10 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /js/user.js  
+[ 35592 ][ 22:52:10 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /image/index.jpg  
+[ 35592 ][ 22:52:10 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /get_now_user.action  
+[ 36452 ][ 22:52:10 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /get_news.action  
+[ 35332 ][ 22:58:26 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /new.html?new_id=13136237546872572267  
+[ 35332 ][ 22:58:27 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /new.html?new_id=13136237546872572267  
+7.0.0.1 : 50448  
+[ 35924 ][ 22:52:10 ][ INFO ]  [ net_service::tcp::TcpServer::accept::<lambda_0ec219ad3d51a39f9721aaf41fa238a8>::operator () ] 获得连接： 127.0.0.1 : 50449  
+[ 35744 ][ 22:52:10 ][ INFO ]  [ net_service::tcp::TcpServer::accept::<lambda_0ec219ad3d51a39f9721aaf41fa238a8>::operator () ] 获得连接： 127.0.0.1 : 50450  
+[ 36452 ][ 22:52:10 ][ INFO ]  [ net_service::tcp::TcpServer::accept::<lambda_0ec219ad3d51a39f9721aaf41fa238a8>::operator () ] 获得连接： 127.0.0.1 : 50451  
+[ 32920 ][ 22:52:10 ][ INFO ]  [ net_service::tcp::TcpServer::accept::<lambda_0ec219ad3d51a39f9721aaf41fa238a8>::operator () ] 获得连接： 127.0.0.1 : 50452  
+[ 34488 ][ 22:52:10 ][ INFO ]  [ net_service::tcp::TcpServer::accept ] Start Listening   
+[ 35924 ][ 22:52:10 ][ INFO ]  [ net_service::tcp::TcpServer::accept ] Start Listening   
+[ 35744 ][ 22:52:10 ][ INFO ]  [ net_service::tcp::TcpServer::accept ] Start Listening   
+[ 36452 ][ 22:52:10 ][ INFO ]  [ net_service::tcp::TcpServer::accept ] Start Listening   
+[ 32920 ][ 22:52:10 ][ INFO ]  [ net_service::tcp::TcpServer::accept ] Start Listening   
+[ 32920 ][ 22:58:26 ][ INFO ]  [ net_service::tcp::TcpServer::accept::<lambda_0ec219ad3d51a39f9721aaf41fa238a8>::operator () ] 获得连接： 127.0.0.1 : 50509  
+[ 32920 ][ 22:58:26 ][ INFO ]  [ net_service::tcp::TcpServer::accept ] Start Listening   
+[ 32920 ][ 22:58:27 ][ INFO ]  [ net_service::tcp::TcpServer::accept::<lambda_0ec219ad3d51a39f9721aaf41fa238a8>::operator () ] 获得连接： 127.0.0.1 : 50510  
+[ 35744 ][ 22:58:27 ][ INFO ]  [ net_service::tcp::TcpServer::accept::<lambda_0ec219ad3d51a39f9721aaf41fa238a8>::operator () ] 获得连接： 127.0.0.1 : 50512  
+[ 34488 ][ 22:58:27 ][ INFO ]  [ net_service::tcp::TcpServer::accept::<lambda_0ec219ad3d51a39f9721aaf41fa238a8>::operator () ] 获得连接： 127.0.0.1 : 50514  
+[ 36452 ][ 22:58:27 ][ INFO ]  [ net_service::tcp::TcpServer::accept::<lambda_0ec219ad3d51a39f9721aaf41fa238a8>::operator () ] 获得连接： 127.0.0.1 : 50511  
+[ 35924 ][ 22:58:27 ][ INFO ]  [ net_service::tcp::TcpServer::accept::<lambda_0ec219ad3d51a39f9721aaf41fa238a8>::operator () ] 获得连接： 127.0.0.1 : 50513  
+[ 32920 ][ 22:58:27 ][ INFO ]  [ net_service::tcp::TcpServer::accept ] Start Listening   
+[ 35744 ][ 22:58:27 ][ INFO ]  [ net_service::tcp::TcpServer::accept ] Start Listening   
+[ 34488 ][ 22:58:27 ][ INFO ]  [ net_service::tcp::TcpServer::accept ] Start Listening   
+[ 36452 ][ 22:58:27 ][ INFO ]  [ net_service::tcp::TcpServer::accept ] Start Listening   
+[ 35924 ][ 22:58:27 ][ INFO ]  [ net_service::tcp::TcpServer::accept ] Start Listening   

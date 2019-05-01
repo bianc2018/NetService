@@ -29,6 +29,10 @@ namespace net_service
 		//s
 		HTTP_SERVICE_API void set_time_out(size_t time_out);
 
+		HTTP_SERVICE_API int set_mime(const std::string&ext,const std::string&type);
+		HTTP_SERVICE_API std::string get_mime(const std::string&ext, const std::string&notfond=HTML_MIME);
+		HTTP_SERVICE_API int set_reason(const std::string&code, const std::string&reason_phrase);
+		HTTP_SERVICE_API std::string get_reason(const std::string&code, const std::string&notfond = UNKNOW_REASON);
 
 		//请求
 		HTTP_SERVICE_API void new_request(HTTP_HANDLE handle);
@@ -52,8 +56,8 @@ namespace net_service
 		HTTP_SERVICE_API void* request_get_ext_data(HTTP_HANDLE handle, const std::string &key);
 
 		//设置文件为内容
-		HTTP_SERVICE_API int request_set_body_by_file(HTTP_HANDLE handle, const std::string &path, int beg = -1, int end = -1);
-		HTTP_SERVICE_API int request_get_body(HTTP_HANDLE handle, char* buff, int size, int beg);
+		HTTP_SERVICE_API int request_set_body_by_file(HTTP_HANDLE handle, const std::string &path, unsigned long long beg = 0, long long end = -1);
+		HTTP_SERVICE_API int request_get_body(HTTP_HANDLE handle, char* buff, unsigned long long beg, unsigned long long len);
 		//设置接收请求时请求超过多少时,将报文body保存起来
 		HTTP_SERVICE_API int request_set_body_cache(HTTP_HANDLE handle,size_t max_size, const std::string &cache_path="./http_cache/request");
 		
@@ -73,13 +77,13 @@ namespace net_service
 		HTTP_SERVICE_API std::string response_get_header(HTTP_HANDLE handle, const std::string &key, const std::string &notfond = "");
 
 		HTTP_SERVICE_API int response_set_body(HTTP_HANDLE handle, const std::string &value);
-		HTTP_SERVICE_API int response_get_body(HTTP_HANDLE handle, char* buff, int size, int beg);
+		HTTP_SERVICE_API int response_get_body(HTTP_HANDLE handle, char* buff, unsigned long long beg , unsigned long long len);
 		
 		HTTP_SERVICE_API int response_set_ext_data(HTTP_HANDLE handle, const std::string &key, void * data);
 		HTTP_SERVICE_API void* response_get_ext_data(HTTP_HANDLE handle, const std::string &key);
 
 		//设置文件为内容[]
-		HTTP_SERVICE_API int response_set_body_by_file(HTTP_HANDLE handle, const std::string &path,int beg=-1,int end=-1);
+		HTTP_SERVICE_API int response_set_body_by_file(HTTP_HANDLE handle, const std::string &path, unsigned long long beg = 0, long long end = -1);
 		//设置接收请求时请求超过多少时,将报文body保存起来
 		HTTP_SERVICE_API int response_set_body_cache(HTTP_HANDLE handle, size_t max_size, const std::string &cache_path = "./http_cache/response");
 	}

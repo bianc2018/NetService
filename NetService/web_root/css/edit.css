@@ -1,0 +1,19 @@
+#new_info
+{
+    width:80%;
+    float:left;
+    margin-left:50px;
+}
+.new_data
+{
+    width:100%
+}
+    .new_data input
+    {
+        width:500px;
+    }
+    #keditor {
+        width: 85%;
+        float: left;
+        margin-left: 20px;
+    }

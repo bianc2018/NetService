@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="include">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="include\log">
+      <UniqueIdentifier>{4d921feb-9465-473c-8a14-67d4431b8628}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\json">
+      <UniqueIdentifier>{3b428968-e52d-4e8f-9950-72cc7a552177}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\db">
+      <UniqueIdentifier>{bdceac78-e0b4-4923-ac41-cf405d09b1eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\db\base">
+      <UniqueIdentifier>{7889e590-1db7-4a19-bd36-4d2139f8a1c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\db\new">
+      <UniqueIdentifier>{2204d075-0501-4e0b-a539-755475dee868}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\db\user">
+      <UniqueIdentifier>{4d4103ec-e499-4625-9502-745e381f7695}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\db\session">
+      <UniqueIdentifier>{fb159ff4-5ab7-414e-8952-c4604643adba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="include\ini">
+      <UniqueIdentifier>{3e16fbbf-a879-465d-a6a8-c64568ebceed}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\include\log\log.cpp">
+      <Filter>include\log</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\include\json\cJSON.c">
+      <Filter>include\json</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\include\json\json.cpp">
+      <Filter>include\json</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\include\db\basedb\base_db.cpp">
+      <Filter>include\db\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\include\db\basedb\db_table.cpp">
+      <Filter>include\db\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\include\db\basedb\sql_format.cpp">
+      <Filter>include\db\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\include\db\news\new.cpp">
+      <Filter>include\db\new</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\include\db\news\news_mgr.cpp">
+      <Filter>include\db\new</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\include\db\session\session.cpp">
+      <Filter>include\db\session</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\include\db\session\session_mgr.cpp">
+      <Filter>include\db\session</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\include\db\user\user.cpp">
+      <Filter>include\db\user</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\include\db\user\user_mgr.cpp">
+      <Filter>include\db\user</Filter>
+    </ClCompile>
+    <ClCompile Include="new_publish_impl.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="new_publish.cpp" />
+    <ClCompile Include="..\..\include\ini\ini.cpp">
+      <Filter>include\ini</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\include\log\log.hpp">
+      <Filter>include\log</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\json\cJSON.h">
+      <Filter>include\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\json\json.h">
+      <Filter>include\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\db\basedb\base_db.h">
+      <Filter>include\db\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\db\basedb\db_table.h">
+      <Filter>include\db\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\db\basedb\sql_format.h">
+      <Filter>include\db\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\db\news\new.h">
+      <Filter>include\db\new</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\db\news\news_mgr.h">
+      <Filter>include\db\new</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\db\session\session.h">
+      <Filter>include\db\session</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\db\session\session_mgr.h">
+      <Filter>include\db\session</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\db\user\user.h">
+      <Filter>include\db\user</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\db\user\user_mgr.h">
+      <Filter>include\db\user</Filter>
+    </ClInclude>
+    <ClInclude Include="new_publish.h" />
+    <ClInclude Include="new_publish_impl.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\ini\ini.h">
+      <Filter>include\ini</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,12 @@
+[ 25780 ][ 21:34:56 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /index.html  
+[ 25780 ][ 21:34:56 ][ DEBUG ]  [ net_service::web::WebServer::deal_default ] 404 handle= 2 0 0  
+[ 14340 ][ 21:34:58 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /index.html  
+[ 14340 ][ 21:34:58 ][ DEBUG ]  [ net_service::web::WebServer::deal_default ] 404 handle= 2 0 0  
+[ 26332 ][ 21:35:09 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /index.html  
+[ 26332 ][ 21:35:09 ][ DEBUG ]  [ net_service::web::WebServer::deal_default ] 404 handle= 2 0 0  
+[ 14340 ][ 21:35:10 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /index.html  
+[ 14340 ][ 21:35:10 ][ DEBUG ]  [ net_service::web::WebServer::deal_default ] 404 handle= 2 0 0  
+[ 26332 ][ 21:35:11 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /index.html  
+[ 26332 ][ 21:35:11 ][ DEBUG ]  [ net_service::web::WebServer::deal_default ] 404 handle= 2 0 0  
+[ 14340 ][ 21:35:11 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /index.html  
+[ 14340 ][ 21:35:11 ][ DEBUG ]  [ net_service::web::WebServer::deal_default ] 404 handle= 2 0 0  

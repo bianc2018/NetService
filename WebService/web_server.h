@@ -1,6 +1,12 @@
 #ifndef WEB_SEVICE_H
 #define WEB_SEVICE_H
 
+#define WIN 1
+
+#ifdef  WIN
+#include <Windows.h>
+#endif //  WIN32
+
 #include <map>
 #include <functional>
 #include <vector>
@@ -20,7 +26,7 @@ namespace net_service
 			typedef std::function<int(HTTP_HANDLE handle, int err)> WEB_HANDLER;
 		public:
 			//底层调用，用于处理一个连接
-			void http_handler(HTTP_HANDLE handle, int err_code);
+			int http_handler(HTTP_HANDLE handle, int err_code);
 			
 			//初始化
 			WebServer(WebSeviceConfigData config);
@@ -50,6 +56,8 @@ namespace net_service
 			int call(const std::string& uri, HTTP_HANDLE handle, int err);
 
 			void* get_func(const std::string &path,const std::string &name);
+
+			//int set_res_mime(HTTP_HANDLE handle,const std::string& uri);
 		private:
 			//处理回调
 			std::map<const std::string, WEB_HANDLER> func_map_;
@@ -58,6 +66,9 @@ namespace net_service
 			std::vector<WEB_HANDLER> before_filter_vec_;
 			std::vector<WEB_HANDLER> after_filter_vec_;
 
+#ifdef  WIN
+			std::map<std::string, HINSTANCE> dll_map_;
+#endif
 			HTTP_HANDLE http_handle_;
 		};
 	}

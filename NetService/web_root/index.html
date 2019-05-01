@@ -1,0 +1,102 @@
+<html>
+<head>
+    <meta http_equiv="content_type" content="text/html;charset=gb2312" />
+    <title>实时驿站</title>
+    <link href="./css/common.css" type="text/css" rel="stylesheet">
+    <link href="./css/index.css" type="text/css" rel="stylesheet">
+    <script src="/js/jquery/jquery-3.3.1.min.js" charset="utf-8" type="text/javascript"></script>
+    <script src="/js/common.js" type="text/javascript"></script>
+    <script src="/js/user.js"  type="text/javascript"></script>
+    <script src="/js/session.js" type="text/javascript"></script>
+    <script charset="utf-8" type="text/javascript">
+        var session_id = '';
+        var page = 1;
+        var size = 5;
+        $(document).ready(function ()
+        {
+            user_status();
+            $('#more_new').show();
+            load_news("", "publish_time DESC");
+            $('#more_new').on('click', function () {
+                page = page + 1;
+                load_news("", "publish_time DESC");
+            });
+        });
+
+        function load_news(where,orderby)
+        {
+            //alert("loading " + where + " " + size + " " + orderby);
+            if(page==0)
+                $('#body').html('');
+            if (where == "")
+            {
+                where = 'status=3 AND property=\'0\'';
+            }
+            else
+            {
+                where += ' AND status=3 AND property=\'0\'';
+            }
+
+            $.post('/get_news.action', '{"where":"' + where + '","page":' + page + ',"size":' + size + ',"orderby":"' + orderby + '","byuser":0,"transfer_content":0}', function (data) {
+                if (data.result != 0) {
+                    alert("无法获取数据 " + Error_Code(data.result));
+                    return -1;
+                }
+                if (page == 1)
+                    $('#body').html('');
+                $.each(data.news, function (entryIndex, entry) {
+                    var it = '';
+                    it += '<div class="new_sub" id="' + entry.code + '">';
+                    it += '<a href=/new.html?new_id=' + entry.code + '>';
+                    it += '<div class="new_title">' + json_decode(entry.title) + '</div>';
+                    it += '<div class="new_author">' + entry.author + '</div>';
+                   //it += '<p id="code">' + entry.code + '</p>';
+                    it += '<div class="new_time">' + time_to_string(entry.publish_time) + '</div>';
+                    it += '<div class="new_comment_num">评论:' + entry.comment_num + '</div>';
+                    it += "</a>";
+                    it += '</div>';
+                    $('#body').append(it);
+                });
+                
+                var num = page * size;
+                if (data.all <= num) {
+                    $('#more_new').hide()
+                    $('#end_new').show()
+                }
+            });
+        }
+    </script>
+</head>
+
+<body>
+    <div id="head">
+        <div id="title">
+
+        </div>
+        <div id="notice">
+            &nbsp;
+        </div>
+        <div id="person">
+
+        </div>
+        <div id="forward">
+            <a href="login.html">登录页</a>
+        </div>
+        <div id="search">
+            <input id="search_text" />&nbsp;<input type="button" value="搜索" onclick="load_news('title like \'%' + ecode_json_value(document.getElementById('search_text').value) + '%\'', 10, 'publish_time DESC')" />
+        </div>
+    </div>
+    <div id="body">
+
+    </div>
+    <div>
+        <div class="new_sub" id="more_new" style="display:none;cursor:pointer;text-align:center;">更多</div>
+        <div class="new_sub" id="end_new" style="display:none;text-align:center;">已经是全部了</div>
+    </div>
+    <div id="footer">
+        <pre align="center">
+            Copyright&copy;2019-2020&quot;实时驿站&quot;All rights.
+        </pre>
+    </div>
+</body>
+</html>

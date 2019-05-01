@@ -19,12 +19,18 @@ net_service::tcp::TcpLink::TcpLink(std::shared_ptr<boost::asio::ip::tcp::socket>
 
 net_service::tcp::TcpLink::~TcpLink()
 {
+	//LOG(LDEBUG, "close timer", timers_.size());
+	lock.lock();
 	for (auto timer : timers_)
 	{
 		boost::system::error_code ec;
+		//LOG(LDEBUG, "close timer");
 		timer->cancel(ec);
 	}
+	//LOG(LDEBUG, "close timer in");
 	timers_.clear();
+	lock.unlock();
+	//LOG(LDEBUG, "close timer out");
 }
 
 void net_service::tcp::TcpLink::async_recv(RECV_HANDLER recv_handler, int time_out,int buff_size)
@@ -109,6 +115,7 @@ std::shared_ptr<boost::asio::steady_timer> net_service::tcp::TcpLink::start_time
 	auto time_out_handler = \
 		[this, call](boost::system::error_code ec)
 	{
+		//LOG(LWARN, "Tcp Link timer ³¬Ê±,handle_=", handle_,ec.value(),ec.message());
 		if (!ec)
 		{
 			LOG(LWARN, "Tcp Link timer ³¬Ê±,handle_=", handle_);
@@ -118,7 +125,9 @@ std::shared_ptr<boost::asio::steady_timer> net_service::tcp::TcpLink::start_time
 	
 	timer->expires_from_now(std::chrono::seconds(time_out));
 	timer->async_wait(time_out_handler);
+	lock.lock();
 	timers_.push_back(timer);
+	lock.unlock();
 	return timer;
 }
 
@@ -126,7 +135,7 @@ int net_service::tcp::TcpLink::stop_timer(std::shared_ptr<boost::asio::steady_ti
 {
 	boost::system::error_code ec;
 	timer->cancel(ec);
-
+	lock.lock();
 	auto p = timers_.begin();
 	for (; p != timers_.end(); p++)
 	{
@@ -136,6 +145,6 @@ int net_service::tcp::TcpLink::stop_timer(std::shared_ptr<boost::asio::steady_ti
 			break;
 		}
 	}
-	
+	lock.unlock();
 	return ec.value();
 }

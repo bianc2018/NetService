@@ -1,0 +1,280 @@
+<html>
+<head>
+    <meta http_equiv="content_type" content="text/html;charset=utf-8" />
+    <title>实时驿站</title>
+    <link href="./css/common.css" type="text/css" rel="stylesheet">
+    <link href="./css/new.css" type="text/css" rel="stylesheet">
+    <script src="/js/jquery/jquery-3.3.1.min.js"></script>
+    <script src="/js/common.js"></script>
+    <script src="/js/user.js" type="text/javascript"></script>
+    <script src="/js/session.js" type="text/javascript"></script>
+    <script charset="utf-8" type="text/javascript">
+        var page = 1;
+        var size = 5;
+        var new_id = get_query_string('new_id');
+        var session_id = get_session_id();
+        var like_status = 0;
+        var like_num = 0;
+        var unlike_num = 0;
+        var comment_num = 0;
+        $(document).ready(function () {
+            user_status();
+
+            $.post("./get_new.action",
+                '{"code":"'+new_id+'"}',
+                function(data)
+                {
+                    if (data.result != 0) {
+                        alert("获取数据失败 " + Error_Code(data.result));
+                        window.location.href = "/index.html";
+                    }
+                    else {
+                        like_status = parseInt(data.like_status);
+                        like_num = parseInt(data.new.like_num);
+                        unlike_num = parseInt(data.new.unlike_num);
+                        comment_num = parseInt(data.new.comment_num);
+
+                        //$('#new_title').html('<h1 align="center">' + json_decode(data.new.title) + '</h1>');
+                        $('#new_title').html('<h1 align="center">' + data.new.title + '</h1>');
+                        $('#new_about').html('<p align="left">' + data.new.author + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + time_to_string(data.new.publish_time) + '<p><br/>');
+                        $('#new_content').html(json_decode(data.new.content));
+                        
+                        $('#new_like_num').text('赞[' + like_num + ']')
+                        $('#new_unlike_num').text('踩[' + unlike_num + ']');
+                        $('#new_comment_num').text('评论[' + comment_num + ']');
+
+                        like_status_class(like_status);
+                        //common_btn_after
+
+                        load_comment(new_id);
+                        $('#new_like_num').on('click', function () {
+                            var json = '{"new_id":"' + new_id + '","blike":1}';
+                            $.post("/new_like.action",json, function (data) {
+                                //result like_num
+                                if (data.result != 0) {
+                                    alert("点赞失败" + Error_Code(data.result));
+                                    return;
+                                }
+                                if (like_status == 0)
+                                {
+                                    like_num = like_num + 1;
+                                    like_status = 1;
+                                }
+                                else if (like_status == 1)
+                                {
+                                    like_num = like_num - 1;
+                                    like_status = 0;
+                                }
+                                else if (like_status == -1)
+                                {
+                                    like_num = like_num + 1;
+                                    unlike_num = unlike_num - 1;
+                                    like_status = 1;
+                                }
+                                $('#new_like_num').text('赞[' + like_num + ']');
+                                $('#new_unlike_num').text('踩[' + unlike_num + ']');
+                                like_status_class(like_status);
+                            }, "json");
+                        });
+                        $('#new_unlike_num').on('click', function () {
+                            var json = '{"new_id":"' + new_id + '","blike":-1}';
+                            $.post("/new_like.action",json, function (data) {
+                                //result like_num
+                                if (data.result != 0) {
+                                    alert("点踩失败" + Error_Code(data.result));
+                                    return;
+                                }
+                                if (like_status == 0) {
+                                    unlike_num = unlike_num + 1;
+                                    like_status = -1;
+                                }
+                                else if (like_status == 1) {
+                                    like_num = like_num - 1;
+                                    unlike_num = unlike_num + 1;
+                                    like_status = -1;
+                                }
+                                else if (like_status == -1) {
+                                    unlike_num = unlike_num - 1;
+                                    like_status = 0;
+                                }
+                                $('#new_like_num').text('赞[' + like_num + ']');
+                                $('#new_unlike_num').text('踩[' + unlike_num + ']');
+
+                                like_status_class(like_status);
+
+                            }, "json");
+                        });
+                        $('#new_comment_num').on('click', function () {
+                            add_new_comment(get_query_string('new_id'), 'new_comment_content');
+                        });
+                        //more_comment
+                        $('#more_comment').on('click', function () {
+                            page = page + 1;
+                            load_comment(new_id);
+                        });
+                    }
+
+                },
+                'json'
+                )
+
+        });
+
+        function like_status_class(status)
+        {
+            if (status == 1) {
+                $('#new_like_num').addClass("common_btn_after");
+                $('#new_unlike_num').removeClass("common_btn_after");
+                $('#new_unlike_num').addClass("common_btn");
+            }
+            else if (status == -1) {
+                $('#new_like_num').removeClass("common_btn_after");
+                $('#new_like_num').addClass("common_btn");
+                $('#new_unlike_num').addClass("common_btn_after");
+            }
+            else if(status == 0)
+            {
+                $('#new_like_num').removeClass("common_btn_after");
+                $('#new_unlike_num').removeClass("common_btn_after");
+
+                $('#new_like_num').addClass("common_btn");
+                $('#new_unlike_num').addClass("common_btn");
+            }
+        }
+        function load_comment(new_id)
+        {
+            var where = "parent='" + new_id + "' AND status=3 AND property='1'";
+            var orderby = "publish_time DESC";
+            $.post('/get_news.action', '{"where":"' + where + '","page":' + page + ',"size":' + size + ',"orderby":"' + orderby + '","byuser":0,"transfer_content":1}', function (data)
+            {
+                if (data.result != 0) {
+                    alert("无法获取数据 " + Error_Code(data.result));
+                }
+                else {
+                    if (data.size <= 0) {
+                        $('#new_comment').html('<p>暂无评论</p>');
+                        $('#more_comment').hide();
+                    }
+                    else {
+                        if (page == 1)
+                            $('#new_comment').html('');
+
+                        for (var i = 0; i < data.news.length; i++) {
+                            var entry = data.news[i];
+                            var entryIndex = data.news.length - i;
+
+                            var it = '';
+                            it += '<div class="comment_it" id="' + entry.code + '">';
+                            it += '<div id="comment_title">#' + entryIndex + '&nbsp;' + entry.author + ':</div><hr/>';
+                            it += '<div id="comment_content">' + escape_decode(entry.content) + '</div><hr/>';
+                            it += '<div id="comment_time">' + time_to_string(entry.publish_time);
+                            it += '&nbsp;<span style="cursor: pointer;" onclick="like_comment(\'' + entry.code + '\',1)">赞[' + entry.like_num + ']</span>';
+                            it += '&nbsp;<span style="cursor: pointer;" onclick="like_comment(\'' + entry.code + '\',-1)">踩[' + entry.unlike_num + ']</span>' + '</div>';
+                            it += '</div>';
+
+                            $('#new_comment').append(it);
+                        }
+
+                        var num = page * size;
+                        if (data.all <= num) {
+                            $('#more_comment').hide();
+                            $('#all_comment').show();
+                        }
+                        else
+                        {
+                            $('#more_comment').show();
+                            $('#all_comment').hide();
+                        }
+                    }
+                }
+            }
+            );
+
+           
+        }
+        function add_new_comment(new_id,div)
+        {
+
+            var comment = document.getElementById(div).value;
+            document.getElementById(div).value = "";
+            if (comment == "") {
+                alert("内容为空！！！");
+                return -1;
+            }
+            if (check_comment(comment) != 0)
+            {
+                return -2;
+            }
+            $.post('/add_new_comment.action', '{"new_id":"' + new_id + '","comment":"' + ecode_json_value(comment) + '"}', function (data) {
+                if(data.result!=0)
+                {
+                    alert("评论失败 " + Error_Code(data.result));
+                    return -2;
+                }
+                comment_num = comment_num + 1;
+                $('#new_comment_num').text('评论[' + comment_num + ']');
+                //page = 1;
+                load_comment(get_query_string('new_id'));
+            });
+        }
+        function like_comment(id, blike)
+        {
+            var json = '{"new_id":"'+id+'","blike":'+blike+'}'
+            $.post('/new_like.action',json, function (data)
+            {
+                if (data.result != 0) {
+                    alert("点踩失败 " + Error_Code(data.result));
+                    return;
+                }
+                var new_id = get_query_string('new_id');
+                load_comment(new_id);
+            }, "json");
+        }
+    </script>
+</head>
+<body>
+	<div id="head">
+		<div id="title">
+          
+		</div>
+        
+		<div id="notice">
+            &nbsp;
+		</div>
+		<div id="person">
+ 
+		</div>
+        <div id="forward">
+            <a href="index.html">首页</a>
+        </div>
+		<div id="search">
+            &nbsp;
+		</div>
+	</div>
+
+    <div id="body">
+        <div id="new_title"></div>
+        <div id="new_about"></div>
+        <div id="new_content"></div>
+
+        <div id="add_new_comment">
+            <textarea id="new_comment_content" value="" placeholder="添加评论"></textarea>
+            <div id="new_info">
+                <div class="common_btn" id="new_like_num"></div>
+                <div class="common_btn" id="new_unlike_num"></div>
+                <div class="common_btn" id="new_comment_num"></div>
+            </div>
+
+        </div>
+        <div id="new_comment"></div>
+        <div class="comment_it" id="more_comment" style="display:none;cursor:pointer;text-align:center;">更多</div>
+        <div class="comment_it" id="all_comment" style="display:none;text-align:center;">已是全部评论</div>
+    </div>
+
+    <div id="footer">
+        <pre align="center">
+            Copyright&copy;2019-2020&quot;实时驿站&quot;All rights.
+        </pre>
+    </div>
+</body>
+</html>

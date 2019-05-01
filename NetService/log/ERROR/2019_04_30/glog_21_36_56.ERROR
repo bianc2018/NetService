@@ -1,0 +1,1 @@
+[ 35652 ][ 21:36:56 ][ ERROR ]  [ base_db.cpp 77 BaseDb::get ] sql: SELECT * FROM session WHERE code='' AND status!=0; code: 21 msg: (null)  

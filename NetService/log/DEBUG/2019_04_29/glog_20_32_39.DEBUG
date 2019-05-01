@@ -1,0 +1,4 @@
+[28508][20:32:45][DEBUG] [net_service::web::WebServer::http_handler]get a request uri=/index.html
+[23008][20:32:45][DEBUG] [net_service::web::WebServer::http_handler]get a request uri=/index.html
+[23008][20:32:45][DEBUG] [net_service::web::WebServer::http_handler]get a request uri=/index.html
+[20340][20:34:15][DEBUG] [net_service::web::WebServer::http_handler]get a request uri=/index.html

@@ -1,0 +1,17 @@
+[ 34920 ][ 22:33:52 ][ INFO ]  [ NewPublishImpl::write_json ] write json
+ {
+	"result":	1,
+	"user":	{
+		"username":	"",
+		"password":	"",
+		"permission":	3,
+		"status":	0
+	}
+}  
+[ 32604 ][ 22:33:52 ][ INFO ]  [ NewPublishImpl::write_json ] write json
+ {
+	"news":	[],
+	"size":	0,
+	"all":	0,
+	"result":	0
+}  

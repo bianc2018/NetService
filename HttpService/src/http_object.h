@@ -13,13 +13,14 @@ namespace net_service
 {
 	namespace http
 	{
+		typedef unsigned long long POS;
 		class HttpObject
 		{
 		public:
 			HttpObject();
 			~HttpObject();
 
-			int parser(char *buff, size_t size);
+			int parser(char *buff, POS size);
 
 			//设置http版本行首
 			void set_beg_line(int index ,const std::string &value);
@@ -30,16 +31,16 @@ namespace net_service
 			std::string get_head_value(const std::string &key, const std::string &notfond = "");
 
 			//设置文件内容为报文内容
-			int set_body_from_file(const std::string & path, int beg, int end);
+			int set_body_from_file(const std::string & path, POS beg, long long end);
 
 			//直接写字节到报文
 			void set_body(const std::string& data);
-			int get_body(char *buff, size_t beg, size_t len);
+			int get_body(char *buff, POS beg, POS len);
 
 			int get_status();
 
 			//获取报文内容
-			int get_content(char *buff, size_t beg, size_t len);
+			int get_content(char *buff, POS beg, POS len);
 
 			void set_body_cache(size_t max_size, const std::string &cache_path = "./http_cache");
 

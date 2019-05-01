@@ -1,0 +1,137 @@
+[ 9956 ][ 23:35:05 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer 1  
+[ 9956 ][ 23:35:05 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer  
+[ 9956 ][ 23:35:05 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer in  
+[ 9956 ][ 23:35:05 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer out  
+[ 9956 ][ 23:35:05 ][ DEBUG ]  [ net_service::tcp::TcpServiceImpl::close_client ] close link  
+[ 9956 ][ 23:35:05 ][ DEBUG ]  [ net_service::tcp::TcpServiceImpl::close_client ] close  
+[ 29368 ][ 23:35:05 ][ DEBUG ]  [ net_service::tcp::TcpServiceImpl::close_client ] close link  
+[ 29368 ][ 23:35:05 ][ DEBUG ]  [ net_service::tcp::TcpServiceImpl::close_client ] close  
+[ 9956 ][ 23:35:06 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer 1  
+[ 9956 ][ 23:35:06 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer  
+[ 9956 ][ 23:35:06 ][ DEBUG ][ 29552 ][ 23:35:15 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /index.html  
+[ 27940 ][ 23:35:15 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /js/jquery/jquery-3.3.1.min.js  
+[ 29160 ][ 23:35:15 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /css/index.css  
+[ 26976 ][ 23:35:15 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /js/common.js  
+[ 29368 ][ 23:35:15 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /css/common.css  
+[ 29344 ][ 23:35:15 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /js/user.js  
+[ 29660 ][ 23:35:16 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /js/session.js  
+[ 27608 ][ 23:35:16 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /image/index.jpg  
+[ 26976 ][ 23:35:16 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /index.html  
+[ 14340 ][ 23:35:16 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /css/common.css  
+[ 27688 ][ 23:35:17 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /js/jquery/jquery-3.3.1.min.js  
+[ 29160 ][ 23:35:17 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /css/index.css  
+[ 19804 ][ 23:35:17 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /js/user.js  
+[ 29552 ][ 23:35:17 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /js/session.js  
+[ 9956 ][ 23:35:17 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /js/common.js  
+[ 9956 ][ 23:35:17 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /image/index.jpg  
+[ 9956 ][ 23:35:17 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /index.html  
+[ 1668 ][ 23:35:17 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /css/common.css  
+[ 29660 ][ 23:35:17 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /js/jquery/jquery-3.3.1.min.js  
+[ 9956 ][ 23:35:17 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /css/index.css  
+[ 27608 ][ 23:35:17 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /js/common.js  
+[ 29552 ][ 23:35:18 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /js/user.js  
+[ 29344 ][ 23:35:18 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /js/session.js  
+[ 19804 ][ 23:35:18 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /image/index.jpg  
+close timer 1  
+[ 29552 ][ 23:35:11 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer  
+[ 29552 ][ 23:35:11 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer in  
+[ 29552 ][ 23:35:11 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer out  
+[ 29552 ][ 23:35:11 ][ DEBUG ]  [ net_service::tcp::TcpServiceImpl::close_client ] close link  
+[ 29368 ][ 23:35:11 ][ DEBUG ]  [ net_service::tcp::TcpServiceImpl::close_client ] close link  
+[ 29368 ][ 23:35:11 ][ DEBUG ]  [ net_service::tcp::TcpServiceImpl::close_client ] close  
+[ 29552 ][ 23:35:11 ][ DEBUG ]  [ net_service::tcp::TcpServiceImpl::close_client ] close  
+[ 29368 ][ 23:35:11 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer 1  
+[ 29368 ][ 23:35:11 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer  
+[ 29368 ][ 23:35:11 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer in  
+[ 29368 ][ 23:35:11 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer out  
+[ 29368 ][ 23:35:11 ][ DEBUG ]  [ net_service::tcp::TcpServiceImpl::close_client ] close link  
+[ 14340 ][ 23:35:11 ][ DEBUG ]  [ net_service::tcp::TcpServiceImpl::close_client ] close link  
+[ 29368 ][ 23:35:11 ][ DEBUG ]  [ net_service::tcp::TcpServiceImpl::close_client ] close  
+[ 14340 ][ 23:35:11 ][ DEBUG ]  [ net_service::tcp::TcpServiceImpl::close_client ] close  
+[ 14340 ][ 23:35:15 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer 0  
+[ 14340 ][ 23:35:15 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer in  
+[ 14340 ][ 23:35:15 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer out  
+[ 14340 ][ 23:35:15 ][ DEBUG ]  [ net_service::tcp::TcpServiceImpl::close_client ] close link  
+[ 14340 ][ 23:35:15 ][ DEBUG ]  [ net_service::tcp::TcpServiceImpl::close_client ] close  
+[ 29660 ][ 23:35:17 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer 0  
+[ 29660 ][ 23:35:17 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer in  
+[ 29660 ][ 23:35:17 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer out  
+[ 29660 ][ 23:35:17 ][ DEBUG ]  [ net_service::tcp::TcpServiceImpl::close_client ] close link  
+[ 29344 ][ 23:35:17 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer 0  
+[ 29660 ][ 23:35:17 ][ DEBUG ]  [ net_service::tcp::TcpServiceImpl::close_client ] close  
+[ 29344 ][ 23:35:17 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer in  
+[ 29344 ][ 23:35:17 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer out  
+[ 29344 ][ 23:35:17 ][ DEBUG ]  [ net_service::tcp::TcpServiceImpl::close_client ] close link  
+[ 29344 ][ 23:35:17 ][ DEBUG ]  [ net_service::tcp::TcpServiceImpl::close_client ] close  
+[ 29368 ][ 23:35:17 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer 0  
+[ 29368 ][ 23:35:17 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer in  
+[ 29368 ][ 23:35:17 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer out  
+[ 29368 ][ 23:35:17 ][ DEBUG ]  [ net_service::tcp::TcpServiceImpl::close_client ] close link  
+[ 27688 ][ 23:35:17 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer 0  
+[ 27688 ][ 23:35:17 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer in  
+[ 27688 ][ 23:35:17 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer out  
+[ 27688 ][ 23:35:17 ][ DEBUG ]  [ net_service::tcp::TcpServiceImpl::close_client ] close link  
+[ 27688 ][ 23:35:18 ][ DEBUG ]  [ net_service::tcp::TcpServiceImpl::close_client ] close  
+[ 29368 ][ 23:35:18 ][ DEBUG ]  [ net_service::tcp::TcpServiceImpl::close_client ] close  
+[ 29552 ][ 23:35:23 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer 1  
+[ 29552 ][ 23:35:23 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer  
+[ 29552 ][ 23:35:23 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer in  
+[ 29552 ][ 23:35:23 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer out  
+[ 29552 ][ 23:35:23 ][ DEBUG ]  [ net_service::tcp::TcpServiceImpl::close_client ] close link  
+[ 29552 ][ 23:35:23 ][ DEBUG ]  [ net_service::tcp::TcpServiceImpl::close_client ] close  
+[ 9956 ][ 23:35:23 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer 1  
+[ 9956 ][ 23:35:23 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer  
+[ 9956 ][ 23:35:23 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer in  
+[ 9956 ][ 23:35:23 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer out  
+[ 1668 ][ 23:35:23 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer 1  
+[ 9956 ][ 23:35:23 ][ DEBUG ]  [ net_service::tcp::TcpServiceImpl::close_client ] close link  
+[ 1668 ][ 23:35:23 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer  
+[ 9956 ][ 23:35:23 ][ DEBUG ]  [ net_service::tcp::TcpServiceImpl::close_client ] close  
+[ 1668 ][ 23:35:23 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer in  
+[ 1668 ][ 23:35:23 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer out  
+[ 1668 ][ 23:35:23 ][ DEBUG ]  [ net_service::tcp::TcpServiceImpl::close_client ] close link  
+[ 27688 ][ 23:35:23 ][ DEBUG ]  [ net_service::tcp::TcpServiceImpl::close_client ] close link  
+[ 1668 ][ 23:35:23 ][ DEBUG ]  [ net_service::tcp::TcpServiceImpl::close_client ] close  
+[ 27688 ][ 23:35:23 ][ DEBUG ]  [ net_service::tcp::TcpServiceImpl::close_client ] close  
+[ 9956 ][ 23:35:23 ][ DEBUG ]  [ net_service::tcp::TcpServiceImpl::close_client ] close link  
+[ 9956 ][ 23:35:23 ][ DEBUG ]  [ net_service::tcp::TcpServiceImpl::close_client ] close  
+[ 14340 ][ 23:35:23 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer 1  
+[ 14340 ][ 23:35:23 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer  
+[ 14340 ][ 23:35:23 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer in  
+[ 14340 ][ 23:35:23 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer out  
+[ 14340 ][ 23:35:23 ][ DEBUG ]  [ net_service::tcp::TcpServiceImpl::close_client ] close link  
+[ 14340 ][ 23:35:23 ][ DEBUG ]  [ net_service::tcp::TcpServiceImpl::close_client ] close  
+[ 29160 ][ 23:35:23 ][ DEBUG ]  [ net_service::tcp::TcpServiceImpl::close_client ] close link  
+[ 29160 ][ 23:35:23 ][ DEBUG ]  [ net_service::tcp::TcpServiceImpl::close_client ] close  
+[ 29552 ][ 23:35:23 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer 1  
+[ 29552 ][ 23:35:23 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer  
+[ 29552 ][ 23:35:23 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer in  
+[ 29552 ][ 23:35:23 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer out  
+[ 29552 ][ 23:35:23 ][ DEBUG ]  [ net_service::tcp::TcpServiceImpl::close_client ] close link  
+[ 29552 ][ 23:35:23 ][ DEBUG ]  [ net_service::tcp::TcpServiceImpl::close_client ] close  
+[ 29160 ][ 23:35:23 ][ DEBUG ]  [ net_service::tcp::TcpServiceImpl::close_client ] close link  
+[ 29160 ][ 23:35:23 ][ DEBUG ]  [ net_service::tcp::TcpServiceImpl::close_client ] close  
+[ 29160 ][ 23:35:28 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer 1  
+[ 29160 ][ 23:35:28 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer  
+[ 29160 ][ 23:35:28 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer in  
+[ 29160 ][ 23:35:28 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer out  
+[ 29160 ][ 23:35:28 ][ DEBUG ]  [ net_service::tcp::TcpServiceImpl::close_client ] close link  
+[ 29160 ][ 23:35:28 ][ DEBUG ]  [ net_service::tcp::TcpServiceImpl::close_client ] close  
+[ 29552 ][ 23:35:28 ][ DEBUG ]  [ net_service::tcp::TcpServiceImpl::close_client ] close link  
+[ 29552 ][ 23:35:28 ][ DEBUG ]  [ net_service::tcp::TcpServiceImpl::close_client ] close  
+[ 29552 ][ 23:35:28 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer 1  
+[ 29552 ][ 23:35:28 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer  
+[ 29552 ][ 23:35:28 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer in  
+[ 29552 ][ 23:35:28 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer out  
+[ 29552 ][ 23:35:28 ][ DEBUG ]  [ net_service::tcp::TcpServiceImpl::close_client ] close link  
+[ 29552 ][ 23:35:28 ][ DEBUG ]  [ net_service::tcp::TcpServiceImpl::close_client ] close  
+[ 29344 ][ 23:35:28 ][ DEBUG ]  [ net_service::tcp::TcpServiceImpl::close_client ] close link  
+[ 29344 ][ 23:35:28 ][ DEBUG ]  [ net_service::tcp::TcpServiceImpl::close_client ] close  
+[ 29552 ][ 23:35:33 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer 1  
+[ 29552 ][ 23:35:33 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer  
+[ 29552 ][ 23:35:33 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer in  
+[ 29552 ][ 23:35:33 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer out  
+[ 29552 ][ 23:35:33 ][ DEBUG ]  [ net_service::tcp::TcpServiceImpl::close_client ] close link  
+[ 29552 ][ 23:35:33 ][ DEBUG ]  [ net_service::tcp::TcpServiceImpl::close_client ] close  
+[ 29344 ][ 23:35:33 ][ DEBUG ]  [ net_service::tcp::TcpServiceImpl::close_client ] close link  
+[ 29344 ][ 23:35:33 ][ DEBUG ]  [ net_service::tcp::TcpServiceImpl::close_client ] close  

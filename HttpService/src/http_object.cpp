@@ -11,11 +11,12 @@ net_service::http::HttpObject::HttpObject():\
 is_cache_(false),max_size_(BODY_MAX_SIZE),cache_path_(BODY_CACHE_PATH),range_(-1,-1), parser_body_len_(0),\
 status_(PARSER_HEAD)
 {
-
+	
 }
 
 net_service::http::HttpObject::~HttpObject()
 {
+	/*
 	boost::system::error_code ec;
 	if (boost::filesystem::exists(cache_file_path_, ec))
 	{
@@ -26,12 +27,13 @@ net_service::http::HttpObject::~HttpObject()
 			
 		}
 	}
+	*/
 }
 
-int net_service::http::HttpObject::parser(char * buff, size_t size)
+int net_service::http::HttpObject::parser(char * buff, POS size)
 {
 	//没有数据进来，解析结束了
-	if (size == 0)
+	if (size <= 0)
 	{
 		status_ = PARSER_OVER;
 	}
@@ -63,47 +65,54 @@ int net_service::http::HttpObject::parser(char * buff, size_t size)
 				else
 				{
 					auto content_lenght = std::stoll(get_head_value(BODY_LEN, "0"));
-					parser_body_len_ = content_lenght;
-					if (content_lenght > max_size_)
+					if (content_lenght != 0)
 					{
-						//文件缓存
-						is_cache_ = true;
-						range_ = std::make_pair(0, content_lenght);
-						//文件路径
-						boost::system::error_code ec;
-						if (!boost::filesystem::exists(cache_path_, ec))
+						parser_body_len_ = content_lenght;
+						if (content_lenght > max_size_)
 						{
-							//缓存路径不存在
-							boost::filesystem::create_directories(cache_path_, ec);
-							if (ec)
+							//文件缓存
+							is_cache_ = true;
+							range_ = std::make_pair(0, content_lenght);
+							//文件路径
+							boost::system::error_code ec;
+							if (!boost::filesystem::exists(cache_path_, ec))
 							{
-								LOG(LERROR, "创建文件路径失败,path=", cache_path_, ",ec(", ec.value(), ",", ec.message(), ")");
-								status_ = PARSER_OVER;
-								return status_;
+								//缓存路径不存在
+								boost::filesystem::create_directories(cache_path_, ec);
+								if (ec)
+								{
+									LOG(LERROR, "创建文件路径失败,path=", cache_path_, ",ec(", ec.value(), ",", ec.message(), ")");
+									status_ = PARSER_OVER;
+									return status_;
+								}
 							}
-						}
-						// 这里是两个() ，因为这里是调用的 () 的运算符重载 uuid
-						boost::uuids::uuid a_uuid = boost::uuids::random_generator()();
-						const std::string tmp_uuid = boost::uuids::to_string(a_uuid);
-						//缓存文件
-						cache_file_path_ = cache_path_ + "/" + tmp_uuid + ".http_service_cache";
-						//如果存在 清空数据
-						if (boost::filesystem::exists(cache_file_path_, ec))
-						{
-							boost::filesystem::remove(cache_file_path_, ec);
-							if (ec)
+							// 这里是两个() ，因为这里是调用的 () 的运算符重载 uuid
+							boost::uuids::uuid a_uuid = boost::uuids::random_generator()();
+							const std::string tmp_uuid = boost::uuids::to_string(a_uuid);
+							//缓存文件
+							cache_file_path_ = cache_path_ + "/" + tmp_uuid + ".http_service_cache";
+							//如果存在 清空数据
+							if (boost::filesystem::exists(cache_file_path_, ec))
 							{
-								LOG(LERROR, "清空数据失败,path=", cache_file_path_, ",ec(", ec.value(), ",", ec.message(), ")");
-								status_ = PARSER_OVER;
-								return status_;
+								boost::filesystem::remove(cache_file_path_, ec);
+								if (ec)
+								{
+									LOG(LERROR, "清空数据失败,path=", cache_file_path_, ",ec(", ec.value(), ",", ec.message(), ")");
+									status_ = PARSER_OVER;
+									return status_;
+								}
 							}
-						}
 
+						}
+						//LOG(LINFO,"BODY",m_cache);
+						std::string data = parser_cache_;
+						parser_cache_ = "";
+						status_ = parser_body(data);
 					}
-					//LOG(LINFO,"BODY",m_cache);
-					std::string data = parser_cache_;
-					parser_cache_ = "";
-					status_ = parser_body(parser_cache_);
+					else
+					{
+						status_ = PARSER_OVER;
+					}
 				}
 			}
 		}
@@ -112,9 +121,11 @@ int net_service::http::HttpObject::parser(char * buff, size_t size)
 			//LOG(LINFO,"BODY",m_cache);
 			std::string data = parser_cache_;
 			parser_cache_ = "";
-			status_ = parser_body(parser_cache_);
+			status_ = parser_body(data);
+			LOG(LINFO, data);
 		}
 	}
+	LOG(LDEBUG, "parser=", status_);
 	return status_;
 }
 
@@ -145,7 +156,7 @@ std::string net_service::http::HttpObject::get_head_value(const std::string & ke
 	return pos->second;
 }
 
-int net_service::http::HttpObject::set_body_from_file(const std::string & path, int beg, int end)
+int net_service::http::HttpObject::set_body_from_file(const std::string & path, POS beg, long long end)
 {
 	if (!boost::filesystem::exists(path))
 		return HTTP_SET_FIILE_NO_EXIST;
@@ -153,8 +164,6 @@ int net_service::http::HttpObject::set_body_from_file(const std::string & path, 
 	//获取文件长度
 	boost::uintmax_t content_length = boost::filesystem::file_size(path);
 	//检查 range
-	if (beg < 0)
-		beg = 0;
 	if (end < 0)
 		end = content_length - 1;
 	if (beg > end)
@@ -179,7 +188,7 @@ void net_service::http::HttpObject::set_body(const std::string & data)
 	body_ = data;
 }
 
-int net_service::http::HttpObject::get_body(char * buff, size_t beg, size_t len)
+int net_service::http::HttpObject::get_body(char * buff, POS beg, POS len)
 {
 	std::string data;
 	if (is_cache_)
@@ -193,6 +202,8 @@ int net_service::http::HttpObject::get_body(char * buff, size_t beg, size_t len)
 		//范围检查
 		boost::uintmax_t  file_length = boost::filesystem::file_size(cache_file_path_);
 		//range_.first beg end range_.second
+		
+		
 		if (beg + range_.first > file_length)
 		{
 			file.close();
@@ -201,9 +212,10 @@ int net_service::http::HttpObject::get_body(char * buff, size_t beg, size_t len)
 		}
 		if (beg + len + range_.first > file_length)
 		{
-			file.close();
-			LOG(LERROR, "end is out of range,beg=", beg + len, ",body_len=", get_head_value(BODY_LEN, "-1"));
-			return HTTP_SET_RANGE_ERROR;
+			//file.close();
+			//LOG(LERROR, "end is out of range,beg=", beg, ",body_len=", get_head_value(BODY_LEN, "-1"));
+			//return HTTP_SET_RANGE_ERROR;
+			len = file_length - beg- range_.first;
 		}
 		//读数据
 		file.seekg(beg + range_.first, std::ios::beg);
@@ -240,11 +252,13 @@ int net_service::http::HttpObject::get_status()
 	return status_;
 }
 
-int net_service::http::HttpObject::get_content(char * buff, size_t beg, size_t len)
+int net_service::http::HttpObject::get_content(char * buff, POS beg, POS len)
 {
 	std::string head = get_head();
 	auto ptr = buff;
-	int head_len = 0;
+	int ret_head_len = 0;
+	int  ret_get_body = 0;
+
 	if (beg <= head.size())
 	{
 		if (beg + len <= head.size())
@@ -257,18 +271,19 @@ int net_service::http::HttpObject::get_content(char * buff, size_t beg, size_t l
 
 		//全部读取
 		std::string data = head.substr(beg);
-		head_len = data.size();
-		memcpy(buff, data.c_str(), head_len);
+		ret_head_len = data.size();
+		memcpy(buff, data.c_str(), ret_head_len);
 		//重新定位
-		ptr += head_len;
-		len -= head_len;
+		ptr += ret_head_len;
+		len -= ret_head_len;
+		beg = 0;
 	}
-
-	beg = beg - head.size();
-	auto ret_get_body = get_body(ptr, beg, len);
+	else
+		beg = beg - head.size();
+	ret_get_body = get_body(ptr, beg, len);
 	if (ret_get_body != 0)
 		return ret_get_body;
-	return head_len + ret_get_body;
+	return ret_head_len + ret_get_body;
 }
 
 void net_service::http::HttpObject::set_body_cache(size_t max_size, const std::string & cache_path)
@@ -339,7 +354,7 @@ int net_service::http::HttpObject::parser_head(const std::string & str_head)
 int net_service::http::HttpObject::parser_body(std::string & data)
 {
 	int status = PARSER_BODY;
-	if (parser_body_len_ < data.size())
+	if (parser_body_len_ <= data.size())
 	{
 		data = data.substr(0, parser_body_len_);
 		parser_body_len_ = 0;

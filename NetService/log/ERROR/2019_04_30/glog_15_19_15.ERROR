@@ -1,0 +1,31 @@
+[ 30508 ][ 15:19:55 ][ ERROR ]  [ tcp_link.cpp 48 net_service::tcp::TcpLink::async_recv::<lambda_0bd86bd2010940894acba7dbe75ed3f2>::operator () ] 读数据错误 1236 由本地系统中止网络连接。  
+[ 30508 ][ 15:19:55 ][ ERROR ]  [ tcp_link.cpp 48 net_service::tcp::TcpLink::async_recv::<lambda_0bd86bd2010940894acba7dbe75ed3f2>::operator () ] 读数据错误 1236 由本地系统中止网络连接。  
+[ 30508 ][ 15:19:55 ][ ERROR ]  [ tcp_link.cpp 48 net_service::tcp::TcpLink::async_recv::<lambda_0bd86bd2010940894acba7dbe75ed3f2>::operator () ] 读数据错误 1236 由本地系统中止网络连接。  
+[ 30508 ][ 15:19:55 ][ ERROR ]  [ tcp_link.cpp 48 net_service::tcp::TcpLink::async_recv::<lambda_0bd86bd2010940894acba7dbe75ed3f2>::operator () ] 读数据错误 1236 由本地系统中止网络连接。  
+[ 30508 ][ 15:19:55 ][ ERROR ]  [ tcp_link.cpp 48 net_service::tcp::TcpLink::async_recv::<lambda_0bd86bd2010940894acba7dbe75ed3f2>::operator () ] 读数据错误 1236 由本地系统中止网络连接。  
+[ 26188 ][ 15:20:00 ][ ERROR ]  [ tcp_link.cpp 48 net_service::tcp::TcpLink::async_recv::<lambda_0bd86bd2010940894acba7dbe75ed3f2>::operator () ] 读数据错误 1236 由本地系统中止网络连接。  
+[ 20392 ][ 15:20:00 ][ ERROR ]  [ tcp_link.cpp 48 net_service::tcp::TcpLink::async_recv::<lambda_0bd86bd2010940894acba7dbe75ed3f2>::operator () ] 读数据错误 1236 由本地系统中止网络连接。  
+[ 20392 ][ 15:20:05 ][ ERROR ]  [ tcp_link.cpp 48 net_service::tcp::TcpLink::async_recv::<lambda_0bd86bd2010940894acba7dbe75ed3f2>::operator () ] 读数据错误 1236 由本地系统中止网络连接。  
+[ 27080 ][ 15:20:28 ][ ERROR ]  [ tcp_link.cpp 48 net_service::tcp::TcpLink::async_recv::<lambda_0bd86bd2010940894acba7dbe75ed3f2>::operator () ] 读数据错误 2 End of file  
+[ 24636 ][ 15:20:28 ][ ERROR ]  [ tcp_link.cpp 48 net_service::tcp::TcpLink::async_recv::<lambda_0bd86bd2010940894acba7dbe75ed3f2>::operator () ] 读数据错误 2 End of file  
+[ 26040 ][ 15:20:28 ][ ERROR ]  [ tcp_link.cpp 48 net_service::tcp::TcpLink::async_recv::<lambda_0bd86bd2010940894acba7dbe75ed3f2>::operator () ] 读数据错误 2 End of file  
+[ 27080 ][ 15:20:28 ][ ERROR ]  [ tcp_link.cpp 48 net_service::tcp::TcpLink::async_recv::<lambda_0bd86bd2010940894acba7dbe75ed3f2>::operator () ] 读数据错误 2 End of file  
+[ 26040 ][ 15:20:29 ][ ERROR ]  [ tcp_link.cpp 78 net_service::tcp::TcpLink::async_send::<lambda_902c3308595260601428be7c422ed099>::operator () ] 写数据错误 10053 你的主机中的软件中止了一个已建立的连接。  
+[ 27080 ][ 15:20:29 ][ ERROR ]  [ tcp_link.cpp 78 net_service::tcp::TcpLink::async_send::<lambda_902c3308595260601428be7c422ed099>::operator () ] 写数据错误 10053 你的主机中的软件中止了一个已建立的连接。  
+[ 3856 ][ 15:20:29 ][ ERROR ]  [ tcp_link.cpp 48 net_service::tcp::TcpLink::async_recv::<lambda_0bd86bd2010940894acba7dbe75ed3f2>::operator () ] 读数据错误 10053 你的主机中的软件中止了一个已建立的连接。  
+[ 7504 ][ 15:20:29 ][ ERROR ]  [ tcp_link.cpp 48 net_service::tcp::TcpLink::async_recv::<lambda_0bd86bd2010940894acba7dbe75ed3f2>::operator () ] 读数据错误 10053 你的主机中的软件中止了一个已建立的连接。  
+[ 28348 ][ 15:20:29 ][ ERROR ]  [ tcp_link.cpp 48 net_service::tcp::TcpLink::async_recv::<lambda_0bd86bd2010940894acba7dbe75ed3f2>::operator () ] 读数据错误 10053 你的主机中的软件中止了一个已建立的连接。  
+[ 28348 ][ 15:20:29 ][ ERROR ]  [ tcp_link.cpp 48 net_service::tcp::TcpLink::async_recv::<lambda_0bd86bd2010940894acba7dbe75ed3f2>::operator () ] 读数据错误 10053 你的主机中的软件中止了一个已建立的连接。  
+[ 9340 ][ 15:20:30 ][ ERROR ]  [ tcp_link.cpp 78 net_service::tcp::TcpLink::async_send::<lambda_902c3308595260601428be7c422ed099>::operator () ] 写数据错误 10053 你的主机中的软件中止了一个已建立的连接。  
+[ 24528 ][ 15:20:30 ][ ERROR ]  [ tcp_link.cpp 78 net_service::tcp::TcpLink::async_send::<lambda_902c3308595260601428be7c422ed099>::operator () ] 写数据错误 10053 你的主机中的软件中止了一个已建立的连接。  
+[ 3856 ][ 15:20:30 ][ ERROR ]  [ tcp_link.cpp 48 net_service::tcp::TcpLink::async_recv::<lambda_0bd86bd2010940894acba7dbe75ed3f2>::operator () ] 读数据错误 10053 你的主机中的软件中止了一个已建立的连接。  
+[ 13688 ][ 15:20:30 ][ ERROR ]  [ tcp_link.cpp 48 net_service::tcp::TcpLink::async_recv::<lambda_0bd86bd2010940894acba7dbe75ed3f2>::operator () ] 读数据错误 10053 你的主机中的软件中止了一个已建立的连接。  
+[ 28348 ][ 15:20:30 ][ ERROR ]  [ tcp_link.cpp 78 net_service::tcp::TcpLink::async_send::<lambda_902c3308595260601428be7c422ed099>::operator () ] 写数据错误 10053 你的主机中的软件中止了一个已建立的连接。  
+[ 29968 ][ 15:20:35 ][ ERROR ]  [ tcp_link.cpp 48 net_service::tcp::TcpLink::async_recv::<lambda_0bd86bd2010940894acba7dbe75ed3f2>::operator () ] 读数据错误 1236 由本地系统中止网络连接。  
+[ 29968 ][ 15:20:35 ][ ERROR ]  [ tcp_link.cpp 48 net_service::tcp::TcpLink::async_recv::<lambda_0bd86bd2010940894acba7dbe75ed3f2>::operator () ] 读数据错误 1236 由本地系统中止网络连接。  
+[ 29968 ][ 15:20:35 ][ ERROR ]  [ tcp_link.cpp 48 net_service::tcp::TcpLink::async_recv::<lambda_0bd86bd2010940894acba7dbe75ed3f2>::operator () ] 读数据错误 1236 由本地系统中止网络连接。  
+[ 29968 ][ 15:20:35 ][ ERROR ]  [ tcp_link.cpp 48 net_service::tcp::TcpLink::async_recv::<lambda_0bd86bd2010940894acba7dbe75ed3f2>::operator () ] 读数据错误 1236 由本地系统中止网络连接。  
+[ 29968 ][ 15:20:35 ][ ERROR ]  [ tcp_link.cpp 48 net_service::tcp::TcpLink::async_recv::<lambda_0bd86bd2010940894acba7dbe75ed3f2>::operator () ] 读数据错误 1236 由本地系统中止网络连接。  
+[ 29968 ][ 15:20:40 ][ ERROR ]  [ tcp_link.cpp 48 net_service::tcp::TcpLink::async_recv::<lambda_0bd86bd2010940894acba7dbe75ed3f2>::operator () ] 读数据错误 1236 由本地系统中止网络连接。  
+[ 27080 ][ 15:20:40 ][ ERROR ]  [ tcp_link.cpp 48 net_service::tcp::TcpLink::async_recv::<lambda_0bd86bd2010940894acba7dbe75ed3f2>::operator () ] 读数据错误 1236 由本地系统中止网络连接。  
+[ 24528 ][ 15:20:45 ][ ERROR ]  [ tcp_link.cpp 48 net_service::tcp::TcpLink::async_recv::<lambda_0bd86bd2010940894acba7dbe75ed3f2>::operator () ] 读数据错误 1236 由本地系统中止网络连接。  

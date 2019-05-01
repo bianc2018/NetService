@@ -45,4 +45,12 @@
       <Filter>include\ini</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="config.ini">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="handler.json">
+      <Filter>资源文件</Filter>
+    </None>
+  </ItemGroup>
 </Project>

@@ -1,0 +1,73 @@
+[ 32156 ][ 23:15:13 ][ INFO ]  [ net_service::web::WebServer::load_handler ] load handle: ./NEWPUBLISH.dll : np_before ，type(前置过滤器) ok  
+[ 32156 ][ 23:15:13 ][ INFO ]  [ net_service::web::WebServer::load_handler ] load handle: ./NEWPUBLISH.dll : np_get_news ，type(处理器 绑定uri= /get_news.action ) ok  
+[ 32156 ][ 23:15:13 ][ INFO ]  [ net_service::web::WebServer::load_handler ] load handle: ./NEWPUBLISH.dll : np_get_now_user ，type(处理器 绑定uri= /get_now_user.action ) ok  
+[ 32156 ][ 23:15:13 ][ INFO ]  [ net_service::web::WebServer::load_handler ] load handle: ./NEWPUBLISH.dll : np_after ，type(后置过滤器) ok  
+[ 35032 ][ 23:15:55 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /new.html  
+[ 35032 ][ 23:15:55 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /new.html  
+[ 31804 ][ 23:15:55 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /css/common.css  
+[ 35032 ][ 23:15:55 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /css/new.css  
+[ 31804 ][ 23:15:55 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /css/common.css  
+[ 22104 ][ 23:15:55 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /js/user.js  
+[ 35032 ][ 23:15:55 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /css/new.css  
+[ 36276 ][ 23:15:55 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /js/jquery/jquery-3.3.1.min.js  
+[ 22104 ][ 23:15:55 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /js/user.js  
+[ 30936 ][ 23:15:55 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /js/session.js  
+[ 36276 ][ 23:15:55 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /js/jquery/jquery-3.3.1.min.js  
+[ 30936 ][ 23:15:55 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /js/session.js  
+[ 27464 ][ 23:15:55 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /js/common.js  
+[ 27464 ][ 23:15:55 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /js/common.js  
+[ 35032 ][ 23:15:55 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /image/index.jpg  
+[ 35032 ][ 23:15:55 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /image/index.jpg  
+[ 27464 ][ 23:15:55 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /favicon.ico  
+[ 27464 ][ 23:15:55 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /favicon.ico  
+[ 31804 ][ 23:16:48 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /index.html  
+[ 31804 ][ 23:16:48 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /index.html  
+[ 36276 ][ 23:16:48 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /css/common.css  
+[ 36276 ][ 23:16:48 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /css/common.css  
+[ 31804 ][ 23:16:48 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /css/index.css  
+[ 31804 ][ 23:16:48 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /css/index.css  
+[ 35168 ][ 23:16:48 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /js/jquery/jquery-3.3.1.min.js  
+[ 35168 ][ 23:16:48 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /js/jquery/jquery-3.3.1.min.js  
+[ 30588 ][ 23:16:48 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /js/common.js  
+[ 30588 ][ 23:16:48 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /js/common.js  
+[ 36276 ][ 23:16:48 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /js/session.js  
+[ 36276 ][ 23:16:48 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /js/session.js  
+[ 34448 ][ 23:16:48 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /js/user.js  
+[ 34448 ][ 23:16:48 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /js/user.js  
+[ 35948 ][ 23:16:49 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /image/index.jpg  
+[ 35948 ][ 23:16:49 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /image/index.jpg  
+[ 35156 ][ 23:16:49 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /favicon.ico  
+[ 35156 ][ 23:16:49 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /favicon.ico  
+[ 35156 ][ 23:17:09 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /index.html  
+[ 35156 ][ 23:17:09 ][ INFO[ 34448 ][ 23:17:09 ][ ERROR ]  [ tcp_link.cpp 50 net_service::tcp::TcpLink[ 35156 ][ 23:17:09 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /css/common.css  
+[ 35156 ][ 23:17:09 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /css/common.css  
+[ 34448 ][ 23:17:09 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /css/index.css  
+[ 34448 ][ 23:17:09 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /css/index.css  
+[ 35996 ][ 23:17:09 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get[ 28880 ][ 23:17:09 ][ INFO ]  [ net_service::tcp::TcpServer::accept::<lambda_0ec219ad3d51a39f9721aaf41fa238a8>::operator () ] 获得连接： 127.0.0.1 : 50780  
+[ 28880 ][ 23:17:09 ][ INFO ]  [ net_service::tcp::TcpServer::accept ] Start Listening   
+[ 36276 ][ 23:17:10 ][ ERROR ]  [ tcp_link.cpp 50 net_service::tcp::TcpLink::async_recv::<lambda_dbee73dbf0a8c3c6467c2375fbaaf666>::operator () ] 读数据错误 2 End of file  
+[ 36276 ][ 23:17:10 ][ ERROR ]  [ tcp_link.cpp 50 net_service::tcp::TcpLink::async_recv::<lambda_dbee73dbf0a8c3c6467c2375fbaaf666>::operator () ] 读数据错误 2 End of file  
+[ 28880 ][ 23:17:10 ][ INFO ]  [ net_service::tcp::TcpServer::accept::<lambda_0ec219ad3d51a39f9721aaf41fa238a8>::operator () ] 获得连接： 127.0.0.1 : 50783  
+[ 35600 ][ 23:17:10 ][ INFO ]  [ net_service::tcp::TcpServer::accept::<lambda_0ec219ad3d51a39f9721aaf41fa238a8>::operator () ] 获得连接： 127.0.0.1 : 50784  
+[ 28880 ][ 23:17:10 ][ INFO ]  [ net_service::tcp::TcpServer::accept ] Start Listening   
+[ 35600 ][ 23:17:10 ][ INFO ]  [ net_service::tcp::TcpServer::accept ] Start Listening   
+:WebServer::http_handler ] get a request uri= /favicon.ico  
+[ 35156 ][ 23:17:10 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /favicon.ico  
+[ 35156 ][ 23:17:10 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /index.html  
+[ 35156 ][ 23:17:10 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /index.html  
+[ 36276 ][ 23:17:10 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /css/common.css  
+[ 30588 ][ 23:17:10 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /css/index.css  
+[ 36276 ][ 23:17:10 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /css/common.css  
+[ 30588 ][ 23:17:10 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /css/index.css  
+[ 35156 ][ 23:17:10 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /js/common.js  
+[ 35168 ][ 23:17:10 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /js/jquery/jquery-3.3.1.min.js  
+[ 35156 ][ 23:17:10 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /js/common.js  
+[ 35168 ][ 23:17:10 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /js/jquery/jquery-3.3.1.min.js  
+[ 31804 ][ 23:17:10 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /js/session.js  
+[ 31804 ][ 23:17:10 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /js/session.js  
+[ 35948 ][ 23:17:10 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /js/user.js  
+[ 35948 ][ 23:17:10 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /js/user.js  
+[ 36276 ][ 23:17:11 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /image/index.jpg  
+[ 36276 ][ 23:17:11 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /image/index.jpg  
+[ 36276 ][ 23:17:11 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /favicon.ico  
+[ 36276 ][ 23:17:11 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /favicon.ico  

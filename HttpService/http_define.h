@@ -46,12 +46,18 @@ enum PARSER_STATUS
 	PARSER_ERROR = -1,
 };
 //服务回调
-typedef std::function< void(HTTP_HANDLE handle, int err_code)> SERVER_HANDLER;
+typedef std::function< int(HTTP_HANDLE handle, int err_code)> SERVER_HANDLER;
 //数据返回
-typedef std::function< void(HTTP_HANDLE handle, int err_code)> RESPONSE_HANDLER;
+typedef std::function< int(HTTP_HANDLE handle, int err_code)> RESPONSE_HANDLER;
 
 typedef std::pair<std::string, int> HTTP_ADDRESSS;
 
+const std::string BODY_LEN("Content-Length");
+const std::string CONTENT_TYPE("Content-Type");
+const std::string HTML_MIME("text/html");
+const std::string UNKNOW_REASON("UnKnow Code");
+
+//UnKnow Code
 #define HTTP_SERVICE_VERSION "1.0"
 #endif //!HTTP_DEFINE_H
 

@@ -1,0 +1,19 @@
+[ 11100 ][ 21:34:52 ][ ERROR ]  [ web_server.cpp 72 net_service::web::WebServer::load_handler ] json º”‘ÿ ß∞‹£°path= ./handlers.json ,ret= -1  
+[ 25780 ][ 21:34:56 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /index.html  
+[ 25780 ][ 21:34:56 ][ ERROR ]  [ web_server.cpp 146 net_service::web::WebServer::deal_default ] 404 uri= ./web_root/index.html  
+[ 25780 ][ 21:34:56 ][ DEBUG ]  [ net_service::web::WebServer::deal_default ] 404 handle= 2 0 0  
+[ 14340 ][ 21:34:58 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /index.html  
+[ 14340 ][ 21:34:58 ][ ERROR ]  [ web_server.cpp 146 net_service::web::WebServer::deal_default ] 404 uri= ./web_root/index.html  
+[ 14340 ][ 21:34:58 ][ DEBUG ]  [ net_service::web::WebServer::deal_default ] 404 handle= 2 0 0  
+[ 26332 ][ 21:35:09 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /index.html  
+[ 26332 ][ 21:35:09 ][ ERROR ]  [ web_server.cpp 146 net_service::web::WebServer::deal_default ] 404 uri= ./web_root/index.html  
+[ 26332 ][ 21:35:09 ][ DEBUG ]  [ net_service::web::WebServer::deal_default ] 404 handle= 2 0 0  
+[ 14340 ][ 21:35:10 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /index.html  
+[ 14340 ][ 21:35:10 ][ ERROR ]  [ web_server.cpp 146 net_service::web::WebServer::deal_default ] 404 uri= ./web_root/index.html  
+[ 14340 ][ 21:35:10 ][ DEBUG ]  [ net_service::web::WebServer::deal_default ] 404 handle= 2 0 0  
+[ 26332 ][ 21:35:11 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /index.html  
+[ 26332 ][ 21:35:11 ][ ERROR ]  [ web_server.cpp 146 net_service::web::WebServer::deal_default ] 404 uri= ./web_root/index.html  
+[ 26332 ][ 21:35:11 ][ DEBUG ]  [ net_service::web::WebServer::deal_default ] 404 handle= 2 0 0  
+[ 14340 ][ 21:35:11 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /index.html  
+[ 14340 ][ 21:35:11 ][ ERROR ]  [ web_server.cpp 146 net_service::web::WebServer::deal_default ] 404 uri= ./web_root/index.html  
+[ 14340 ][ 21:35:11 ][ DEBUG ]  [ net_service::web::WebServer::deal_default ] 404 handle= 2 0 0  

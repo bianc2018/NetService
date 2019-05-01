@@ -1,0 +1,34 @@
+[ 34044 ][ 21:30:53 ][ DEBUG ]  [ net_service::http::HttpObject::parser ] parser= 2  
+[ 34044 ][ 21:30:53 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /index.html  
+[ 34044 ][ 21:30:53 ][ DEBUG ]  [ net_service::http::HttpServiceImpl::send_response ] 发送response handle= 2 ,code 200  
+[ 34044 ][ 21:30:53 ][ DEBUG ]  [ net_service::http::HttpObject::parser ] parser= 2  
+[ 34044 ][ 21:30:53 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /css/common.css  
+[ 34044 ][ 21:30:53 ][ DEBUG ]  [ net_service::http::HttpObject::parser ] parser= 2  
+[ 34044 ][ 21:30:53 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /js/session.js  
+[ 13744 ][ 21:30:53 ][ DEBUG ]  [ net_service::http::HttpObject::parser ] parser= 2  
+[ 13744 ][ 21:30:53 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /css/index.css  
+[ 35760 ][ 21:30:53 ][ DEBUG ]  [ net_service::http::HttpObject::parser ] parser= 2  
+[ 35760 ][ 21:30:53 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /js/jquery/jquery-3.3.1.min.js  
+[ 30988 ][ 21:30:53 ][ DEBUG ]  [ net_service::http::HttpObject::parser ] parser= 2  
+[ 13744 ][ 21:30:53 ][ DEBUG ]  [ net_service::http::HttpServiceImpl::send_response ] 发送response handle= 7 ,code 200  
+[ 30988 ][ 21:30:53 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /js/common.js  
+[ 11824 ][ 21:30:53 ][ DEBUG ]  [ net_service::http::HttpObject::parser ] parser= 2  
+[ 35520 ][ 21:30:53 ][ DEBUG ]  [ net_service::http::HttpServiceImpl::send_response ] 发送response handle= 4 ,code 200  
+[ 11824 ][ 21:30:53 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /js/user.js  
+[ 34044 ][ 21:30:53 ][ DEBUG ]  [ net_service::http::HttpServiceImpl::send_response ] 发送response handle= 6 ,code 200  
+[ 34044 ][ 21:30:53 ][ DEBUG ]  [ net_service::http::HttpServiceImpl::send_response ] 发送response handle= 5 ,code 200  
+[ 35520 ][ 21:30:53 ][ DEBUG ]  [ net_service::http::HttpServiceImpl::send_response ] 发送response handle= 2 ,code 200  
+[ 34044 ][ 21:30:54 ][ DEBUG ]  [ net_service::http::HttpServiceImpl::send_response ] 发送response handle= 3 ,code 200  
+[ 34044 ][ 21:30:54 ][ DEBUG ]  [ net_service::http::HttpObject::parser ] parser= 2  
+[ 34044 ][ 21:30:54 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /image/index.jpg  
+[ 34044 ][ 21:30:54 ][ DEBUG ]  [ net_service::http::HttpObject::parser ] parser= 1  
+[ 34044 ][ 21:30:54 ][ DEBUG ]  [ net_service::http::HttpObject::parser ] parser= 1  
+[ 35520 ][ 21:30:54 ][ INFO ]  [ net_service::http::HttpObject::parser ] {"session_id":"2019042121234710"}  
+[ 30988 ][ 21:30:54 ][ INFO ]  [ net_service::http::HttpObject::parser ] {"where":"status=3 AND property='0'","page":1,"size":5,"orderby":"publish_time DESC","byuser":0,"transfer_content":0}  
+[ 35520 ][ 21:30:54 ][ DEBUG ]  [ net_service::http::HttpObject::parser ] parser= 2  
+[ 35520 ][ 21:30:54 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /get_now_user.action  
+[ 30988 ][ 21:30:54 ][ DEBUG ]  [ net_service::http::HttpObject::parser ] parser= 2  
+[ 30988 ][ 21:30:54 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /get_news.action  
+[ 11824 ][ 21:30:54 ][ DEBUG ]  [ net_service::http::HttpServiceImpl::send_response ] 发送response handle= 5 ,code 200  
+[ 35520 ][ 21:30:54 ][ DEBUG ]  [ net_service::http::HttpServiceImpl::send_response ] 发送response handle= 2 ,code 200  
+[ 32304 ][ 21:30:54 ][ DEBUG ]  [ net_service::http::HttpServiceImpl::send_response ] 发送response handle= 3 ,code 200  

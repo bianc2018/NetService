@@ -1,0 +1,18 @@
+{
+  "json": "application/json",
+  "ico": "application/x-ico",
+  "woff": "application/font-woff",
+  "woff2": "application/font-woff",
+  "html": "text/html",
+  "jpeg": "image/jpeg",
+  "jpg": "image/jpeg",
+  "png": "image/png",
+  "gif": "image/gif",
+  "css": "text/css",
+  "xls": "application/x-xls",
+  "gzip": "application/gzip",
+  "zip": "application/zip",
+  "xml": "application/rss+xml",
+  "js": "application/javascript",
+  "pdf": "application/pdf"
+}

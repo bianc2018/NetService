@@ -1,0 +1,64 @@
+[ 36812 ][ 22:52:03 ][ INFO ]  [ net_service::web::WebServer::load_handler ] load handle: ./NEWPUBLISH.dll : np_before ，type(前置过滤器) ok  
+[ 36812 ][ 22:52:03 ][ INFO ]  [ net_service::web::WebServer::load_handler ] load handle: ./NEWPUBLISH.dll : np_get_news ，type(处理器 绑定uri= /get_news.action ) ok  
+[ 36812 ][ 22:52:03 ][ INFO ]  [ net_service::web::WebServer::load_handler ] load handle: ./NEWPUBLISH.dll : np_get_now_user ，type(处理器 绑定uri= /get_now_user.action ) ok  
+[ 36812 ][ 22:52:03 ][ INFO ]  [ net_service::web::WebServer::load_handler ] load handle: ./NEWPUBLISH.dll : np_after ，type(后置过滤器) ok  
+[ 35744 ][ 22:52:10 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /index.html  
+[ 35744 ][ 22:52:10 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /index.html  
+[ 35592 ][ 22:52:10 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /css/index.css  
+[ 30964 ][ 22:52:10 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /js/jquery/jquery-3.3.1.min.js  
+[ 35592 ][ 22:52:10 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /css/index.css  
+[ 35332 ][ 22:52:10 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /css/common.css  
+[ 35332 ][ 22:52:10 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /css/common.css  
+[ 34708 ][ 22:52:10 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /js/common.js  
+[ 36572 ][ 22:52:10 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /js/session.js  
+[ 30964 ][ 22:52:10 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /js/jquery/jquery-3.3.1.min.js  
+[ 6220 ][ 22:52:10 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /js/user.js  
+[ 34708 ][ 22:52:10 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /js/common.js  
+[ 36572 ][ 22:52:10 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /js/session.js  
+[ 6220 ][ 22:52:10 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /js/user.js  
+[ 35592 ][ 22:52:10 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /image/index.jpg  
+[ 35592 ][ 22:52:10 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /image/index.jpg  
+[ 35592 ][ 22:52:10 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /get_now_user.action  
+[ 36452 ][ 22:52:10 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /get_news.action  
+[ 35592 ][ 22:52:10 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /get_now_user.action  
+[ 36452 ][ 22:52:10 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /get_news.action  
+[ 35332 ][ 22:58:26 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /new.html?new_id=13136237546872572267  
+[ 35332 ][ 22:58:26 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /new.html?new_id=13136237546872572267  
+[ 35332 ][ 22:58:26 ][ ERROR ]  [ web_server.cpp 175 net_service::web::WebServer::deal_default ] 404 uri= ./web_root/new.html?new_id=13136237546872572267  
+[ 35332 ][ 22:58:26 ][ DEBUG ]  [ net_service::web::WebServer::deal_default ] 404 handle= 8 0 0  
+[ 35332 ][ 22:58:27 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /new.html?new_id=13136237546872572267  
+[ 35332 ][ 22:58:27 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /new.html?new_id=13136237546872572267  
+[ 35332 ][ 22:58:27 ][ ERROR ]  [ web_server.cpp 175 net_service::web::WebServer::deal_default ] 404 uri= ./web_root/new.html?new_id=13136237546872572267  
+[ 35332 ][ 22:58:27 ][ DEBUG ]  [ net_service::web::WebServer::deal_default ] 404 handle= 8 0 0  
+timer 超时,handle_= 5  
+[ 32920 ][ 22:53:10 ][ ERROR ]  [ tcp_link.cpp 50 net_service::tcp::TcpLink::async_recv::<lambda_dbee73dbf0a8c3c6467c2375fbaaf666>::operator () ] 读数据错误 1236 由本地系统中止网络连接。  
+[ 35744 ][ 22:53:10 ][ WARN ]  [ net_service::tcp::TcpLink::start_timer::<lambda_d5f6d044a11e6e3fda335be50df67ba2>::operator () ] Tcp Link timer 超时,handle_= 6  
+[ 32920 ][ 22:53:10 ][ ERROR ]  [ tcp_link.cpp 50 net_service::tcp::TcpLink::async_recv::<lambda_dbee73dbf0a8c3c6467c2375fbaaf666>::operator () ] 读数据错误 1236 由本地系统中止网络连接。  
+[ 35332 ][ 22:53:10 ][ WARN ]  [ net_service::tcp::TcpLink::start_timer::<lambda_d5f6d044a11e6e3fda335be50df67ba2>::operator () ] Tcp Link timer 超时,handle_= 7  
+[ 32920 ][ 22:53:10 ][ ERROR ]  [ tcp_link.cpp 50 net_service::tcp::TcpLink::async_recv::<lambda_dbee73dbf0a8c3c6467c2375fbaaf666>::operator () ] 读数据错误 1236 由本地系统中止网络连接。  
+[ 35332 ][ 22:53:10 ][ WARN ]  [ net_service::tcp::TcpLink::start_timer::<lambda_d5f6d044a11e6e3fda335be50df67ba2>::operator () ] Tcp Link timer 超时,handle_= 4  
+[ 32920 ][ 22:53:10 ][ ERROR ]  [ tcp_link.cpp 50 net_service::tcp::TcpLink::async_recv::<lambda_dbee73dbf0a8c3c6467c2375fbaaf666>::operator () ] 读数据错误 1236 由本地系统中止网络连接。  
+[ 32920 ][ 22:58:26 ][ INFO ]  [ net_service::tcp::TcpServer::accept::<lambda_0ec219ad3d51a39f9721aaf41fa238a8>::operator () ] 获得连接： 127.0.0.1 : 50509  
+[ 32920 ][ 22:58:26 ][ INFO ]  [ net_service::tcp::TcpServer::accept ] Start Listening   
+[ 32920 ][ 22:58:27 ][ INFO ]  [ net_service::tcp::TcpServer::accept::<lambda_0ec219ad3d51a39f9721aaf41fa238a8>::operator () ] 获得连接： 127.0.0.1 : 50510  
+[ 35744 ][ 22:58:27 ][ INFO ]  [ net_service::tcp::TcpServer::accept::<lambda_0ec219ad3d51a39f9721aaf41fa238a8>::operator () ] 获得连接： 127.0.0.1 : 50512  
+[ 34488 ][ 22:58:27 ][ INFO ]  [ net_service::tcp::TcpServer::accept::<lambda_0ec219ad3d51a39f9721aaf41fa238a8>::operator () ] 获得连接： 127.0.0.1 : 50514  
+[ 36452 ][ 22:58:27 ][ INFO ]  [ net_service::tcp::TcpServer::accept::<lambda_0ec219ad3d51a39f9721aaf41fa238a8>::operator () ] 获得连接： 127.0.0.1 : 50511  
+[ 35924 ][ 22:58:27 ][ INFO ]  [ net_service::tcp::TcpServer::accept::<lambda_0ec219ad3d51a39f9721aaf41fa238a8>::operator () ] 获得连接： 127.0.0.1 : 50513  
+[ 32920 ][ 22:58:27 ][ INFO ]  [ net_service::tcp::TcpServer::accept ] Start Listening   
+[ 35744 ][ 22:58:27 ][ INFO ]  [ net_service::tcp::TcpServer::accept ] Start Listening   
+[ 34488 ][ 22:58:27 ][ INFO ]  [ net_service::tcp::TcpServer::accept ] Start Listening   
+[ 36452 ][ 22:58:27 ][ INFO ]  [ net_service::tcp::TcpServer::accept ] Start Listening   
+[ 35924 ][ 22:58:27 ][ INFO ]  [ net_service::tcp::TcpServer::accept ] Start Listening   
+[ 35924 ][ 22:59:27 ][ WARN ]  [ net_service::tcp::TcpLink::start_timer::<lambda_d5f6d044a11e6e3fda335be50df67ba2>::operator () ] Tcp Link timer 超时,handle_= 9  
+[ 34384 ][ 22:59:27 ][ ERROR ]  [ tcp_link.cpp 50 net_service::tcp::TcpLink::async_recv::<lambda_dbee73dbf0a8c3c6467c2375fbaaf666>::operator () ] 读数据错误 1236 由本地系统中止网络连接。  
+[ 35924 ][ 22:59:27 ][ WARN ]  [ net_service::tcp::TcpLink::start_timer::<lambda_d5f6d044a11e6e3fda335be50df67ba2>::operator () ] Tcp Link timer 超时,handle_= 10  
+[ 34384 ][ 22:59:27 ][ ERROR ]  [ tcp_link.cpp 50 net_service::tcp::TcpLink::async_recv::<lambda_dbee73dbf0a8c3c6467c2375fbaaf666>::operator () ] 读数据错误 1236 由本地系统中止网络连接。  
+[ 35924 ][ 22:59:27 ][ WARN ]  [ net_service::tcp::TcpLink::start_timer::<lambda_d5f6d044a11e6e3fda335be50df67ba2>::operator () ] Tcp Link timer 超时,handle_= 11  
+[ 34384 ][ 22:59:27 ][ ERROR ]  [ tcp_link.cpp 50 net_service::tcp::TcpLink::async_recv::<lambda_dbee73dbf0a8c3c6467c2375fbaaf666>::operator () ] 读数据错误 1236 由本地系统中止网络连接。  
+[ 36452 ][ 22:59:27 ][ WARN ]  [ net_service::tcp::TcpLink::start_timer::<lambda_d5f6d044a11e6e3fda335be50df67ba2>::operator () ] Tcp Link timer 超时,handle_= 12  
+[ 34384 ][ 22:59:27 ][ ERROR ]  [ tcp_link.cpp 50 net_service::tcp::TcpLink::async_recv::<lambda_dbee73dbf0a8c3c6467c2375fbaaf666>::operator () ] 读数据错误 1236 由本地系统中止网络连接。  
+[ 36452 ][ 22:59:27 ][ WARN ]  [ net_service::tcp::TcpLink::start_timer::<lambda_d5f6d044a11e6e3fda335be50df67ba2>::operator () ] Tcp Link timer 超时,handle_= 13  
+[ 34384 ][ 22:59:27 ][ ERROR ]  [ tcp_link.cpp 50 net_service::tcp::TcpLink::async_recv::<lambda_dbee73dbf0a8c3c6467c2375fbaaf666>::operator () ] 读数据错误 1236 由本地系统中止网络连接。  
+[ 36452 ][ 22:59:27 ][ WARN ]  [ net_service::tcp::TcpLink::start_timer::<lambda_d5f6d044a11e6e3fda335be50df67ba2>::operator () ] Tcp Link timer 超时,handle_= 8  
+[ 34384 ][ 22:59:27 ][ ERROR ]  [ tcp_link.cpp 50 net_service::tcp::TcpLink::async_recv::<lambda_dbee73dbf0a8c3c6467c2375fbaaf666>::operator () ] 读数据错误 1236 由本地系统中止网络连接。  

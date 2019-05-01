@@ -1,0 +1,16 @@
+﻿  http_object.cpp
+d:\code\netservice\httpservice\src\http_object.cpp(71): warning C4018: “>”: 有符号/无符号不匹配
+d:\code\netservice\httpservice\src\http_object.cpp(169): warning C4018: “>”: 有符号/无符号不匹配
+d:\code\netservice\httpservice\src\http_object.cpp(230): warning C4244: “return”: 从“std::streamsize”转换到“int”，可能丢失数据
+d:\code\netservice\httpservice\src\http_object.cpp(246): warning C4244: “return”: 从“net_service::http::POS”转换到“int”，可能丢失数据
+d:\code\netservice\httpservice\src\http_object.cpp(269): warning C4267: “return”: 从“size_t”转换到“int”，可能丢失数据
+d:\code\netservice\httpservice\src\http_object.cpp(274): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据
+d:\code\netservice\httpservice\src\http_object.cpp(329): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+d:\code\netservice\httpservice\src\http_object.cpp(357): warning C4018: “<=”: 有符号/无符号不匹配
+    正在创建库 D:\code\NetService\x64\Release\HTTPSERVICE.lib 和对象 D:\code\NetService\x64\Release\HTTPSERVICE.exp
+  正在生成代码
+  3 of 2710 functions ( 0.1%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    1 functions had inline decision re-evaluated but remain unchanged
+  已完成代码的生成
+  HttpService.vcxproj -> D:\code\NetService\x64\Release\HTTPSERVICE.dll

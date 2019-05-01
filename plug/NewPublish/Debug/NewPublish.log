@@ -1,0 +1,10 @@
+﻿    正在创建库 D:\code\NetService\Debug\NEWPUBLISH.lib 和对象 D:\code\NetService\Debug\NEWPUBLISH.exp
+base_db.obj : error LNK2019: 无法解析的外部符号 _sqlite3_close，该符号在函数 "public: int __thiscall BaseDb::close(void)" (?close@BaseDb@@QAEHXZ) 中被引用
+base_db.obj : error LNK2019: 无法解析的外部符号 _sqlite3_exec，该符号在函数 "public: int __thiscall BaseDb::exec(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)" (?exec@BaseDb@@QAEHABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z) 中被引用
+base_db.obj : error LNK2019: 无法解析的外部符号 _sqlite3_busy_timeout，该符号在函数 "public: int __thiscall BaseDb::connect(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &,int)" (?connect@BaseDb@@QAEHABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@Z) 中被引用
+base_db.obj : error LNK2019: 无法解析的外部符号 _sqlite3_get_table，该符号在函数 "public: class DBTable __thiscall BaseDb::get(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)" (?get@BaseDb@@QAE?AVDBTable@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z) 中被引用
+base_db.obj : error LNK2019: 无法解析的外部符号 _sqlite3_free，该符号在函数 "private: int __thiscall BaseDb::clear_err_msg(void)" (?clear_err_msg@BaseDb@@AAEHXZ) 中被引用
+base_db.obj : error LNK2019: 无法解析的外部符号 _sqlite3_open，该符号在函数 "public: int __thiscall BaseDb::connect(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &,int)" (?connect@BaseDb@@QAEHABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@Z) 中被引用
+db_table.obj : error LNK2019: 无法解析的外部符号 _sqlite3_free_table，该符号在函数 "public: __thiscall DBTable::~DBTable(void)" (??1DBTable@@QAE@XZ) 中被引用
+..\..\Debug\sqlite3.lib : warning LNK4272: 库计算机类型“x64”与目标计算机类型“x86”冲突
+D:\code\NetService\Debug\NEWPUBLISH.dll : fatal error LNK1120: 7 个无法解析的外部命令

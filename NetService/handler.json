@@ -1,0 +1,37 @@
+{
+  "http_service_version": "1.0",
+  "handlers": [
+    {
+      "type": 0,
+      "func": "uri_parser_before",
+      "dll": "./URIPARSER.dll"
+    },
+    {
+      "type": 2,
+      "func": "uri_parser_after",
+      "dll": "./URIPARSER.dll"
+    },
+    {
+      "type": 0,
+      "func": "np_before",
+      "dll": "./NEWPUBLISH.dll"
+    },
+    {
+      "type": 1,
+      "uri": "/get_news.action",
+      "func": "np_get_news",
+      "dll": "./NEWPUBLISH.dll"
+    },
+    {
+      "type": 1,
+      "uri": "/get_now_user.action",
+      "func": "np_get_now_user",
+      "dll": "./NEWPUBLISH.dll"
+    },
+    {
+      "type": 2,
+      "func": "np_after",
+      "dll": "./NEWPUBLISH.dll"
+    }
+  ]
+}

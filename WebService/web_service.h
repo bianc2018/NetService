@@ -14,11 +14,17 @@ namespace net_service
 			std::string ip;
 			int port;
 			int accept_num;
+			int timeout;
 			size_t recv_buff_size;
 			size_t set_buff_size;
 
+			std::string mime_path;
+			std::string reason_path;
+
 			std::string log_path;
 			std::string web_root;
+
+
 		};
 		WEB_SERVICE_API WEB_HANDLE start_server(WebSeviceConfigData config);
 

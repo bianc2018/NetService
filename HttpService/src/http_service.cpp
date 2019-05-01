@@ -1,6 +1,19 @@
 #include "../http_service.h"
 
 #include "http_service_impl.h"
+#include "log/log.hpp"
+
+
+std::string get_ext(const std::string&path, const std::string&notfond = "html")
+{
+	auto  p = path.find_last_of('.');
+	if (std::string::npos == p)
+	{
+		return notfond;
+	}
+	return path.substr(p + 1);
+}
+
 
 HTTP_SERVICE_API void net_service::http::async_request(HTTP_HANDLE handle, RESPONSE_HANDLER response_handler)
 {
@@ -64,10 +77,36 @@ HTTP_SERVICE_API void net_service::http::set_time_out(size_t time_out)
 	impl.set_time_out(time_out);
 }
 
+HTTP_SERVICE_API int net_service::http::set_mime(const std::string & ext, const std::string & type)
+{
+	net_service::http::HttpServiceImpl &impl = net_service::http::HttpServiceImpl::instance();
+	return impl.set_mime(ext, type);
+}
+
+HTTP_SERVICE_API std::string net_service::http::get_mime(const std::string & ext, const std::string & notfond)
+{
+	net_service::http::HttpServiceImpl &impl = net_service::http::HttpServiceImpl::instance();
+	return impl.get_mime(ext, notfond);
+}
+
+HTTP_SERVICE_API int net_service::http::set_reason(const std::string & code, const std::string & reason_phrase)
+{
+	net_service::http::HttpServiceImpl &impl = net_service::http::HttpServiceImpl::instance();
+	return impl.set_reason(code, reason_phrase);
+}
+
+HTTP_SERVICE_API std::string net_service::http::get_reason(const std::string & code, const std::string & notfond)
+{
+	net_service::http::HttpServiceImpl &impl = net_service::http::HttpServiceImpl::instance();
+	return impl.get_reason(code, notfond);
+}
+
 HTTP_SERVICE_API void net_service::http::new_request(HTTP_HANDLE handle)
 {
 	net_service::http::HttpServiceImpl &impl = net_service::http::HttpServiceImpl::instance();
 	impl.new_req(handle);
+
+	//LOG(LINFO, handle, " new a req");
 }
 
 HTTP_SERVICE_API int net_service::http::request_set_method(HTTP_HANDLE handle, const std::string & method)
@@ -180,23 +219,24 @@ HTTP_SERVICE_API void * net_service::http::request_get_ext_data(HTTP_HANDLE hand
 	return req->get_ext_data(key);
 }
 
-HTTP_SERVICE_API int net_service::http::request_set_body_by_file(HTTP_HANDLE handle, const std::string & path, int beg, int end)
+HTTP_SERVICE_API int net_service::http::request_set_body_by_file(HTTP_HANDLE handle, const std::string & path, unsigned long long beg, long long end)
 {
 	net_service::http::HttpServiceImpl &impl = net_service::http::HttpServiceImpl::instance();
 	auto req = impl.get_req(handle);
 	if (nullptr == req)
 		return HTTP_SET_REQ_NO_EXIST;
-
+	
+	req->set_head_value(CONTENT_TYPE, get_mime(get_ext(path)));
 	return req->set_body_from_file(path,beg,end);
 }
 
-HTTP_SERVICE_API int net_service::http::request_get_body(HTTP_HANDLE handle,char* buff, int size, int beg)
+HTTP_SERVICE_API int net_service::http::request_get_body(HTTP_HANDLE handle,char* buff, unsigned long long beg, unsigned long long len)
 {
 	net_service::http::HttpServiceImpl &impl = net_service::http::HttpServiceImpl::instance();
 	auto req = impl.get_req(handle);
 	if (nullptr == req)
 		return HTTP_SET_REQ_NO_EXIST;
-	return req->get_body(buff,beg,size);
+	return req->get_body(buff,beg,len);
 }
 
 HTTP_SERVICE_API int net_service::http::request_set_body_cache(HTTP_HANDLE handle, size_t max_size, const std::string & cache_path)
@@ -214,6 +254,7 @@ HTTP_SERVICE_API void net_service::http::new_response(HTTP_HANDLE handle)
 {
 	net_service::http::HttpServiceImpl &impl = net_service::http::HttpServiceImpl::instance();
 	impl.new_res(handle);
+	LOG(LINFO, handle, " new a res");
 }
 
 HTTP_SERVICE_API int net_service::http::response_set_version(HTTP_HANDLE handle, const std::string & value)
@@ -241,6 +282,7 @@ HTTP_SERVICE_API int net_service::http::response_set_status_code(HTTP_HANDLE han
 	auto res = impl.get_res(handle);
 	if (nullptr == res)
 		return HTTP_SET_RES_NO_EXIST;
+	res->set_reason_phrase(get_reason(value));
 	res->set_status_code(value);
 	return 0;
 }
@@ -305,13 +347,13 @@ HTTP_SERVICE_API int net_service::http::response_set_body(HTTP_HANDLE handle, co
 	return 0;
 }
 
-HTTP_SERVICE_API int net_service::http::response_get_body(HTTP_HANDLE handle, char * buff, int size, int beg)
+HTTP_SERVICE_API int net_service::http::response_get_body(HTTP_HANDLE handle, char * buff, unsigned long long beg, unsigned long long len)
 {
 	net_service::http::HttpServiceImpl &impl = net_service::http::HttpServiceImpl::instance();
 	auto res = impl.get_res(handle);
 	if (nullptr == res)
 		return HTTP_SET_RES_NO_EXIST;
-	return res->get_body(buff, beg, size);
+	return res->get_body(buff, beg, len);
 }
 
 HTTP_SERVICE_API int net_service::http::response_set_ext_data(HTTP_HANDLE handle, const std::string & key, void * data)
@@ -335,13 +377,14 @@ HTTP_SERVICE_API void * net_service::http::response_get_ext_data(HTTP_HANDLE han
 }
 
 
-HTTP_SERVICE_API int net_service::http::response_set_body_by_file(HTTP_HANDLE handle, const std::string & path, int beg, int end)
+HTTP_SERVICE_API int net_service::http::response_set_body_by_file(HTTP_HANDLE handle, const std::string & path, unsigned long long beg , long long end )
 {
 	net_service::http::HttpServiceImpl &impl = net_service::http::HttpServiceImpl::instance();
 	auto res = impl.get_res(handle);
 	if (nullptr == res)
 		return HTTP_SET_RES_NO_EXIST;
-
+	
+	res->set_head_value(CONTENT_TYPE, get_mime(get_ext(path)));
 	return res->set_body_from_file(path, beg, end);
 }
 

@@ -1,0 +1,32 @@
+[ 35608 ][ 22:33:36 ][ INFO ]  [ net_service::web::WebServer::load_handler ] load handle: ./NEWPUBLISH.dll : np_before ，type(前置过滤器) ok  
+[ 35608 ][ 22:33:36 ][ INFO ]  [ net_service::web::WebServer::load_handler ] load handle: ./NEWPUBLISH.dll : np_get_news ，type(处理器 绑定uri= /get_news.action ) ok  
+[ 35608 ][ 22:33:36 ][ INFO ]  [ net_service::web::WebServer::load_handler ] load handle: ./NEWPUBLISH.dll : np_get_now_user ，type(处理器 绑定uri= /get_now_user.action ) ok  
+[ 35608 ][ 22:33:36 ][ INFO ]  [ net_service::web::WebServer::load_handler ] load handle: ./NEWPUBLISH.dll : np_after ，type(后置过滤器) ok  
+[ 32604 ][ 22:33:45 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /index.html  
+[ 32724 ][ 22:33:45 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /css/common.css  
+[ 35732 ][ 22:33:45 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /css/index.css  
+[ 27940 ][ 22:33:45 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /js/jquery/jquery-3.3.1.min.js  
+[ 21420 ][ 22:33:45 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /js/common.js  
+[ 35332 ][ 22:33:45 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /js/session.js  
+[ 32628 ][ 22:33:45 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /js/user.js  
+[ 35732 ][ 22:33:46 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /image/index.jpg  
+[ 35332 ][ 22:33:46 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /favicon.ico  
+[ 35332 ][ 22:33:48 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /css/common.css  
+[ 21420 ][ 22:33:48 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /css/index.css  
+[ 21420 ][ 22:33:52 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /index.html  
+[ 32628 ][ 22:33:52 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /css/common.css  
+[ 35332 ][ 22:33:52 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /css/index.css  
+[ 27940 ][ 22:33:52 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /js/common.js  
+[ 35732 ][ 22:33:52 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /js/user.js  
+[ 27940 ][ 22:33:52 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /js/session.js  
+[ 21420 ][ 22:33:52 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /js/jquery/jquery-3.3.1.min.js  
+[ 35332 ][ 22:33:52 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /image/index.jpg  
+[ 32604 ][ 22:33:52 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /get_news.action  
+[ 34920 ][ 22:33:52 ][ INFO ]  [ net_service::web::WebServer::call ] deal request uri= /get_now_user.action  
+rt Listening   
+[ 35732 ][ 22:33:45 ][ INFO ]  [ net_service::tcp::TcpServer::accept ] Start Listening   
+[ 34920 ][ 22:33:45 ][ INFO ]  [ net_service::tcp::TcpServer::accept ] Start Listening   
+[ 34920 ][ 22:33:52 ][ INFO ]  [ net_service::tcp::TcpServer::accept::<lambda_0ec219ad3d51a39f9721aaf41fa238a8>::operator () ] 获得连接： 127.0.0.1 : 65199  
+[ 34920 ][ 22:33:52 ][ INFO ]  [ net_service::tcp::TcpServer::accept ] Start Listening   
+[ 34920 ][ 22:33:52 ][ INFO ]  [ net_service::tcp::TcpServer::accept::<lambda_0ec219ad3d51a39f9721aaf41fa238a8>::operator () ] 获得连接： 127.0.0.1 : 65200  
+[ 34920 ][ 22:33:52 ][ INFO ]  [ net_service::tcp::TcpServer::accept ] Start Listening   

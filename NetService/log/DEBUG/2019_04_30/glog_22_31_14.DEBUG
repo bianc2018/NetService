@@ -1,0 +1,9 @@
+[ 32040 ][ 22:31:22 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /index.html  
+[ 32500 ][ 22:31:22 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /css/index.css  
+[ 23204 ][ 22:31:22 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /js/jquery/jquery-3.3.1.min.js  
+[ 14260 ][ 22:31:22 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /js/common.js  
+[ 32040 ][ 22:31:22 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /js/user.js  
+[ 29304 ][ 22:31:22 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /css/common.css  
+[ 21420 ][ 22:31:22 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /js/session.js  
+[ 35504 ][ 22:31:22 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /image/index.jpg  
+[ 29304 ][ 22:31:22 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /favicon.ico  

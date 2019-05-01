@@ -1,0 +1,8 @@
+[ 35168 ][ 23:16:33 ][ ERROR ]  [ http_service_impl.cpp 244 net_service::http::HttpServiceImpl::recv_request_handler ] 关闭一个连接 ret= -2  
+[ 27464 ][ 23:16:33 ][ ERROR ]  [ http_service_impl.cpp 244 net_service::http::HttpServiceImpl::recv_request_handler ] 关闭一个连接 ret= -2  
+[ 36276 ][ 23:16:48 ][ ERROR ]  [ http_service_impl.cpp 244 net_service::http::HttpServiceImpl::recv_request_handler ] 关闭一个连接 ret= -2  
+[ 36276 ][ 23:16:48 ][ ERROR ]  [ http_service_impl.cpp 244 net_service::http::HttpServiceImpl::recv_request_handler ] 关闭一个连接 ret= -2  
+[ 34448 ][ 23:17:09 ][ ERROR ]  [ http_service_impl.cpp 244 net_service::http::HttpServiceImpl::recv_request_handler ] 关闭一个连接 ret= -2  
+[ 35156 ][ 23:17:09 ][ ERROR ]  [ http_service_impl.cpp 244 net_service::http::HttpServiceImpl::recv_request_handler ] 关闭一个连接 ret= -2  
+[ 36276 ][ 23:17:10 ][ ERROR ]  [ http_service_impl.cpp 244 net_service::http::HttpServiceImpl::recv_request_handler ] 关闭一个连接 ret= -2  
+[ 36276 ][ 23:17:10 ][ ERROR ]  [ http_service_impl.cpp 244 net_service::http::HttpServiceImpl::recv_request_handler ] 关闭一个连接 ret= -2  

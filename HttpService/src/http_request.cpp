@@ -1,10 +1,13 @@
 #include "http_request.h"
 
+#include "log/log.hpp"
+
 net_service::http::HttpRequest::HttpRequest()
 {
 	set_method("GET");
 	set_uri("/");
 	set_version(HTTP_VERSION);
+	//LOG(LDEBUG, "new a req ");
 }
 
 void net_service::http::HttpRequest::set_method(const std::string & value)

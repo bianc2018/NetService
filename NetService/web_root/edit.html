@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http_equiv="content_type" content="text/html;charset=utf-8" />
+    <title>实时驿站</title>
+    <link href="./css/common.css" type="text/css" rel="stylesheet">
+    <link href="./css/edit.css" type="text/css" rel="stylesheet">
+    <script charset="utf-8" src="/js/kindeditor/kindeditor-all-min.js"></script>
+    <script charset="utf-8" src="/js/jquery/jquery-3.3.1.min.js"></script>
+    <script src="/js/common.js"></script>
+    <script src="/js/session.js" type="text/javascript"></script>
+    <script src="/js/user.js" type="text/javascript"></script>
+    <script charset="utf-8" type="text/javascript">
+        //是否已经编辑
+        var is_edit = false;
+        var text_len = 0;
+
+        var page = 1;
+        var page_size = 5;
+        var all = 0;
+        var max_page = 1;
+
+        var editor;
+        var new_id = get_query_string('new_id');
+        var tag = get_query_string('tag');
+
+        var now_new = null;
+        var now_show = "#new_info";
+        var now_tag = "#new_base";
+
+        if (tag == null)
+            tag = "#new_base";
+        else
+            tag = "#"+tag;
+        
+        $(document).ready(function () {
+            user_status();
+            $(function () { ke_init() });
+           // ke_init();
+        });
+        function change_tag(show_data,tag)
+        {
+            $(now_show).hide();
+            $(now_tag).removeClass('menu_head');
+
+            $(tag).addClass('menu_head');
+            $(show_data).show();
+
+            now_show = show_data;
+            now_tag = tag;
+        }
+        function ke_init() {
+            //KindEditor.ready(function (K) {
+            var base = '/js/kindeditor/';
+            editor = KindEditor.create('textarea[name=new]', {
+                items: [
+                    'source', '|', 'undo', 'redo', '|', 'preview', 'template',
+                    'plainpaste', '|', 'justifyleft', 'justifycenter', 'justifyright',
+                    'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'subscript',
+                    'superscript', 'clearhtml', 'quickformat', 'selectall', '|', 'fullscreen', '/',
+                    'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold',
+                    'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', '|', 'image',
+                    'table', 'hr', 'emoticons', 'baidumap', 'pagebreak',
+                    'anchor', 'link', 'unlink'
+                ],
+
+                cssPath: base + 'plugins/code/prettify.css',
+                width: '100%',
+                height: '500px',
+                themesPath: base + 'themes/',
+                langPath: base + 'lang/',
+                pluginsPath: base + 'plugins/',
+                uploadJson: 'upload_new_image.action?new_id=' + new_id,
+                // fileManagerJson: 'FileManager.ashx',
+                //allowFileManager: true,
+                afterChange: function () {
+                    text_len = this.count('text');
+                    KindEditor('#new_count_num').html(text_len)
+                },
+                afterBlur: function () {
+                    is_edit = true;
+                    KindEditor('#new_is_edit').html("*");
+                    sync()
+                },
+                afterCreate: function () {
+
+                    var self = this;
+                    KindEditor.ctrl(document, 13, function () {
+                        self.sync();
+                        // K('form[name=example]')[0].submit();
+                        alert(13);
+                    });
+                    KindEditor.ctrl(self.edit.doc, 13, function () {
+                        self.sync();
+                        //K('form[name=example]')[0].submit();
+                        alert(14);
+                    });
+                    if (new_id != null) {
+                        $.post("/get_new.action", '{"code":"' + new_id + '"}', function (data) {
+                            if (data.result == 0) {
+                                now_new = data.new;
+                                if (now_new.status == 1) {
+                                    is_edit = true;
+                                    $('#new_is_edit').html('*');
+                                }
+                                init();
+                            }
+                            else {
+                                alert("获取新闻内容失败！ new_id=" + new_id);
+                                window.location.href = "/index.html";
+                            }
+                        }, "json");
+                    }
+                    else {
+                        create_new();
+                    }
+                }
+            });
+
+            //  });
+        }
+        function load_comment()
+        {
+            var search_text = document.getElementById('search_text').value;
+            var search_order_by = document.getElementById('search_order_by').value;
+            var search_by = document.getElementById('search_by').value;
+            var search_ad = document.getElementById('search_ad').value;
+            document.getElementById('search_text').value = "";
+            var where = "parent='" + new_id + "' AND status=3 AND property='1'";
+
+           // if (search_text != "")
+            //    where = where + " AND " + search_by + " like '%" + json_encode(search_text) + "%'";
+            if (search_text != "")
+                where = where + " AND " + search_by + " like '%" + ecode_json_value(search_text) + "%'";
+
+            var orderby = search_order_by + " " + search_ad;//search_ad
+
+            $.post('/get_news.action', '{"where":"' + where + '","page":' + page + ',"size":' + page_size + ',"orderby":"'+orderby+'","byuser":1,"transfer_content":1}', function (data) {
+                if (data.result != 0)
+                    alert("无法获取数据 " + Error_Code(data.result));
+                all = data.all;
+
+                update_page();
+                $('#new_comments').html('<table id="news_table"  class="list_table"></table>');
+
+                var caption = '<tr><th colspan="9" align="center">评论</th></tr>';
+                $('#news_table').append(caption);
+
+                var th = '<tr>';
+                th += '<th> &nbsp;</th>';
+                th += '<th> 编号</th>';
+                th += '<th> 评论人</th>';;
+                th += '<th> 评论时间</th>';
+                th += '<th> 内容</th>';
+                th += '<th> 赞成数</th>';
+                th += '<th> 反对数</th>';
+                th += '<th colspan="2"> 操作</th>';
+                //th += '<th> &nbsp;</th>';
+                th += '</tr>';
+                $('#news_table').append(th);
+                $.each(data.news, function (entryIndex, entry) {
+
+                    var tr = '<tr>';
+                    tr += '<td> ' + (((page - 1) * page_size) + entryIndex + 1) + '</td>';
+                    tr += '<td> ' + entry.code + '</td>';
+                    tr += '<td> ' + entry.author + '</td>';
+                    tr += '<td> ' + time_to_string(entry.publish_time) + '</td>';
+                    tr += '<td> ' + escape_decode(entry.content) + '</td>';
+                    tr += '<td> ' + entry.like_num + '</td>';
+                    tr += '<td> ' + entry.unlike_num + '</td>';
+
+                    tr += '<td> <a style="cursor: pointer;" onclick="rm_new(\'' + entry.code + '\')">删除</a></td>';
+                    tr += '</tr>'
+                    //new_win
+                    $('#news_table').append(tr);
+                });
+                //$('#news_table').append('<tr><td colspan="10" align="center"> <a href="/edit.html">新建</a></td></tr>');
+                //  $('#set_data').append('<a href="/edit.html">新建</a>')
+            })
+        }
+        function init()
+        {
+            editor.html(json_decode(now_new.content));
+            document.getElementById('new_id').value = now_new.code;
+            //document.getElementById('new_title').value = json_decode(now_new.title);
+            document.getElementById('new_title').value = dcode_json_value(now_new.title);
+            document.getElementById('new_author').value = dcode_json_value(now_new.author);
+            document.getElementById('new_comment_num').value = now_new.comment_num;
+            document.getElementById('new_like_num').value = now_new.like_num;
+            document.getElementById('new_unlike_num').value = now_new.unlike_num;
+            document.getElementById('new_create_time').value = time_to_string(now_new.create_time);
+            //new_modify_time
+            document.getElementById('new_modify_time').value = time_to_string(now_new.modify_time);
+            //new_comment_num
+            change_staus(now_new.status);
+            // now_new.content = document.getElementById('new_editor').value;
+
+            $('#new_base').on('click', function () {
+                $('.page_menu').hide();
+                show_search(0);
+                change_tag("#new_info", '#new_base');
+
+            });
+            $('#new_text').on('click', function () {
+                $('.page_menu').hide();
+                show_search(0);
+                change_tag('#keditor', '#new_text');
+
+            });
+            $('#comment_list').on('click', function () {
+                show_search(1);
+                load_comment();
+                change_tag('#new_comments', '#comment_list');
+            });
+            $('#new_publish').on('click', function () {
+                if (now_new.status == 3) {
+                    save_new();
+
+                }
+                else {
+                    publish();
+
+                }
+            });
+            $('#new_save').on('click', function () {
+                save_new();
+
+            });
+            $('#new_remove').on('click', function () {
+                //alert("将返回设置页");
+                rm_new(new_id);
+            });
+            //new_back
+            $('#new_back').on('click', function () {
+                if (is_edit == true)
+                {
+                    if (confirm("编辑内容未保存,是否强制退出？"))
+                    {
+                        if (now_new.status == 1)
+                        {
+                            $.post("/delete_new.action", '{"new_id":"' + new_id + '"}', function (data) {
+                                if (data.result != 0)
+                                    alert("清理失败：" + Error_Code(data.result));
+                                window.location.href = '/set.html?menu=news_list';
+                            })
+                        }
+                        return;
+                    }
+                    else
+                        window.location.href = '/set.html?menu=news_list';
+                }
+                else
+                    window.location.href = '/set.html?menu=news_list';
+            });
+          //  alert("init"+tag);
+            $(tag).trigger("click");
+        }
+        function create_new()
+        {
+            $.getJSON("/create_new.action", function (data) {
+                if (data.result == 0) {
+                    new_id = data.new.code;
+                    window.location.href = "/edit.html?new_id="+new_id;
+                }
+                else {
+                    alert("创建新闻内容失败！ new_id=" + new_id);
+                    new_id = null;
+                    window.location.href = "/index.html";
+                }
+            });
+        }
+        function save_new() {
+            sync();
+            $.post(
+                '/save_new.action',
+                '{"new":'+new_to_json(now_new)+'}',
+                function (data) {
+                    if (data.result == 0) {
+                        alert("保存成功");
+                        change_staus(2);
+                        is_edit = false;
+                        $('#new_is_edit').html('');
+                    }
+                    else
+                        alert("保存失败：" + Error_Code(data.result));
+                },
+                "json"
+            );
+        }
+        function sync()
+        {
+            editor.sync();
+            now_new.title = ecode_json_value(document.getElementById('new_title').value);
+            now_new.author = ecode_json_value(document.getElementById('new_author').value);
+            now_new.content = document.getElementById('new_editor').value;
+        }
+        function new_to_json(now_new)
+        {
+            var json = '{';
+            json+='"code": "'+now_new.code+'",';
+            //json+='"title":"'+json_encode(now_new.title)+'",';
+            json += '"title":"' + now_new.title + '",';
+            json+='"author":       "'+now_new.author+'",';
+            json += '"content":      "' + json_encode(now_new.content) + '",';
+            json+='"property":     '+now_new.property+', ';
+            json+='"status":       '+now_new.status+',';
+            json+='"comment_num":  '+now_new.comment_num+',';
+            json+='"like_num":     '+now_new.like_num+',';
+            json+='"unlike_num":   '+now_new.unlike_num+',';
+            json+=' "create_time":  '+now_new.create_time+',';
+            json+='"create_user":  "'+now_new.create_user+'",';
+            json+='"modify_time":  '+now_new.modify_time+',';
+            json+='"modify_user":  "'+now_new.modify_user+'",';
+            json += '"publish_time": ' + now_new.publish_time + '';
+            json += '}';
+            return json;
+        }
+        function publish()
+        {
+            sync();
+            if (check_author(now_new.author) != 0)
+                return -1;
+            if (check_title(now_new.title) != 0)
+                return -2;
+            //alert(new_to_json(now_new));
+            if (now_new.title == "")
+            {
+                alert("发布失败：标题为空");
+                return -1;
+            }
+            if (now_new.author == "") {
+                alert("发布失败：作者为空");
+                return -2;
+            }
+
+            $.post(
+                '/save_new.action',
+                '{"new":' + new_to_json(now_new) + '}',
+                function (data) {
+                    if (data.result == 0) {
+                        is_edit = false;
+                        var json = '{"new_id":"' + now_new.code + '","status":' + 3 + '}';
+
+                        $.post("reset_new_status.action", json, function (data) {
+                            if (data.result != 0) {
+                                alert("错误：" + data.result);
+                                return -1;
+                            }
+                            else {
+                                alert("发布成功");
+                                change_staus(3);
+                            }
+                        });
+
+                    }
+                    else
+                        alert("发布失败：网络错误 code=" + data.result);
+                },
+                "json"
+            );
+        }
+        function rm_new(code) {
+
+            $.post("/remove_new.action", '{"new_id":"'+code+'"}', function (data) {
+                if (data.result == 0) {
+                    if (code == new_id) {
+                        change_staus(0);
+                        //alert("此新闻已被置为无效，可以从设置页面重新激活或彻底删除数据");
+                        window.location.href="/set.html?menu=news_list";
+                    }
+                    else
+                        load_comment();
+                }
+                else
+                    alert("删除失败：" + Error_Code(data.result));
+            })
+        }
+        function change_staus(status)
+        {
+            var txt = "";
+            if (status == 0)
+                txt = "状态:无效";
+            else if (status == 1)
+                txt = "状态:初建";
+            else if (status == 2)
+                txt = "状态:编辑";
+            else if (status == 3)
+                txt = "状态:发布";
+
+            now_new.status = status;
+
+            if (now_new.status == 3)
+                $('#new_publish').text("取消发布");
+            else
+                $('#new_publish').text("发布");
+
+            $('#new_status').text(txt);
+
+        }
+        function update_page() {
+
+            max_page = parseInt(all / page_size) + 1;
+            $('#page_num').val(page);
+            $('#page_size').val(page_size);
+            $('#max_page').text(max_page);
+            $('#all_data').text(all);
+            $('.page_menu').show();
+        }
+        //0 首页 1 上一页 2 下一页 3 尾页 4 页数有改变 5 每页数目有改变
+        function paging(cmd) {
+            // alert("paging:" + cmd);
+            if (cmd == 0)
+                page = 1;
+            else if (cmd == 1)
+                page = page - 1;
+            else if (cmd == 2)
+                page = page + 1;
+            else if (cmd == 3)
+                page = max_page;
+            else if (cmd == 4)
+                page = $('#page_num').val();
+            else if (cmd == 5)
+                page_size = $('#page_size').val();
+            //纠错
+            if (page < 1)
+                page = 1;
+            if (page > max_page)
+                page = max_page;
+            if (page_size <= 0)
+                page_size = 5;
+             //  alert(page + " " + page_size);
+            //$('#comment_list').trigger('onclick');
+               load_comment();
+        }
+        function show_search(flag) {
+
+            if (flag == 1)
+            {
+                /*
+                 th += '<th> 评论人</th>';;
+                th += '<th> 评论时间</th>';
+                th += '<th> 内容</th>';
+                th += '<th> 赞成数</th>';
+                th += '<th> 反对数</th>';
+                th += '<th colspan="2"> 操作</th>';
+                */
+                $('#search_order_by').text("");
+                $('#search_order_by').append('<option value="author">评论人</option>');
+                $('#search_order_by').append('<option value="content">内容</option>');
+                $('#search_order_by').append('<option value="like_num">赞同数</option>');
+                $('#search_order_by').append('<option value="unlike_num">反对数</option>');
+                $('#search_order_by').append('<option value="publish_time">发布时间</option>');
+                $('#search_order_by').val('publish_time');
+
+                $('#search_by').text("");
+                $('#search_by').append('<option value="author">评论人</option>');
+                $('#search_by').append('<option value="content">内容</option>');
+                $('#search_by').val('author');
+
+                $('.search_menu').show();
+            }
+            else {
+                $('.search_menu').hide();
+            }
+        }
+        function on_search() {
+            load_comment();
+        }
+    </script>
+</head>
+<body>
+    <div id="head">
+        <div id="title">
+
+        </div>
+        <div id="notice">
+            &nbsp;
+        </div>
+        <div id="person">
+        </div>
+        <div id="forward">
+            <a href="index.html">首页</a>
+        </div>
+        <div id="search">
+            &nbsp;
+        </div>
+    </div>
+
+    <div id="body">
+        <div id="catalog" class="menu_list">
+            <div class="menu_head">编辑新闻</div>
+            <div id="new_base" class="menu_nva">基本信息</div>
+            <div id="new_text" class="menu_nva">新闻正文</div>
+            <div id="comment_list" class="menu_nva">评论列表</div>
+            <div id="new_status" class="menu_head">&nbsp;</div>
+            <div id="new_count" class="menu_head" style="font-size:smaller">字数[<span id="new_count_num">0</span>]<span id="new_is_edit"></span></div>
+            <div id="new_publish" class="menu_nva">发布</div>
+            <div id="new_save" class="menu_nva">保存</div>
+            <div id="new_remove" class="menu_nva">删除</div>
+            <div id="new_back" class="menu_nva">返回</div>
+
+        </div>
+
+        <div id="new_info" style="display:none;">
+            <div class="new_data">
+                <p>ID   :&nbsp;<input type="text" id="new_id" disabled /></p>
+            </div>
+            <div class="new_data">
+                <p>标题:&nbsp;<input type="text" id="new_title" onblur="is_edit = true;$('#new_is_edit').html('*');" /></p>
+            </div>
+            <div class="new_data">
+                <p>作者:&nbsp;<input type="text" id="new_author" onblur="is_edit = true; $('#new_is_edit').html('*');" /></p>
+            </div>
+            <div class="new_data">
+                <p>评论:&nbsp;<input type="number" id="new_comment_num" disabled /></p>
+            </div>
+            <div class="new_data">
+                <p>赞同:&nbsp;<input type="number" id="new_like_num" disabled /></p>
+            </div>
+            <div class="new_data">
+                <p>反对:&nbsp;<input type="number" id="new_unlike_num" disabled /></p>
+            </div>
+            <div class="new_data">
+                <p>创建日期:&nbsp;<input type="text" id="new_create_time" disabled /></p>
+            </div>
+            <div class="new_data">
+                <p>修改日期:&nbsp;<input type="text" id="new_modify_time" disabled /></p>
+            </div>
+
+
+        </div>
+
+        <div id="keditor" style="display:none;">
+            <textarea id="new_editor" name="new" onchange="alert('22222')" style="height:100px;border: 0 none;visibility:hidden;"></textarea>
+        </div>
+
+        <!--搜索栏-->
+        <div class="search_menu">
+            <div>
+                <span>排序:</span>&nbsp;<select id="search_order_by" placeholder="排序" onchange="on_search()"></select>
+            </div>
+            <div>
+                <span>升降序:</span>&nbsp;<select id="search_ad" placeholder="升降序" onchange="on_search()">
+                    <option value="DESC">降序</option>
+                    <option value="ASC">升序</option>
+
+                </select>
+            </div>
+            <div>
+                <span>搜索依据:</span>&nbsp;<select id="search_by" placeholder="搜索依据"></select>
+                <input type="search" id="search_text" />
+                <input type="button" value="搜索" onclick="on_search()" />
+            </div>
+        </div>
+        <div id="new_comments" style="display:none;width:90%;float:left">
+
+        </div>
+        <div class="page_menu">
+            <table align="center">
+                <tr>
+                    <td><input type="button" onclick="paging(0)" value="首页" /></td>
+                    <td><input type="button" onclick="paging(1)" value="上一页" /></td>
+                    <td><span>页数：</span><input id="page_num" type="number" value=1 onblur="paging(4)" />/<span id="max_page">1</span>(共 <span id="all_data"></span> 条)</td>
+                    <td><input type="button" onclick="paging(2)" value="下一页" /></td>
+                    <td><input type="button" onclick="paging(3)" value="尾页" /></td>
+                    <td><span>每页：</span><input id="page_size" type="number" value=0 onblur="paging(5)" /> 条</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div id="footer">
+        <pre align="center">
+            Copyright&copy;2019-2020&quot;实时驿站&quot;All rights.
+        </pre>
+    </div>
+</body>
+</html>

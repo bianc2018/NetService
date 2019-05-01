@@ -1,0 +1,9 @@
+﻿  web_server.cpp
+  web_service.cpp
+    正在创建库 D:\code\NetService\x64\Release\WEBSERVICE.lib 和对象 D:\code\NetService\x64\Release\WEBSERVICE.exp
+  正在生成代码
+  51 of 1324 functions ( 3.9%) were compiled, the rest were copied from previous compilation.
+    4 functions were new in current compilation
+    81 functions had inline decision re-evaluated but remain unchanged
+  已完成代码的生成
+  WebService.vcxproj -> D:\code\NetService\x64\Release\WEBSERVICE.dll

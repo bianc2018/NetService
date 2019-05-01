@@ -27,6 +27,7 @@ namespace net_service
 			
 			void close_server(HTTP_HANDLE);
 			void close_link(HTTP_HANDLE);
+			
 			//…Ë÷√
 			void set_time_out(size_t time_out);
 			void set_recv_buff_size(size_t recv_buff_size);
@@ -44,6 +45,12 @@ namespace net_service
 
 			req_ptr get_req(HTTP_HANDLE handle);
 			res_ptr get_res(HTTP_HANDLE handle);
+			//HTML
+			int set_mime(const std::string &ext, const std::string&type);
+			std::string get_mime(const std::string &ext, const std::string&notfond=HTML_MIME);
+
+			int set_reason(const std::string &code, const std::string&reason_phrase);
+			std::string get_reason(const std::string &ext, const std::string&notfond = UNKNOW_REASON);
 
 			std::vector<std::pair<std::string, int>> resolver_query(const std::string &url);
 
@@ -74,6 +81,9 @@ namespace net_service
 			//∂”¡–
 			std::map<HTTP_HANDLE, req_ptr> req_map_;
 			std::map<HTTP_HANDLE, res_ptr> res_map_;
+
+			std::map<std::string, std::string> mime_map_;
+			std::map<std::string, std::string> reason_map_;
 		};
 	}
 }

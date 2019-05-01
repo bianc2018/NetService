@@ -1,0 +1,12 @@
+[ 35396 ][ 21:36:55 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /index.html  
+[ 35396 ][ 21:36:55 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /css/common.css  
+[ 35396 ][ 21:36:55 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /js/user.js  
+[ 32520 ][ 21:36:55 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /css/index.css  
+[ 35836 ][ 21:36:55 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /js/common.js  
+[ 24040 ][ 21:36:55 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /js/jquery/jquery-3.3.1.min.js  
+[ 20680 ][ 21:36:55 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /js/session.js  
+[ 35652 ][ 21:36:56 ][ INFO ]  [ net_service::http::HttpObject::parser ] {"session_id":"2019042121234710"}  
+[ 35836 ][ 21:36:56 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /image/index.jpg  
+[ 32520 ][ 21:36:56 ][ INFO ]  [ net_service::http::HttpObject::parser ] {"where":"status=3 AND property='0'","page":1,"size":5,"orderby":"publish_time DESC","byuser":0,"transfer_content":0}  
+[ 32520 ][ 21:36:56 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /get_news.action  
+[ 35652 ][ 21:36:56 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /get_now_user.action  

@@ -206,7 +206,12 @@ string GLOG::data_to_string(const unsigned long in)
 {
 	return std::to_string(in);
 }
-
+/*
+string GLOG::data_to_string(const unsigned long long in)
+{
+	return std::to_string(in);
+}
+*/
 string GLOG::data_to_string(const string in)
 {
 	return in;

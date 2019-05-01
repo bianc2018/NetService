@@ -11,6 +11,8 @@ net_service::http::HttpResponse::HttpResponse()
 	set_status_code("200");
 	set_head_value("Content-Length", "0");
 	set_head_value("Connection", "close");
+
+	//LOG(LDEBUG, "new a res ");
 }
 
 void net_service::http::HttpResponse::set_status_code(const std::string & value)

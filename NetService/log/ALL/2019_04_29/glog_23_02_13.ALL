@@ -1,0 +1,2 @@
+[ 9332 ][ 23:02:13 ][ ERROR ]  [ web_server.cpp 72 net_service::web::WebServer::load_handler ] json º”‘ÿ ß∞‹£°path= ./handlers.json ,ret= -1  
+[ 26620 ][ 23:02:15 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /index.html  

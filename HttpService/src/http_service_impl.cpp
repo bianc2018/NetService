@@ -42,8 +42,13 @@ void net_service::http::HttpServiceImpl::close_server(HTTP_HANDLE handle)
 	auto links = tcp::get_links_handle(handle);
 	for (auto link : links)
 	{
-		req_map_.erase(link);
-		res_map_.erase(link);
+		auto p1 = req_map_.find(handle);
+		if (p1 != req_map_.end())
+			req_map_.erase(p1);
+
+		auto p2 = res_map_.find(handle);
+		if (p2 != res_map_.end())
+			res_map_.erase(p2);
 	}
 	tcp::close_server(handle);
 }
@@ -51,8 +56,15 @@ void net_service::http::HttpServiceImpl::close_server(HTTP_HANDLE handle)
 void net_service::http::HttpServiceImpl::close_link(HTTP_HANDLE handle)
 {
 	tcp::close_link(handle);
-	req_map_.erase(handle);
-	res_map_.erase(handle);
+
+	auto p1 = req_map_.find(handle);
+	if (p1 != req_map_.end())
+		req_map_.erase(p1);
+
+	auto p2 = res_map_.find(handle);
+	if (p2 != res_map_.end())
+		res_map_.erase(p2);
+
 }
 
 void net_service::http::HttpServiceImpl::set_time_out(size_t time_out)
@@ -88,14 +100,17 @@ void net_service::http::HttpServiceImpl::run()
 net_service::http::req_ptr net_service::http::HttpServiceImpl::new_req(HTTP_HANDLE handle)
 {
 	auto request = std::make_shared<HttpRequest>();
-	req_map_.insert(std::make_pair(handle, request));
-	return 0;
+	req_map_[handle] = request;
+//	req_map_.insert(std::make_pair(handle, request));
+	return request;
 }
 
 net_service::http::res_ptr net_service::http::HttpServiceImpl::new_res(HTTP_HANDLE handle)
 {
 	auto response = std::make_shared<HttpResponse>();
-	res_map_.insert(std::make_pair(handle, response));
+	res_map_[handle] = response;
+	//res_map_.insert(std::make_pair(handle, response));
+	//LOG(LDEBUG, "new res addr=", (long long)response.get());
 	return response;
 }
 
@@ -115,6 +130,38 @@ net_service::http::res_ptr net_service::http::HttpServiceImpl::get_res(HTTP_HAND
 	return finded->second;
 }
 
+int net_service::http::HttpServiceImpl::set_mime(const std::string & ext, const std::string & type)
+{
+	mime_map_[ext] = type;
+	return 0;
+}
+
+std::string net_service::http::HttpServiceImpl::get_mime(const std::string & ext, const std::string & notfond)
+{
+	auto p = mime_map_.find(ext);
+	if (mime_map_.end() ==  p)
+	{
+		return notfond;
+	}
+	return p->second;
+}
+
+int net_service::http::HttpServiceImpl::set_reason(const std::string & code, const std::string & reason_phrase)
+{
+	reason_map_[code] = reason_phrase;
+	return 0;
+}
+
+std::string net_service::http::HttpServiceImpl::get_reason(const std::string & ext, const std::string & notfond)
+{
+	auto p = reason_map_.find(ext);
+	if (reason_map_.end() == p)
+	{
+		return notfond;
+	}
+	return p->second;
+}
+
 net_service::http::HttpServiceImpl::~HttpServiceImpl()
 {
 	
@@ -128,7 +175,7 @@ net_service::http::HttpServiceImpl::HttpServiceImpl() :time_out_(5)
 
 	set_send_buff_size(1024 * 1024 * 20);
 
-	set_time_out(60);
+	set_time_out(5);
 
 	set_thread_num(16);
 }
@@ -174,7 +221,7 @@ void net_service::http::HttpServiceImpl::recv_request_handler(TCP_HANDLE handle,
 		else if (PARSER_OVER == ret)
 		{
 			auto response = new_res(handle);
-			LOG(LINFO, "接收到一个请求,", handle);
+			LOG(LINFO, "接收到一个请求,", request->get_uri());
 			//默认短链接
 			auto ka = request->get_head_value("Connection", "close");
 			response->set_head_value("Connection", ka);
@@ -205,10 +252,13 @@ void net_service::http::HttpServiceImpl::send_response(TCP_HANDLE handle, res_pt
 	auto buff_ptr = SHARED_BUFF_PTR(send_buff_size_);
 	//读数据
 	int readlen = response->get_content(buff_ptr.get(),pos, send_buff_size_);
+	auto p = get_res(handle);
+	//LOG(LDEBUG, "get addr=", (long long)p.get(), ", res addr=", (long long)response.get());
 	pos += readlen;
 	//读完
 	if (0 == readlen)
 	{
+		LOG(LDEBUG, "发送response handle=",handle ,",code",response->get_status_code());
 		if ("close" == response->get_head_value("Connection", "close"))
 		{
 			close_link(handle);

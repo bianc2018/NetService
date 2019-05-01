@@ -1,0 +1,12 @@
+[ 236 ][ 21:38:26 ][ DEBUG ]  [ net_service::http::HttpRequest::HttpRequest ] new a req   
+[ 26956 ][ 21:38:26 ][ DEBUG ]  [ net_service::http::HttpObject::parser ] parser= 2  
+[ 26956 ][ 21:38:26 ][ DEBUG ]  [ net_service::http::HttpResponse::HttpResponse ] new a res   
+[ 26956 ][ 21:38:26 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, 2  
+[ 236 ][ 21:38:26 ][ DEBUG ]  [ net_service::http::HttpServiceImpl::send_response ] 发送response handle= 2 ,code 404  
+[ 236 ][ 21:38:26 ][ DEBUG ]  [ net_service::http::HttpRequest::HttpRequest ] new a req   
+[ 236 ][ 21:38:30 ][ DEBUG ]  [ net_service::http::HttpObject::parser ] parser= 2  
+[ 236 ][ 21:38:30 ][ DEBUG ]  [ net_service::http::HttpResponse::HttpResponse ] new a res   
+[ 236 ][ 21:38:30 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, 2  
+[ 26956 ][ 21:38:30 ][ DEBUG ]  [ net_service::http::HttpServiceImpl::send_response ] 发送response handle= 2 ,code 200  
+[ 26956 ][ 21:38:30 ][ DEBUG ]  [ net_service::http::HttpRequest::HttpRequest ] new a req   
+[ 26140 ][ 21:39:30 ][ ERROR ]  [ http_service_impl.cpp 197 net_service::http::HttpServiceImpl::recv_request_handler ] 关闭一个连接 ret= -3  

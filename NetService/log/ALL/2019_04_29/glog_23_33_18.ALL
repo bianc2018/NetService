@@ -1,0 +1,56 @@
+[ 12672 ][ 23:33:18 ][ DEBUG ]  [ net_service::http::HttpObject::parser ] parser= 2  
+[ 12672 ][ 23:33:18 ][ INFO ]  [ net_service::http::HttpSe[ 12672 ][ 23:33:18 ][ DEBUG ]  [ net_service::web::WebServer::ht[ 11984 ][ 23:33:19 ][ DEBUG ]  [ net_service::[ 28820 ][ 23:33:19 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /js/session.js  
+[ 11984 ][ 23:33:19 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /js/jquery/jquery-3.3.1.min.js  
+[ 29372 ][ 23:33:19 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /js/common.js  
+[ 28080 ][ 23:33:19 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /js/user.js  
+[ 28796 ][ 23:33:19 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /css/index.css  
+[ 29484 ][ 23:33:19 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /css/common.css  
+[ 11984 ][ 23:33:19 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /image/index.jpg  
+[ 28796 ][ 23:33:21 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /index.html  
+[ 28796 ][ 23:33:21 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /js/jquery/jquery-3.3.1.min.js  
+[ 28080 ][ 23:33:21 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /css/index.css  
+[ 11984 ][ 23:33:21 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /css/common.css  
+[ 28900 ][ 23:33:21 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /js/common.js  
+[ 29372 ][ 23:33:21 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /js/session.js  
+[ 26276 ][ 23:33:21 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /js/user.js  
+[ 26668 ][ 23:33:21 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /image/index.jpg  
+][ DEBUG ]  [ net_service::http::HttpServiceImpl::send_response ] 发送response handle= 7 ,code 200  
+[ 28820 ][ 23:33:19 ][ DEBUG ]  [ net_service::http::HttpServiceImpl::send_response ] 发送response handle= 3 ,code 200  
+[ 26668 ][ 23:33:19 ][ DEBUG ]  [ net_service::http::HttpServiceImpl::send_response ] 发送response handle= 2 ,code 200  
+[ 28796 ][ 23:33:19 ][ DEBUG ]  [ net_service::http::HttpObject::parser ] parser= 1  
+[ 29484 ][ 23:33:19 ][ DEBUG ]  [ net_service::http::HttpObject::parser ] parser= 1  
+[ 11984 ][ 23:33:19 ][ DEBUG ]  [ net_service::http::HttpObject::parser ] parser= 2  
+[ 11984 ][ 23:33:19 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /image/index.jpg  
+[ 28796 ][ 23:33:19 ][ DEBUG ]  [ net_service::http::HttpServiceImpl::send_response ] 发送response handle= 2 ,code 200  
+[ 28796 ][ 23:33:21 ][ DEBUG ]  [ net_service::http::HttpObject::parser ] parser= 2  
+[ 28796 ][ 23:33:21 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /index.[ 28820 [ 11984 ][ 23:33:21 ][ DEBUG ]  [ net_service::http::HttpObject::parser ] parser= 2  
+[ 28080 ][ 23:33:21 ][ DEBUG ]  [ net_service::http::HttpObject::parser ] parser= 2  
+[ 28796 ][ 23:33:21 ][ DEBUG ]  [ net_service::http::HttpObject::parser ] parser= 2  
+[ 28820 ][ 23:33:21 ][ ERROR ]  [ http_service_impl.cpp 212 net_service::http::HttpServiceImpl::recv_request_handler ] 关闭一个连接 ret= -2  
+[ 28796 ][ 23:33:21 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /js/jquery/jquery-3.3.1.min.js  
+[ 26668 ][ 23:33:21 ][ ERROR ]  [ http_service_impl.cpp 212 net_service::http::HttpServiceImpl::recv_request_handler ] 关闭一个连接 ret= -2  
+[ 28080 ][ 23:33:21 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /css/index.css  
+[ 21180 ][ 23:33:21 ][ DEBUG ]  [ net_service::http::HttpServiceImpl::send_response ] 发送response handle= 2 ,code 200  
+[ 11984 ][ 23:33:21 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /css/common.css  
+[ 28900 ][ 23:33:21 ][ DEBUG ]  [ net_service::http::HttpObject::parser ] parser= 2  
+[ 28900 ][ 23:33:21 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /js/common.js  
+[ 29372 ][ 23:33:21 ][ DEBUG ]  [ net_service::http::HttpObject::parser ] parser= 2  
+[ 29372 ][ 23:33:21 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /js/session.js  
+[ 28900 ][ 23:33:21 ][ DEBUG ]  [ net_service::http::HttpServiceImpl::send_response ] 发送response handle= 5 ,code 200  
+[ 19636 ][ 23:33:21 ][ DEBUG ]  [ net_service::http::HttpServiceImpl::send_response ] 发送response handle= 4 ,code 200  
+[ 29584 ][ 23:33:21 ][ DE[ 26668 ][ 23:33:26 ][ WARN ]  [ net_service::tcp::TcpLink::start_timer::<lambda_75c90d26f4feecc15912bdf95f7097f9>::operator () ] Tcp Link timer 超时,handle_= 5  
+[ 26668 ][ 23:33:26 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer 1  
+[ 26668 ][ 23:33:26 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer  
+[ 26668 ][ 23:33:26 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer in  
+[ 26668 ][ 23:33:26 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer out  
+[ 26668 ][ 23:33:26 ][ DEBUG ]  [ net_service::tcp::TcpServiceImpl::close_client ] close link  
+[ 19636 ][ 23:33:26 ][ ERROR ]  [ tcp_link.cpp 48 net_service::tcp::TcpLink::async_recv::<lambda_0bd86bd2010940894acba7dbe75ed3f2>::operator () ] 读数据错误 1236 由本地系统中止网络连接。  
+[ 26668 ][ 23:33:26 ][ DEBUG ]  [ net_service::tcp::TcpServiceImpl::close_client ] close  
+[ 19636 ][ 23:33:26 ][ DEBUG ]  [ net_service::tcp::TcpServiceImpl::close_client ] close link  
+[ 19636 ][ 23:33:26 ][ DEBUG ]  [ net_service::tcp::TcpServiceImpl::close_client ] close  
+[ 26668 ][ 23:33:26 ][ WARN ]  [ net_service::tcp::TcpLink::start_timer::<lambda_75c90d26f4feecc15912bdf95f7097f9>::operator () ] Tcp Link timer 超时,handle_= 4  
+[ 26668 ][ 23:33:26 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer 1  
+[ 26668 ][ 23:33:26 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer  
+[ 26668 ][ 23:33:26 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer in  
+[ 26668 ][ 23:33:26 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer out  
+ 

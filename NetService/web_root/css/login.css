@@ -1,0 +1,88 @@
+#login_register_main_box {
+    background-color: rgba(255, 255, 255, 0.95);
+    width: 440px;
+    height: 300px;
+    border: 1px solid #000000;
+    border-radius: 6px;
+    padding: 10px;
+    margin-top: 0%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+.input_box
+{
+    margin-top: 12px;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: auto;
+    display: inline-block;
+}
+.input_box input {
+    width: 340px;
+    height: 32px;
+    margin-left: 18px;
+    border: 1px solid #dcdcdc;
+    border-radius: 4px;
+    padding-left: 42px;
+}
+.input_box input:hover 
+{
+        border: 1px solid #ff7d0a;
+}
+
+.input_box input:after 
+{
+        border: 1px solid #ff7d0a;
+}
+
+.icon_user {
+    width: 24px;
+    height: 24px;
+    margin: 6px 4px 6px 24px;
+    background-color: #ff7d0a;
+    display: inline-block;
+    position: absolute;
+    border-right: 1px solid #dcdcdc;
+
+    background: url("/image/user.png");
+}
+
+.icon_password {
+    width: 24px;
+    height: 24px;
+    margin: 6px 4px 6px 24px;
+    background-color: #ff7d0a;
+    display: inline-block;
+    position: absolute;
+    border-right: 1px solid #dcdcdc;
+
+    background: url("/image/password.png");
+}
+
+.login_button_box {
+    margin-top: 12px;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: auto;
+    display: inline-block;
+}
+
+    .login_button_box input {
+        background-color: #ff7d0a;
+        color: #ffffff;
+        font-size: 16px;
+        width: 340px;
+        height: 40px;
+        margin-left: 18px;
+        border: 1px solid #ff7d0a;
+        border-radius: 4px;
+    }
+
+    .login_button_box input:hover {
+        background-color: #ee7204;
+    }
+
+    .login_button_box input:active {
+        background-color: #ee7204;
+    }

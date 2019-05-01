@@ -1,0 +1,56 @@
+[ 35592 ][ 22:52:10 ][ INFO ]  [ NewPublishImpl::write_json ] write json
+ {
+	"result":	1,
+	"user":	{
+		"username":	"",
+		"password":	"",
+		"permission":	3,
+		"status":	0
+	}
+}  
+[ 36452 ][ 22:52:10 ][ INFO ]  [ NewPublishImpl::deal_get_news ] deal a /get_news_action  
+[ 36452 ][ 22:52:10 ][ INFO ]  [ NewPublishImpl::write_json ] write json
+ {
+	"news":	[{
+			"code":	"694167246302292231",
+			"title":	"鎾掕礉瀹佽�佸﹩棰滃�间弗閲嶄笅闄嶏紝韬潗璁や笉鍑猴紝缃戝弸钂欎簡",
+			"author":	"鐐瑰崟濞变箰",
+			"content":	"",
+			"property":	0,
+			"parent":	"",
+			"status":	3,
+			"comment_num":	1,
+			"like_num":	0,
+			"unlike_num":	0,
+			"data_path":	"./web_root/cache/694167246302292231/",
+			"create_time":	1555943456,
+			"create_user":	"admin",
+			"modify_time":	1555943794,
+			"modify_user":	"admin",
+			"publish_time":	1555943794
+		}, {
+			"code":	"13136237546872572267",
+			"title":	"&lt;script&gt;////////////////////&bsol;&bsol;&bsol;&bsol;&bsol;&bsol;&bsol;&bsol;&bsol;&bsol;&bsol;&bsol;&bsol;&bsol;&bsol;&bsol;&bsol;sssss&lt;/script&gt;",
+			"author":	"admin",
+			"content":	"",
+			"property":	0,
+			"parent":	"",
+			"status":	3,
+			"comment_num":	0,
+			"like_num":	0,
+			"unlike_num":	0,
+			"data_path":	"",
+			"create_time":	1555510218,
+			"create_user":	"admin",
+			"modify_time":	1555855159,
+			"modify_user":	"admin",
+			"publish_time":	1555943454
+		}],
+	"size":	2,
+	"all":	2,
+	"result":	0
+}  
+
+[ 36452 ][ 22:52:10 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /get_news.action  
+[ 35332 ][ 22:58:26 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /new.html?new_id=13136237546872572267  
+[ 35332 ][ 22:58:27 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /new.html?new_id=13136237546872572267  

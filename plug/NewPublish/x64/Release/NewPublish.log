@@ -1,0 +1,9 @@
+﻿  ini.cpp
+  new_publish_impl.cpp
+    正在创建库 D:\code\NetService\x64\Release\NEWPUBLISH.lib 和对象 D:\code\NetService\x64\Release\NEWPUBLISH.exp
+  正在生成代码
+  813 of 1952 functions (41.6%) were compiled, the rest were copied from previous compilation.
+    604 functions were new in current compilation
+    459 functions had inline decision re-evaluated but remain unchanged
+  已完成代码的生成
+  NewPublish.vcxproj -> D:\code\NetService\x64\Release\NEWPUBLISH.dll

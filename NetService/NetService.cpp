@@ -22,9 +22,13 @@ int main()
 
 	config.ip = ini.get_config_string("tcp", "ip","0.0.0.0");
 	config.port = ini.get_config_int("tcp", "port",8000);
-	config.accept_num = ini.get_config_int("tcp", "accept", 16);
+	config.accept_num = ini.get_config_int("tcp", "accept_num", 16);
 	config.recv_buff_size = ini.get_config_int("tcp", "recv_buff_size", 1024*1024*10);
 	config.set_buff_size = ini.get_config_int("tcp", "set_buff_size", 1024 * 1024 * 10);
+	config.timeout = ini.get_config_int("tcp", "timeout", 1024 * 1024 * 10);
+
+	config.mime_path = ini.get_config_string("http", "mime_path");
+	config.reason_path = ini.get_config_string("http", "reason_path");
 
 	config.web_root = ini.get_config_string("web", "root", "./web_root");
 	
@@ -42,9 +46,9 @@ int main()
 	if (0 != ret)
 	{
 		std::cout << "°ó¶¨·þÎñ¾ä±úÊ§°Ü,ret=" <<ret<< std::endl;
-		close_server(handle);
-		handle = 0;
-		return -3;
+		//close_server(handle);
+		//handle = 0;
+		//return -3;
 	}
 
 	while (true)

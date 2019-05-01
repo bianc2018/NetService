@@ -1,0 +1,220 @@
+﻿#head
+{
+
+}
+body
+{
+    background-color:azure;
+}
+a{
+    text-decoration:none;
+
+}
+#title {
+    background-color: azure;
+    background-image: url("../image/index.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 130px;
+    width: 100%;
+    float: left;
+}
+
+#notice 
+{
+    height: 40px;
+    width: 49%;
+
+    float: left;
+}
+
+#person 
+{
+    height: 40px;
+    width: 49%;
+
+    float: right;
+}
+
+#forward {
+    height: 40px;
+    width: 49%;
+
+    float: left;
+}
+
+#search {
+    height: 40px;
+    width: 49%;
+
+    float: right;
+}
+#body {
+    width: 100%;
+
+    float: left;
+}
+
+#footer {
+    height: 40px;
+    width: 100%;
+    font-family: arial, verdana, sans-serif;
+    font-style: italic;
+    text-align:center;
+    float: left;
+}
+.common_btn {
+    display: inline-block;
+    padding: 0 20px;
+    text-align: center;
+    color: #000000;
+    background-color: lightblue;
+    height: 35px;
+    margin-right: 10px;
+    border: none;
+    font-size: 10px;
+    line-height: 42px;
+    border-radius: 5px;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.common_btn_after {
+    display: inline-block;
+    padding: 0 20px;
+    text-align: center;
+    color: #ff0000;
+    background-color: lightblue;
+    height: 35px;
+    margin-right: 10px;
+    border: none;
+    font-size: 10px;
+    line-height: 42px;
+    border-radius: 5px;
+    vertical-align: middle;
+    cursor: pointer;
+}
+.menu_list 
+{
+    width: 10%;
+    float:left;
+    margin: 0;
+}
+
+.menu_head {
+    height: 47px;
+    line-height: 47px;
+    padding-left: 38px;
+    color: #525252;
+    cursor: pointer;
+    border: 1px solid #f1f1f1;
+    position: relative;
+    margin: 0px;
+    font-weight: bold;
+    
+    background: lightblue;
+
+    white-space: nowrap;
+    
+}
+
+
+.menu_nva {
+    line-height: 38px;
+    border-left: 1px solid #51a9f18c;
+    border-right: 1px solid #51a9f18c;
+    display: block;
+    height: 38px;
+    line-height: 38px;
+    padding-left: 38px;
+    color: #777777;
+    background: #fff;
+    text-decoration: none;
+    border-bottom: 1px solid #51a9f18c;
+    cursor: pointer;
+}
+.list_table
+{
+
+}
+.list_table  {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.list_table th {
+    font: bold 12px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+    color: #4f6b72;
+    border-right: 1px solid #C1DAD7;
+    border-bottom: 1px solid #C1DAD7;
+    border-top: 1px solid #C1DAD7;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 6px 6px 6px 12px;
+    background: #CAE8EA no-repeat;
+}
+
+.list_table td {
+    border-right: 1px solid #C1DAD7;
+    border-bottom: 1px solid #C1DAD7;
+    background: #fff;
+    font-size: 14px;
+    text-align: center;
+    padding: 6px 6px 6px 12px;
+    color: #4f6b72;
+}
+
+    .list_table td.alt {
+        background: #F5FAFA;
+        color: #797268;
+    }
+
+    .list_table th.spec, td.spec {
+        border-left: 1px solid #C1DAD7;
+    }
+
+.list_table html > body td {
+    font-size: 14px;
+}
+
+.list_table tr.select th, tr.select td {
+    background-color: #CAE8EA;
+    color: #797268;
+}
+
+.hide_box {
+    display: none;
+    z-index: 1000;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    
+}
+
+.page_menu {
+    display: none;
+    width: 89%;
+    float: right;
+}
+.search_menu {
+    display: none;
+    width: 89%;
+    float: right;
+}
+    .search_menu div {
+        display: inline-block;
+    }
+    .search_menu select {
+        height: 25px;
+        width: 200px;
+
+        align-items: flex-start;
+        text-align: center;
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+ 

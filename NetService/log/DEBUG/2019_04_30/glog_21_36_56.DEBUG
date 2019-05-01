@@ -1,0 +1,2 @@
+[ 32520 ][ 21:36:56 ][ DEBUG ]  [ NewsMgr::get_datas ] 0  new  
+ SELECT * FROM news WHERE 1=1  AND status=3 AND property='0' Order By publish_time DESC;  

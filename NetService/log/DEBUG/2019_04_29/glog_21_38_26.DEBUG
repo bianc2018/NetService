@@ -1,0 +1,9 @@
+[ 236 ][ 21:38:26 ][ DEBUG ]  [ net_service::http::HttpRequest::HttpRequest ] new a req   
+[ 26956 ][ 21:38:26 ][ DEBUG ]  [ net_service::http::HttpObject::parser ] parser= 2  
+[ 26956 ][ 21:38:26 ][ DEBUG ]  [ net_service::http::HttpResponse::HttpResponse ] new a res   
+[ 236 ][ 21:38:26 ][ DEBUG ]  [ net_service::http::HttpServiceImpl::send_response ] ·¢ËÍresponse handle= 2 ,code 404  
+[ 236 ][ 21:38:26 ][ DEBUG ]  [ net_service::http::HttpRequest::HttpRequest ] new a req   
+[ 236 ][ 21:38:30 ][ DEBUG ]  [ net_service::http::HttpObject::parser ] parser= 2  
+[ 236 ][ 21:38:30 ][ DEBUG ]  [ net_service::http::HttpResponse::HttpResponse ] new a res   
+[ 26956 ][ 21:38:30 ][ DEBUG ]  [ net_service::http::HttpServiceImpl::send_response ] ·¢ËÍresponse handle= 2 ,code 200  
+[ 26956 ][ 21:38:30 ][ DEBUG ]  [ net_service::http::HttpRequest::HttpRequest ] new a req   

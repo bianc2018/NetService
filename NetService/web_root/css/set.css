@@ -1,0 +1,26 @@
+#set_data {
+    display: block;
+    width:89%;
+    float:right;
+}
+
+.data_box {
+    background-color: rgba(255, 255, 255, 0.95);
+    width: 440px;
+    height: 300px;
+    border: 1px solid #000000;
+    border-radius: 6px;
+    padding: 10px;
+    margin-top: 11%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  
+}
+.data_box input, select {
+    margin-top: 12px;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: auto;
+    display: inline-block;
+}

@@ -26,7 +26,7 @@
 
 using std::string;
 const std::string SPLIT("/");
-const std::string SPACE_ELE("");
+const std::string SPACE_ELE(" ");
 const std::string WIN_SPLIT("\\");
 
 class GLOG
@@ -123,6 +123,7 @@ private:
 	string data_to_string(const long in);
 	string data_to_string(const long long in);
 	string data_to_string(const unsigned long in);
+//	string data_to_string(const unsigned long long in);
 	string data_to_string(const string in);
 	string data_to_string(const double in);
 	string data_to_string(const char* in);
