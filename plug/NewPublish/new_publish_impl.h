@@ -12,7 +12,7 @@
 #include "json/json.h"
 #include "log/log.hpp"
 
-const std::string SET_COOKIE("Set-Cookie");
+
 
 //字符分割结果
 typedef std::vector<std::string> split_vector;
@@ -140,10 +140,6 @@ private:
 	int filter_session(HTTP_HANDLE handle);
 	//权限鉴别
 	int filter_permission(HTTP_HANDLE handle);
-
-	//cookie解析
-	int filter_cookie(HTTP_HANDLE handle);
-	int filter_set_cookie(HTTP_HANDLE handle);
 
 };
 #endif

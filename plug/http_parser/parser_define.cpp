@@ -1,4 +1,6 @@
 #include "parser_define.h"
+
+
 split_vector split(const std::string & s, const std::string & sub_split)
 {
 	split_vector ret;
@@ -15,4 +17,20 @@ split_vector split(const std::string & s, const std::string & sub_split)
 		pos = split_pos + sub_split.size();
 	}
 	return ret;
+}
+
+std::string time_to_string(time_t t, const std::string & fmt, const std::string &type)
+{
+	if (0 == t)
+		t = ::time(0);
+
+	char ch[1024];
+	//本地数据
+	if (type == "LOCAL")
+		::strftime(ch, sizeof(ch), fmt.c_str(), ::localtime(&t));
+	//格林时间
+	else if (type == "GMT")
+		::strftime(ch, sizeof(ch), fmt.c_str(), ::gmtime(&t));
+
+	return std::string(ch);
 }

@@ -88,88 +88,12 @@ int NewPublishImpl::deal_get_news(HTTP_HANDLE handle)
 	return ret;
 }
 
-int NewPublishImpl::filter_cookie(HTTP_HANDLE handle)
-{
-	split_vector cookie_vec;
-	split_vector key_value;
-	
-	auto cookies = new std::map<std::string, std::string>();
-	auto set_cookies = new std::map<std::string, std::string>();
 
-	auto cookie = request_get_header(handle, "Cookie", "");
-	cookie_vec = split(cookie, ": ");
-
-	for (auto param : cookie_vec)
-	{
-		key_value = split(param, "=");
-		if (1 == key_value.size())
-			cookies->insert(std::make_pair(key_value[0], ""));
-		else if (2 == key_value.size())
-			cookies->insert(std::make_pair(key_value[0], key_value[1]));
-	}
-
-	auto ret = response_set_ext_data(handle, "set_cookie_map", cookies);
-	if (ret != 0)
-	{
-		delete cookies;
-		delete set_cookies;
-		return -1;
-	}
-
-	ret =  request_set_ext_data(handle, "cookie_map", set_cookies);
-	if (ret != 0)
-	{
-		delete cookies;
-		delete set_cookies;
-		return -2;
-	}
-
-	return 0;
-}
-
-int NewPublishImpl::filter_set_cookie(HTTP_HANDLE handle)
-{
-	std::map<std::string, std::string> *cookie_map = (std::map<std::string, std::string> *)request_get_ext_data(handle, "cookie_map");
-	std::map<std::string, std::string> *set_cookie_map = (std::map<std::string, std::string> *)request_get_ext_data(handle, "set_cookie_map");
-	if (nullptr != set_cookie_map)
-	{
-		//Set-Cookie
-		std::string cookie_cache = "";
-		bool is_first = true;
-		for (auto cookie : *set_cookie_map)
-		{
-			if (is_first)
-			{
-				cookie_cache = cookie.first + "=" + cookie.second;
-				is_first = false;
-			}
-			else
-			{
-				cookie_cache += SET_COOKIE + ":" + cookie.first + "=" + cookie.second;
-			}
-			cookie_cache += "; Expires=" + time_to_string(LOCAL_TIME + 86000, "%a,%d %b %Y %H:%M:%S GMT", "GMT");
-			cookie_cache += "; Path=/\r\n";
-		}
-
-		response_set_header(handle, SET_COOKIE, cookie_cache);
-	}
-
-	if(nullptr!=cookie_map)
-		delete cookie_map;
-	if (nullptr != set_cookie_map)
-		delete set_cookie_map;
-	return 0;
-}
 
 
 int NewPublishImpl::before_filter(HTTP_HANDLE handle)
 {
-	auto ret = filter_cookie(handle);
-	if (ret != 0)
-		return ret;
-
-
-	ret = filter_session(handle);
+	auto ret = filter_session(handle);
 	if (ret != 0)
 		return ret;
 	ret = filter_permission(handle);
@@ -180,7 +104,7 @@ int NewPublishImpl::before_filter(HTTP_HANDLE handle)
 
 int NewPublishImpl::after_filter(HTTP_HANDLE handle)
 {
-	filter_set_cookie(handle);
+	//filter_set_cookie(handle);
 	
 	return 0;
 }

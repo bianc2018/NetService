@@ -3,13 +3,13 @@
   "handlers": [
     {
       "type": 0,
-      "func": "uri_parser_before",
-      "dll": "./URIPARSER.dll"
+      "func": "http_parser_before",
+      "dll": "./HTTPPARSER.dll"
     },
     {
       "type": 2,
-      "func": "uri_parser_after",
-      "dll": "./URIPARSER.dll"
+      "func": "http_parser_after",
+      "dll": "./HTTPPARSER.dll"
     },
     {
       "type": 0,

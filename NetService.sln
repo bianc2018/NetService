@@ -5,6 +5,7 @@ VisualStudioVersion = 15.0.28307.106
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NetService", "NetService\NetService.vcxproj", "{5A39A7D6-9A31-493B-956A-B161FE2A6C98}"
 	ProjectSection(ProjectDependencies) = postProject
+		{4B990B44-6ABF-43DE-988D-4411FB4E8894} = {4B990B44-6ABF-43DE-988D-4411FB4E8894}
 		{393D6E96-6198-4A9D-809F-D236535E94FA} = {393D6E96-6198-4A9D-809F-D236535E94FA}
 		{E19E0CB1-3D66-4540-8E0F-02B134214608} = {E19E0CB1-3D66-4540-8E0F-02B134214608}
 	EndProjectSection
@@ -28,8 +29,14 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WebService", "WebService\We
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NewPublish", "plug\NewPublish\NewPublish.vcxproj", "{393D6E96-6198-4A9D-809F-D236535E94FA}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8A94273E-9A95-4674-BF72-669B58D55E5C} = {8A94273E-9A95-4674-BF72-669B58D55E5C}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "http_parser", "plug\http_parser\http_parser.vcxproj", "{4B990B44-6ABF-43DE-988D-4411FB4E8894}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8A94273E-9A95-4674-BF72-669B58D55E5C} = {8A94273E-9A95-4674-BF72-669B58D55E5C}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
