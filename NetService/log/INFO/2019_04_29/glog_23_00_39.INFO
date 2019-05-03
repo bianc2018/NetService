@@ -1,3 +1,0 @@
-[ 19224 ][ 23:00:39 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /index.html  
-[ 25988 ][ 23:00:39 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /index.html  
-[ 19224 ][ 23:00:40 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /index.html  

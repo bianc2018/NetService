@@ -1,2 +1,0 @@
-[ 12500 ][ 22:12:19 ][ ERROR ]  [ web_server.cpp 72 net_service::web::WebServer::load_handler ] json º”‘ÿ ß∞‹£°path= ./handlers.json ,ret= -1  
-[ 12904 ][ 22:12:32 ][ ERROR ]  [ web_server.cpp 146 net_service::web::WebServer::deal_default ] 404 uri= ./web_root/index.html  

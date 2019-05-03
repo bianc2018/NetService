@@ -21,6 +21,21 @@
     <ClInclude Include="parser_define.h">
       <Filter>源文件</Filter>
     </ClInclude>
+    <ClInclude Include="multipart_form_parser.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\json\cJSON.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\json\json.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\log\log.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\ini\ini.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="parser_define.cpp">
@@ -28,6 +43,21 @@
     </ClCompile>
     <ClCompile Include="http_parser.cpp">
       <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="multipart_form_parser.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\include\json\cJSON.c">
+      <Filter>头文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\include\json\json.cpp">
+      <Filter>头文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\include\log\log.cpp">
+      <Filter>头文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\include\ini\ini.cpp">
+      <Filter>头文件</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

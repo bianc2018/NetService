@@ -73,8 +73,8 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <TargetName>HTTPPARSER</TargetName>
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>../../HttpService;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
-    <LibraryPath>../../x64/Release;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(NETFXKitsDir)Lib\um\x64</LibraryPath>
+    <IncludePath>../../include;$(BOOST_1_68_0);../../HttpService;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <LibraryPath>$(BOOST_1_68_0)/lib;../../x64/Release;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(NETFXKitsDir)Lib\um\x64</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <TargetName>HTTPPARSER</TargetName>
@@ -91,7 +91,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
-      <Optimization>MaxSpeed</Optimization>
+      <Optimization>Disabled</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>NDEBUG;HTTPPARSER_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -146,11 +146,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\include\ini\ini.h" />
+    <ClInclude Include="..\..\include\json\cJSON.h" />
+    <ClInclude Include="..\..\include\json\json.h" />
+    <ClInclude Include="..\..\include\log\log.hpp" />
     <ClInclude Include="http_parser.h" />
+    <ClInclude Include="multipart_form_parser.h" />
     <ClInclude Include="parser_define.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\include\ini\ini.cpp" />
+    <ClCompile Include="..\..\include\json\cJSON.c" />
+    <ClCompile Include="..\..\include\json\json.cpp" />
+    <ClCompile Include="..\..\include\log\log.cpp" />
     <ClCompile Include="http_parser.cpp" />
+    <ClCompile Include="multipart_form_parser.cpp" />
     <ClCompile Include="parser_define.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

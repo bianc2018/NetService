@@ -1,3 +1,0 @@
-[ 28192 ][ 22:10:58 ][ ERROR ]  [ tcp_link.cpp 47 net_service::tcp::TcpLink::async_recv::<lambda_68c6634c5c9fb8c97dd0cab2d3fd46bc>::operator () ] 读数据错误 1236 由本地系统中止网络连接。  
-cpp 146 net_service::web::WebServer::deal_default ] 404 uri= ./web_root/index.html  
-[ 9716 ][ 22:09:49 ][ ERROR ]  [ web_server.cpp 146 net_service::web::WebServer::deal_default ] 404 uri= ./web_root/index.html  

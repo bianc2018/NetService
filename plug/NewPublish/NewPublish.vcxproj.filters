@@ -37,6 +37,15 @@
     <Filter Include="include\ini">
       <UniqueIdentifier>{3e16fbbf-a879-465d-a6a8-c64568ebceed}</UniqueIdentifier>
     </Filter>
+    <Filter Include="资源文件\css">
+      <UniqueIdentifier>{c8bd8174-4a11-4b70-a31f-ec60412d9dab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="资源文件\html">
+      <UniqueIdentifier>{c19c3ddf-30ea-47c7-92be-6d4ea0d3aca1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="资源文件\js">
+      <UniqueIdentifier>{cf804946-8a73-480f-b53b-03f1bd3bb514}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\include\log\log.cpp">
@@ -127,5 +136,49 @@
     <ClInclude Include="..\..\include\ini\ini.h">
       <Filter>include\ini</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\NetService\web_root\css\common.css">
+      <Filter>资源文件\css</Filter>
+    </None>
+    <None Include="..\..\NetService\web_root\css\edit.css">
+      <Filter>资源文件\css</Filter>
+    </None>
+    <None Include="..\..\NetService\web_root\css\index.css">
+      <Filter>资源文件\css</Filter>
+    </None>
+    <None Include="..\..\NetService\web_root\css\login.css">
+      <Filter>资源文件\css</Filter>
+    </None>
+    <None Include="..\..\NetService\web_root\css\new.css">
+      <Filter>资源文件\css</Filter>
+    </None>
+    <None Include="..\..\NetService\web_root\css\set.css">
+      <Filter>资源文件\css</Filter>
+    </None>
+    <None Include="..\..\NetService\web_root\edit.html">
+      <Filter>资源文件\html</Filter>
+    </None>
+    <None Include="..\..\NetService\web_root\index.html">
+      <Filter>资源文件\html</Filter>
+    </None>
+    <None Include="..\..\NetService\web_root\login.html">
+      <Filter>资源文件\html</Filter>
+    </None>
+    <None Include="..\..\NetService\web_root\new.html">
+      <Filter>资源文件\html</Filter>
+    </None>
+    <None Include="..\..\NetService\web_root\set.html">
+      <Filter>资源文件\html</Filter>
+    </None>
+    <None Include="..\..\NetService\web_root\js\common.js">
+      <Filter>资源文件\js</Filter>
+    </None>
+    <None Include="..\..\NetService\web_root\js\session.js">
+      <Filter>资源文件\js</Filter>
+    </None>
+    <None Include="..\..\NetService\web_root\js\user.js">
+      <Filter>资源文件\js</Filter>
+    </None>
   </ItemGroup>
 </Project>

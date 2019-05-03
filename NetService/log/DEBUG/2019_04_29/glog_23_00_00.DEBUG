@@ -1,5 +1,0 @@
-[ 19224 ][ 23:00:39 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer 0  
-[ 19224 ][ 23:00:39 ][ [ 25988 ][ 23:00:39 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /index.html  
-[ 25988 ][ 23:00:39 ][ DEBUG ]  [ net_service::w[ 8108 ][ 23:00:45 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer 1  
-[ 8108 ][ 23:00:45 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer  
-[ 8108 ][ 23:00:45 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer out  

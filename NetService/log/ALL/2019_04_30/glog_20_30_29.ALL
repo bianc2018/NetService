@@ -1,3 +1,0 @@
-[ 35428 ][ 20:30:29 ][ INFO ]  [ net_service::web::WebServer::load_handler ] load handle: ./NEWPUBLISH.dll : np_before ，type(前置过滤器) ok  
-[ 35428 ][ 20:30:29 ][ INFO ]  [ net_service::web::WebServer::load_handler ] load handle: ./NEWPUBLISH.dll : np_get_news ，type(处理器 绑定uri= /get_news.action ) ok  
-[ 35428 ][ 20:30:29 ][ INFO ]  [ net_service::web::WebServer::load_handler ] load handle: ./NEWPUBLISH.dll : np_after ，type(后置过滤器) ok  

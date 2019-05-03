@@ -71,6 +71,11 @@ HTTP_SERVICE_API void net_service::http::set_thread_num(size_t size)
 	impl.set_thread_num(size);
 }
 
+HTTP_SERVICE_API HTTP_ADDRESSS net_service::http::get_client_address(HTTP_HANDLE handle)
+{
+	return net_service::tcp::get_remote_address(handle);
+}
+
 HTTP_SERVICE_API void net_service::http::set_time_out(size_t time_out)
 {
 	net_service::http::HttpServiceImpl &impl = net_service::http::HttpServiceImpl::instance();
@@ -107,6 +112,26 @@ HTTP_SERVICE_API void net_service::http::new_request(HTTP_HANDLE handle)
 	impl.new_req(handle);
 
 	//LOG(LINFO, handle, " new a req");
+}
+
+HTTP_SERVICE_API int net_service::http::request_set_body_len(HTTP_HANDLE handle, size_t size)
+{
+	net_service::http::HttpServiceImpl &impl = net_service::http::HttpServiceImpl::instance();
+	auto req = impl.get_req(handle);
+	if (nullptr == req)
+		return HTTP_SET_REQ_NO_EXIST;
+
+	req->set_body_len(size);
+	return 0;
+}
+
+HTTP_SERVICE_API size_t net_service::http::request_get_body_len(HTTP_HANDLE handle)
+{
+	net_service::http::HttpServiceImpl &impl = net_service::http::HttpServiceImpl::instance();
+	auto req = impl.get_req(handle);
+	if (nullptr == req)
+		return 0;
+	return req->get_body_len();
 }
 
 HTTP_SERVICE_API int net_service::http::request_set_method(HTTP_HANDLE handle, const std::string & method)
@@ -255,6 +280,25 @@ HTTP_SERVICE_API void net_service::http::new_response(HTTP_HANDLE handle)
 	net_service::http::HttpServiceImpl &impl = net_service::http::HttpServiceImpl::instance();
 	impl.new_res(handle);
 	LOG(LINFO, handle, " new a res");
+}
+
+HTTP_SERVICE_API int net_service::http::response_set_body_len(HTTP_HANDLE handle, size_t size)
+{
+	net_service::http::HttpServiceImpl &impl = net_service::http::HttpServiceImpl::instance();
+	auto res = impl.get_res(handle);
+	if (nullptr == res)
+		return HTTP_SET_RES_NO_EXIST;
+	res->set_body_len(size);
+	return 0;
+}
+
+HTTP_SERVICE_API size_t net_service::http::response_get_body_len(HTTP_HANDLE handle)
+{
+	net_service::http::HttpServiceImpl &impl = net_service::http::HttpServiceImpl::instance();
+	auto res = impl.get_res(handle);
+	if (nullptr == res)
+		return 0;
+	return res->get_body_len();
 }
 
 HTTP_SERVICE_API int net_service::http::response_set_version(HTTP_HANDLE handle, const std::string & value)

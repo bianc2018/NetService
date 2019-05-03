@@ -1,4 +1,0 @@
-[ 18956 ][ 21:51:44 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /index.html  
-[ 18956 ][ 21:51:44 ][ DEBUG ]  [ net_service::web::WebServer::deal_default ] 404 handle= 4 0 0  
-[ 26376 ][ 21:51:50 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /index.html  
-[ 26376 ][ 21:51:50 ][ DEBUG ]  [ net_service::web::WebServer::deal_default ] 404 handle= 4 0 0  

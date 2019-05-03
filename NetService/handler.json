@@ -17,6 +17,14 @@
       "dll": "./NEWPUBLISH.dll"
     },
     {
+      "type": 2,
+      "func": "np_after",
+      "dll": "./NEWPUBLISH.dll"
+    },
+
+
+
+    {
       "type": 1,
       "uri": "/get_news.action",
       "func": "np_get_news",
@@ -24,14 +32,130 @@
     },
     {
       "type": 1,
-      "uri": "/get_now_user.action",
-      "func": "np_get_now_user",
+      "uri": "/get_datas.action",
+      "func": "np_get_datas",
       "dll": "./NEWPUBLISH.dll"
     },
     {
-      "type": 2,
-      "func": "np_after",
+      "type": 1,
+      "uri": "/get_new.action",
+      "func": "np_get_new",
+      "dll": "./NEWPUBLISH.dll"
+    },
+    {
+      "type": 1,
+      "uri": "/login.action",
+      "func": "np_login",
+      "dll": "./NEWPUBLISH.dll"
+    },
+    {
+      "type": 1,
+      "uri": "/logout.action",
+      "func": "np_logout",
+      "dll": "./NEWPUBLISH.dll"
+    },
+    {
+      "type": 1,
+      "uri": "/create_new.action",
+      "func": "np_create_new",
+      "dll": "./NEWPUBLISH.dll"
+    },
+    {
+      "type": 1,
+      "uri": "/save_new.action",
+      "func": "np_save_new",
+      "dll": "./NEWPUBLISH.dll"
+    },
+    {
+      "type": 1,
+      "uri": "/upload_new_image.action",
+      "func": "np_upload_new_image",
+      "dll": "./NEWPUBLISH.dll"
+    },
+    {
+      "type": 1,
+      "uri": "/new_like.action",
+      "func": "np_new_like",
+      "dll": "./NEWPUBLISH.dll"
+    },
+    {
+      "type": 1,
+      "uri": "/add_new_comment.action",
+      "func": "np_add_new_comment",
+      "dll": "./NEWPUBLISH.dll"
+    },
+    {
+      "type": 1,
+      "uri": "/remove_new.action",
+      "func": "np_remove_new",
+      "dll": "./NEWPUBLISH.dll"
+    },
+    {
+      "type": 1,
+      "uri": "/reset_password.action",
+      "func": "np_reset_password",
+      "dll": "./NEWPUBLISH.dll"
+    },
+    {
+      "type": 1,
+      "uri": "/register.action",
+      "func": "np_register",
+      "dll": "./NEWPUBLISH.dll"
+    },
+    {
+      "type": 1,
+      "uri": "/get_users.action",
+      "func": "np_get_users",
+      "dll": "./NEWPUBLISH.dll"
+    },
+    {
+      "type": 1,
+      "uri": "/remove_user.action",
+      "func": "np_remove_user",
+      "dll": "./NEWPUBLISH.dll"
+    },
+    {
+      "type": 1,
+      "uri": "/delete_user.action",
+      "func": "np_delete_user",
+      "dll": "./NEWPUBLISH.dll"
+    },
+    {
+      "type": 1,
+      "uri": "/delete_new.action",
+      "func": "np_delete_new",
+      "dll": "./NEWPUBLISH.dll"
+    },
+    {
+      "type": 1,
+      "uri": "/reset_user_permission.action",
+      "func": "np_reset_user_permission",
+      "dll": "./NEWPUBLISH.dll"
+    },
+    {
+      "type": 1,
+      "uri": "/reset_new_status.action",
+      "func": "np_reset_new_status",
+      "dll": "./NEWPUBLISH.dll"
+    },
+    {
+      "type": 1,
+      "uri": "/get_sessions.action",
+      "func": "np_get_sessions",
+      "dll": "./NEWPUBLISH.dll"
+    },
+    {
+      "type": 1,
+      "uri": "/delete_sessions.action",
+      "func": "np_delete_sessions",
+      "dll": "./NEWPUBLISH.dll"
+    },
+    {
+      "type": 1,
+      "uri": "/get_now_user.action",
+      "func": "np_get_now_user",
       "dll": "./NEWPUBLISH.dll"
     }
+
   ]
 }

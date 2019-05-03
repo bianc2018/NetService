@@ -9,25 +9,28 @@
 
 net_service::http::HttpObject::HttpObject():\
 is_cache_(false),max_size_(BODY_MAX_SIZE),cache_path_(BODY_CACHE_PATH),range_(-1,-1), parser_body_len_(0),\
-status_(PARSER_HEAD)
+status_(PARSER_HEAD), is_clear_(true)
 {
 	
 }
 
 net_service::http::HttpObject::~HttpObject()
 {
-	/*
-	boost::system::error_code ec;
-	if (boost::filesystem::exists(cache_file_path_, ec))
+	
+	if (is_clear_)
 	{
-		boost::filesystem::remove(cache_file_path_, ec);
-		if (ec)
+		boost::system::error_code ec;
+		if (boost::filesystem::exists(cache_file_path_, ec))
 		{
-			LOG(LERROR, "清空数据失败,path=", cache_file_path_, ",ec(", ec.value(), ",", ec.message(), ")");
-			
+			boost::filesystem::remove(cache_file_path_, ec);
+			if (ec)
+			{
+				LOG(LERROR, "清空数据失败,path=", cache_file_path_, ",ec(", ec.value(), ",", ec.message(), ")");
+
+			}
 		}
 	}
-	*/
+	
 }
 
 int net_service::http::HttpObject::parser(char * buff, POS size)
@@ -122,11 +125,23 @@ int net_service::http::HttpObject::parser(char * buff, POS size)
 			std::string data = parser_cache_;
 			parser_cache_ = "";
 			status_ = parser_body(data);
-			LOG(LINFO, data);
+			//LOG(LINFO, data);
 		}
 	}
-	LOG(LDEBUG, "parser=", status_);
+	//LOG(LDEBUG, "parser=", status_);
 	return status_;
+}
+
+size_t net_service::http::HttpObject::get_body_len()
+{
+	auto str = get_head_value(BODY_LEN, "0");
+	return std::stoull(str);
+}
+
+void net_service::http::HttpObject::set_body_len(size_t body_len)
+{
+	auto str = std::to_string(body_len);
+	set_head_value(BODY_LEN, str);
 }
 
 void net_service::http::HttpObject::set_beg_line(int index, const std::string & value)
@@ -160,9 +175,14 @@ int net_service::http::HttpObject::set_body_from_file(const std::string & path, 
 {
 	if (!boost::filesystem::exists(path))
 		return HTTP_SET_FIILE_NO_EXIST;
-
+	boost::system::error_code ec;
 	//获取文件长度
-	boost::uintmax_t content_length = boost::filesystem::file_size(path);
+	boost::uintmax_t content_length = boost::filesystem::file_size(path,ec);
+	if (ec)
+	{
+		LOG(LERROR, "获取文件长度出错.ec=", ec.value(), ec.message());
+		return HTTP_NOT_GET_FILE_LEN;
+	}
 	//检查 range
 	if (end < 0)
 		end = content_length - 1;
@@ -171,6 +191,7 @@ int net_service::http::HttpObject::set_body_from_file(const std::string & path, 
 
 	//设置
 	is_cache_ = true;
+	is_clear_ = false;
 	range_ = std::make_pair(beg, end);
 	cache_file_path_ = path;
 	set_head_value(BODY_LEN, std::to_string(end - beg + 1));
@@ -255,6 +276,7 @@ int net_service::http::HttpObject::get_status()
 int net_service::http::HttpObject::get_content(char * buff, POS beg, POS len)
 {
 	std::string head = get_head();
+	//LOG(LINFO, "head\n", head);
 	auto ptr = buff;
 	int ret_head_len = 0;
 	int  ret_get_body = 0;

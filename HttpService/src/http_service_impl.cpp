@@ -221,7 +221,7 @@ void net_service::http::HttpServiceImpl::recv_request_handler(TCP_HANDLE handle,
 		else if (PARSER_OVER == ret)
 		{
 			auto response = new_res(handle);
-			LOG(LINFO, "接收到一个请求,", request->get_uri());
+			LOG(LINFO, "接收到一个请求,", request->get_uri(),handle);
 			//默认短链接
 			auto ka = request->get_head_value("Connection", "close");
 			response->set_head_value("Connection", ka);

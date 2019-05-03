@@ -21,7 +21,8 @@ namespace net_service
 			~HttpObject();
 
 			int parser(char *buff, POS size);
-
+			size_t get_body_len();
+			void set_body_len(size_t body_len);
 			//设置http版本行首
 			void set_beg_line(int index ,const std::string &value);
 			std::string  get_beg_line(int index);
@@ -76,6 +77,9 @@ namespace net_service
 
 			//额外拓展的数据 不参与报文的组建
 			std::map<const std::string, void *>ext_data_map_;
+
+			//是否清理缓存文件
+			bool is_clear_;//true
 		};
 	}
 }

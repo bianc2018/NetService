@@ -56,8 +56,11 @@
                 function (data)
                 {
              //       alert(data.result);
-                    if (data.result == 0)
-                        ;//      window.location.href = "/index.html";
+                    if (data.result == 0) {
+                        
+                        alert("µÇÂ¼³É¹¦£¡");
+                        window.location.href = "/index.html";
+                    }
                     else {
                         alert(Error_Code(data.result));
                     }

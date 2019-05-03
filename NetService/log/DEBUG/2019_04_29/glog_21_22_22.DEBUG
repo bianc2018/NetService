@@ -1,4 +1,0 @@
-[16676][21:22:22][DEBUG] [net_service::http::HttpObject::parser]parser=2
-[13316][21:22:22][DEBUG] [net_service::http::HttpServiceImpl::send_response]·¢ËÍresponse handle=2,code404
-[13316][21:22:27][DEBUG] [net_service::http::HttpObject::parser]parser=2
-[9380][21:22:27][DEBUG] [net_service::http::HttpServiceImpl::send_response]·¢ËÍresponse handle=2,code200

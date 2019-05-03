@@ -1,6 +1,7 @@
 #include "http_parser.h"
 #include "parser_define.h"
 #include "http_service.h"
+#include "multipart_form_parser.h"
 
 using namespace net_service::http;
 
@@ -13,6 +14,11 @@ HTTP_PARSER_API int http_parser_before(unsigned long long handle)
 	ret = cookie_parser_before(handle);
 	if (ret != 0)
 		return ret;
+
+	//form_parser_before
+	ret = form_parser_before(handle);
+	if (ret != 0)
+		return ret;
 	return ret;
 }
 
@@ -20,6 +26,7 @@ HTTP_PARSER_API int http_parser_after(unsigned long long handle)
 {
 	uri_parser_after(handle);
 	cookie_parser_after(handle);
+	form_parser_after(handle);
 	return 0;
 }
 
@@ -75,7 +82,7 @@ HTTP_PARSER_API int cookie_parser_before(unsigned long long handle)
 	auto set_cookies = new std::map<std::string, std::string>();
 
 	auto cookie = request_get_header(handle, "Cookie", "");
-	cookie_vec = split(cookie, ": ");
+	cookie_vec = split(cookie, "; ");
 
 	for (auto param : cookie_vec)
 	{
@@ -86,7 +93,7 @@ HTTP_PARSER_API int cookie_parser_before(unsigned long long handle)
 			cookies->insert(std::make_pair(key_value[0], key_value[1]));
 	}
 
-	auto ret = response_set_ext_data(handle, "set_cookie_map", cookies);
+	auto ret = response_set_ext_data(handle, "set_cookie_map", set_cookies);
 	if (ret != 0)
 	{
 		delete cookies;
@@ -94,7 +101,7 @@ HTTP_PARSER_API int cookie_parser_before(unsigned long long handle)
 		return -1;
 	}
 
-	ret = request_set_ext_data(handle, "cookie_map", set_cookies);
+	ret = request_set_ext_data(handle, "cookie_map", cookies);
 	if (ret != 0)
 	{
 		delete cookies;
@@ -108,7 +115,7 @@ HTTP_PARSER_API int cookie_parser_before(unsigned long long handle)
 HTTP_PARSER_API int cookie_parser_after(unsigned long long handle)
 {
 	std::map<std::string, std::string> *cookie_map = (std::map<std::string, std::string> *)request_get_ext_data(handle, "cookie_map");
-	std::map<std::string, std::string> *set_cookie_map = (std::map<std::string, std::string> *)request_get_ext_data(handle, "set_cookie_map");
+	std::map<std::string, std::string> *set_cookie_map = (std::map<std::string, std::string> *)response_get_ext_data(handle, "set_cookie_map");
 	if (nullptr != set_cookie_map)
 	{
 		//Set-Cookie
@@ -128,7 +135,7 @@ HTTP_PARSER_API int cookie_parser_after(unsigned long long handle)
 			cookie_cache += "; Expires=" + time_to_string(LOCAL_TIME + 86000, "%a,%d %b %Y %H:%M:%S GMT", "GMT");
 			cookie_cache += "; Path=/\r\n";
 		}
-
+		cookie_cache = cookie_cache.substr(0, cookie_cache.size() - 2);
 		response_set_header(handle, SET_COOKIE, cookie_cache);
 	}
 
@@ -137,4 +144,16 @@ HTTP_PARSER_API int cookie_parser_after(unsigned long long handle)
 	if (nullptr != set_cookie_map)
 		delete set_cookie_map;
 	return 0;
+}
+
+HTTP_PARSER_API int form_parser_before(unsigned long long handle)
+{
+	return MultipartFormParser::parser(handle);
+}
+
+HTTP_PARSER_API int form_parser_after(unsigned long long handle)
+{
+	//std::string *str = new std::string(form_data.to_string());
+	
+	return MultipartFormParser::unparser(handle);
 }

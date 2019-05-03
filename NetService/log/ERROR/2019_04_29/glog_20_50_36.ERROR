@@ -1,4 +1,0 @@
-[26872][20:52:14][ERROR] [tcp_link.cpp44net_service::tcp::TcpLink::async_recv::<lambda_0fbb365f439c7388264a46b7e346e006>::operator ()]¶ÁÊý¾Ý´íÎó2End of file
-[1592][20:52:14][ERROR] [tcp_link.cpp44net_service::tcp::TcpLink::async_recv::<lambda_[1592][20:52:46][ERROR] [web_server.cpp146net_service::web::WebServer::deal_default]404 uri=./web_root/index.html
-[1592][20:52:46][ERROR] [web_server.cpp146net_service::web::WebServer::deal_default]404 uri=./web_root/favicon.ico
-[26340][20:52:46][ERROR] [web_server.cpp146net_service::web::WebServer::deal_default]404 uri=./web_root/index.html

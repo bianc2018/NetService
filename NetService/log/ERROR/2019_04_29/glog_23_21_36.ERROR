@@ -1,8 +1,0 @@
-[ 28928 ][ 23:21:47 ][ ERROR ]  [ tcp_link.cpp 47 net_service::tcp::TcpLink::async_recv::<lambda_68c6634c5c9fb8c97dd0cab2d3fd46bc>::operator () ] 读数据错误 1236 由本地系统中止网络连接。  
-[ 28928 ][ 23:21:47 ][ ERROR ]  [ tcp_link.cpp 47 net_service::tcp::TcpLink::async_recv::<lambda_68c6634c5c9fb8c97dd0cab2d3fd46bc>::operator () ] 读数据错误 1236 由本地系统中止网络连接。  
-[ 28928 ][ 23:21:56 ][ ERROR ]  [ tcp_link.cpp 47 net_service::tcp::TcpLink::async_recv::<lambda_68c6634c5c9fb8c97dd0cab2d3fd46bc>::operator () ] 读数据错误 1236 由本地系统中止网络连接。  
-[ 28928 ][ 23:21:57 ][ ERROR ]  [ tcp_link.cpp 47 net_service::tcp::TcpLink::async_recv::<lambda_68c6634c5c9fb8c97dd0cab2d3fd46bc>::operator () ] 读数据错误 1236 由本地系统中止网络连接。  
-[ 19128 ][ 23:22:23 ][ ERROR ]  [ tcp_link.cpp 47 net_service::tcp::TcpLink::async_recv::<lambda_68c6634c5c9fb8c97dd0cab2d3fd46bc>::operator () ] 读数据错误 1236 由本地系统中止网络连接。  
-[ 19128 ][ 23:22:25 ][ ERROR ]  [ tcp_link.cpp 47 net_service::tcp::TcpLink::async_recv::<lambda_68c6634c5c9fb8c97dd0cab2d3fd46bc>::operator () ] 读数据错误 1236 由本地系统中止网络连接。  
-[ 28928 ][ 23:22:35 ][ ERROR ]  [ tcp_link.cpp 47 net_service::tcp::TcpLink::async_recv::<lambda_68c6634c5c9fb8c97dd0cab2d3fd46bc>::operator () ] 读数据错误 1236 由本地系统中止网络连接。  
-[ 28960 ][ 23:22:37 ][ ERROR ]  [ tcp_link.cpp 47 net_service::tcp::TcpLink::async_recv::<lambda_68c6634c5c9fb8c97dd0cab2d3fd46bc>::operator () ] 读数据错误 1236 由本地系统中止网络连接。  

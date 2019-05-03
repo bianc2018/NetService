@@ -37,7 +37,7 @@
                 where += ' AND status=3 AND property=\'0\'';
             }
 
-            $.post('/get_news.action', '{"where":"' + where + '","page":' + page + ',"size":' + size + ',"orderby":"' + orderby + '","byuser":0,"transfer_content":0}', function (data) {
+            $.post('/get_datas.action', '{"type":"new","where":"' + where + '","page":' + page + ',"size":' + size + ',"orderby":"' + orderby + '","byuser":0,"transfer_content":0}', function (data) {
                 if (data.result != 0) {
                     alert("无法获取数据 " + Error_Code(data.result));
                     return -1;

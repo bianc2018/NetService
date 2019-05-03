@@ -1,18 +1,45 @@
 //回调函数
 #include <iostream>
+#include "Windows.h"
 
 #include "web_service.h"
 
 #include "ini/ini.h"
 
 using namespace net_service::web;
+#define VERSION "v2.0 @"##__TIMESTAMP__
+void disable_console_edit()
+{
+#ifdef _WIN32
+	//禁止编辑界面
+	HANDLE hStdin = GetStdHandle(STD_INPUT_HANDLE);
+	DWORD mode;
+	GetConsoleMode(hStdin, &mode);
+	mode &= ~ENABLE_QUICK_EDIT_MODE;//移除快速编辑模式
+	mode &= ~ENABLE_INSERT_MODE;//移除插入模式
+	mode &= ~ENABLE_MOUSE_INPUT;//移除鼠标操作
+	SetConsoleMode(hStdin, mode);//设置
+#endif
+}
+void print_version_info()
+{
+	//打印初始化信息
+	std::cout << "/***************************************************************/" << std::endl;
+	std::cout << "/*" << std::endl;
+	std::cout << "/*		name   =" << "NewPublish" << std::endl;
+	std::cout << "/*		author =" << "HANQUAN LIAN" << std::endl;
+	std::cout << "/*		version=" << VERSION << std::endl;
+	std::cout << "/*" << std::endl;
+	std::cout << "/**************************************************************/" << std::endl << std::endl;
+}
+
 int main()
 {
-
+	print_version_info();
 	WebSeviceConfigData config;
 	
 	Ini ini;
-	int ret = ini.patser("./config.ini");
+	int ret = ini.parser("./config.ini");
 	if (0 != ret)
 	{
 		std::cout << "读取配置文件 ./config.ini 失败" << std::endl;
@@ -24,7 +51,7 @@ int main()
 	config.port = ini.get_config_int("tcp", "port",8000);
 	config.accept_num = ini.get_config_int("tcp", "accept_num", 16);
 	config.recv_buff_size = ini.get_config_int("tcp", "recv_buff_size", 1024*1024*10);
-	config.set_buff_size = ini.get_config_int("tcp", "set_buff_size", 1024 * 1024 * 10);
+	config.send_buff_size = ini.get_config_int("tcp", "send_buff_size", 1024 * 1024 * 10);
 	config.timeout = ini.get_config_int("tcp", "timeout", 1024 * 1024 * 10);
 
 	config.mime_path = ini.get_config_string("http", "mime_path");

@@ -1,5 +1,0 @@
-[18864][20:58:09][ERROR] [http_service_impl.cpp197net_service::http::HttpServiceImpl::recv_request_handler]关闭一个连接 ret=-3
-[27360][20:58:09][ERROR] [http_service_impl.cpp197net_service::http::HttpServiceImpl::recv_request_handler]关闭一个连接 ret=-2
-[23200][21:00:14][ERROR] [http_service_impl.cpp197net_service::http::HttpServiceImpl::recv_request_handler]关闭一个连接 ret=-3
-[27360][21:00:14][ERROR] [http_service_impl.cpp197net_service::http::HttpServiceImpl::recv_request_handler]关闭一个连接 ret=-2
-[27360][21:19:42][ERROR] [http_service_impl.cpp197net_service::http::HttpServiceImpl::recv_request_handler]关闭一个连接 ret=-3

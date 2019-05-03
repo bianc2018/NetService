@@ -1,8 +1,0 @@
-[ 11680 ][ 21:14:18 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /index.html  
-[ 11680 ][ 21:14:18 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /css/common.css  
-[ 11680 ][ 21:14:18 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /js/jquery/jquery-3.3.1.min.js  
-[ 35032 ][ 21:14:18 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /js/common.js  
-[ 33084 ][ 21:14:18 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /css/index.css  
-[ 32456 ][ 21:14:18 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /js/user.js  
-[ 33480 ][ 21:14:18 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /js/session.js  
-[ 35576 ][ 21:14:18 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, /image/index.jpg  

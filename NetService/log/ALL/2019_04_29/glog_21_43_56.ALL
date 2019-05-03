@@ -1,7 +1,0 @@
-[ 21436 ][ 21:43:56 ][ DEBUG ]  [ net_service::http::HttpObject::parser ] parser= 2  
-[ 21436 ][ 21:43:56 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, 5  
-[ 25172 ][ 21:43:56 ][ DEBUG ]  [ net_service::http::HttpServiceImpl::send_response ] 发送response handle= 5 ,code 404  
-[ 25172 ][ 21:43:56 ][ DEBUG ]  [ net_service::http::HttpObject::parser ] parser= 2  
-[ 25172 ][ 21:43:56 ][ INFO ]  [ net_service::http::HttpServiceImpl::recv_request_handler ] 接收到一个请求, 5  
-[ 12440 ][ 21:43:56 ][ DEBUG ]  [ net_service::http::HttpServiceImpl::send_response ] 发送response handle= 5 ,code 200  
-[ 12440 ][ 21:44:55 ][ ERROR ]  [ http_service_impl.cpp 197 net_service::http::HttpServiceImpl::recv_request_handler ] 关闭一个连接 ret= -3  

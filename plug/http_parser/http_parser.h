@@ -11,4 +11,7 @@ HTTP_PARSER_API  int uri_parser_after(unsigned long long handle);
 
 HTTP_PARSER_API  int cookie_parser_before(unsigned long long handle);
 HTTP_PARSER_API  int cookie_parser_after(unsigned long long handle);
+
+HTTP_PARSER_API  int form_parser_before(unsigned long long handle);
+HTTP_PARSER_API  int form_parser_after(unsigned long long handle);
 #endif

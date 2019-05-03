@@ -2,3 +2,17 @@
 /Debug
 /TCPService/Debug
 /x64
+/HttpService/Debug
+/HttpService/x64
+/NetService/cache
+/NetService/http_body_cache
+/NetService/log
+/NetService/Debug
+/NetService/x64
+/plug/http_parser/x64
+/plug/NewPublish/Debug
+/plug/NewPublish/x64
+/TCPService/x64
+/TCPService/Release
+/WebService/x64
+/WebService/Debug

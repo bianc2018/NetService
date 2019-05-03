@@ -1,8 +1,0 @@
-[ 11680 ][ 21:14:18 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /index.html  
-[ 11680 ][ 21:14:18 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /css/common.css  
-[ 11680 ][ 21:14:18 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /js/jquery/jquery-3.3.1.min.js  
-[ 35032 ][ 21:14:18 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /js/common.js  
-[ 33084 ][ 21:14:18 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /css/index.css  
-[ 32456 ][ 21:14:18 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /js/user.js  
-[ 33480 ][ 21:14:18 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /js/session.js  
-[ 35576 ][ 21:14:18 ][ DEBUG ]  [ net_service::web::WebServer::http_handler ] get a request uri= /image/index.jpg  

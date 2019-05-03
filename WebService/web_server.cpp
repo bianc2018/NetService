@@ -32,7 +32,7 @@ net_service::web::WebServer::WebServer(WebSeviceConfigData config):config_data_(
 {
 	http::set_log_path(config.log_path);
 	http::set_recv_buff_size(config.recv_buff_size);
-	http::set_send_buff_size(config.set_buff_size);
+	http::set_send_buff_size(config.send_buff_size);
 	http::set_thread_num(config.accept_num);
 	http::set_time_out(config.timeout);
 
@@ -132,7 +132,7 @@ int net_service::web::WebServer::load_handler(const std::string config_path)
 		auto func = get_func(dll_path, func_name);
 		if (nullptr == func)
 		{
-			LOG(LERROR, "无法找到函数");
+			LOG(LERROR, "无法找到函数 ", dll_path,"::",func_name);
 			continue;
 		}
 

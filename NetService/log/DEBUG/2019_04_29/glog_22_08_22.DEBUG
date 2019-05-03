@@ -1,7 +1,0 @@
-[ 23392 ][ 22:08:31 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer 1  
-[ 23392 ][ 22:08:31 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer  
-[ 23392 ][ 22:08:31 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer out  
-[ 23392 ][ 22:09:09 ][ DEBUG ]  [ net_service::tcp::TcpServiceImpl::close_client ] close  
-[ 24144 ][ 22:09:09 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer 1  
-[ 24144 ][ 22:09:09 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer  
-[ 24144 ][ 22:09:09 ][ DEBUG ]  [ net_service::tcp::TcpLink::~TcpLink ] close timer out  

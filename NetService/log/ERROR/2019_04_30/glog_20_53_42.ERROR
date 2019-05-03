@@ -1,2 +1,0 @@
-[ 32208 ][ 20:53:42 ][ ERROR ]  [ base_db.cpp 48 BaseDb::exec ] sql: UPDATE session SET status='0' WHERE username='' AND status!=0; code: 21 msg: (null)  
-[ 32208 ][ 20:53:42 ][ ERROR ]  [ base_db.cpp 77 BaseDb::get ] sql: SELECT * FROM session WHERE 1=1 AND status!=0; code: 21 msg: (null)  

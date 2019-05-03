@@ -1,3 +1,0 @@
-[26568][20:17:10][INFO] [net_service::http::HttpServiceImpl::recv_request_handler]接收到一个请求,2
-[28056][20:17:10][INFO] [net_service::http::HttpServiceImpl::recv_request_handler]接收到一个请求,3
-[28056][20:17:11][INFO] [net_service::http::HttpServiceImpl::recv_request_handler]接收到一个请求,4

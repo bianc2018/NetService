@@ -52,30 +52,24 @@ class NewPublishImpl: public boost::noncopyable
 public:
 	static NewPublishImpl &instance();
 public:
-	//接口
-	//获取新闻列表
+	int deal_get_data(HTTP_HANDLE handle);
+	int deal_get_datas(HTTP_HANDLE handle);
+	
 	int deal_get_news(HTTP_HANDLE handle);
-
-	//获取会话列表
 	int deal_get_sessions(HTTP_HANDLE handle);
-
-	//获取用户列表
 	int deal_get_users(HTTP_HANDLE handle);
-
+	
 	//获取新闻
 	int deal_get_new(HTTP_HANDLE handle);
+	//获取当前用户信息
+	int deal_get_now_user(HTTP_HANDLE handle);
 
 	//登录
 	int deal_login(HTTP_HANDLE handle);
-
 	//注册
 	int deal_register(HTTP_HANDLE handle);
-
 	//登出
 	int deal_logout(HTTP_HANDLE handle);
-
-	//获取当前用户信息
-	int deal_get_now_user(HTTP_HANDLE handle);
 
 	//创建新闻
 	int deal_create_new(HTTP_HANDLE handle);
@@ -121,10 +115,16 @@ public:
 
 	int before_filter(HTTP_HANDLE handle);
 	int after_filter(HTTP_HANDLE handle);
-public:
+private:
 	NewsMgr new_mgr_;
 	SessionMgr session_mgr_;
 	UserMgr user_mgr_;
+
+	//权限
+	std::map<std::string, int> permission_map_;
+	//路径
+	std::string uri_path_;
+	std::string web_root_;
 private:
 	NewPublishImpl();
 
@@ -134,12 +134,17 @@ private:
 	std::string get_cookie(HTTP_HANDLE handle,const std::string &key, const std::string &notfond="");
 	int set_cookie(HTTP_HANDLE handle, const std::string &key, const std::string &value);
 
+	std::string get_uri_value(HTTP_HANDLE handle, const std::string &key, const std::string &notfond = "");
+
+	void get_news(Json &data,const std::string& _where,const std::string &orderby,int beg,int end,int tran=0);
+	void get_sessions(Json &data, const std::string& _where, const std::string &orderby, int beg, int end);
+	void get_users(Json &data, const std::string& _where, const std::string &orderby, int beg, int end);
 private:
 	//过滤函数
 	//cookie 更新
 	int filter_session(HTTP_HANDLE handle);
 	//权限鉴别
 	int filter_permission(HTTP_HANDLE handle);
-
+	
 };
 #endif

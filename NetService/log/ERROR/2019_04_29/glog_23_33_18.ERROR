@@ -1,4 +1,0 @@
-[ 28820 ][ 23:33:21 ][ ERROR ]  [ http_service_impl.cpp 212 net_service::http::HttpServiceImpl::recv_request_handler ] 关闭一个连接 ret= -2  
-[ 26668 ][ 23:33:21 ][ ERROR ]  [ http_service_impl.cpp 212 net_service::http::HttpServiceImpl::recv_request_handler ] 关闭一个连接 ret= -2  
-[ 26668 ][ 23:33:26 ][ ERROR ]  [ http_service_impl.cpp 212 ne[ 19636 ][ 23:33:26 ][ ERROR ]  [ tcp_link.cpp 48 net_service::tcp::TcpLink::asyn[ 19636 ][ 23:33:26 ][ ERROR ]  [ http_service_impl.cpp 212 net_service::http::HttpServiceImpl::recv_request_handler ] 关闭一个连接 ret= -2  
-[ 26668 ][ 23:33:26 ][ ERROR ]  [ http_service_impl.cpp 212 net_service::http::HttpServiceImpl::recv_request_handler ] 关闭一个连接 ret= -3  

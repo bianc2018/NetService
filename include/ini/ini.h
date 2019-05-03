@@ -5,7 +5,7 @@
 class Ini
 {
 public:
-	int patser(const std::string file_path);
+	int parser(const std::string file_path);
 	
 	int get_config_int(const std::string&tag, const std::string&key, int nofond=0);
 	std::string get_config_string(const std::string&tag, const std::string&key, std::string nofond = "");

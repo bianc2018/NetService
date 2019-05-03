@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-int Ini::patser(const std::string file_path)
+int Ini::parser(const std::string file_path)
 {
 	//boost::property_tree::ptree
 	try

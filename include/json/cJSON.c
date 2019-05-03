@@ -2,7 +2,7 @@
   Copyright (c) 2009-2017 Dave Gamble and cJSON contributors
 
   Permission is hereby granted, free of charge, to any person obtaining a copy
-  of this software and associated documentation files (the "Software"), to deal
+  of this software and associated documentation files (the "Software"), to np
   in the Software without restriction, including without limitation the rights
   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
   copies of the Software, and to permit persons to whom the Software is
@@ -16,7 +16,7 @@
   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER npINGS IN
   THE SOFTWARE.
 */
 
@@ -120,7 +120,7 @@ static int case_insensitive_strcmp(const unsigned char *string1, const unsigned 
 typedef struct internal_hooks
 {
     void *(CJSON_CDECL *allocate)(size_t size);
-    void (CJSON_CDECL *deallocate)(void *pointer);
+    void (CJSON_CDECL *nplocate)(void *pointer);
     void *(CJSON_CDECL *reallocate)(void *pointer, size_t size);
 } internal_hooks;
 
@@ -173,7 +173,7 @@ CJSON_PUBLIC(void) cJSON_InitHooks(cJSON_Hooks* hooks)
     {
         /* Reset hooks */
         global_hooks.allocate = malloc;
-        global_hooks.deallocate = free;
+        global_hooks.nplocate = free;
         global_hooks.reallocate = realloc;
         return;
     }
@@ -184,15 +184,15 @@ CJSON_PUBLIC(void) cJSON_InitHooks(cJSON_Hooks* hooks)
         global_hooks.allocate = hooks->malloc_fn;
     }
 
-    global_hooks.deallocate = free;
+    global_hooks.nplocate = free;
     if (hooks->free_fn != NULL)
     {
-        global_hooks.deallocate = hooks->free_fn;
+        global_hooks.nplocate = hooks->free_fn;
     }
 
     /* use realloc only if both free and malloc are used */
     global_hooks.reallocate = NULL;
-    if ((global_hooks.allocate == malloc) && (global_hooks.deallocate == free))
+    if ((global_hooks.allocate == malloc) && (global_hooks.nplocate == free))
     {
         global_hooks.reallocate = realloc;
     }
@@ -223,13 +223,13 @@ CJSON_PUBLIC(void) cJSON_Delete(cJSON *item)
         }
         if (!(item->type & cJSON_IsReference) && (item->valuestring != NULL))
         {
-            global_hooks.deallocate(item->valuestring);
+            global_hooks.nplocate(item->valuestring);
         }
         if (!(item->type & cJSON_StringIsConst) && (item->string != NULL))
         {
-            global_hooks.deallocate(item->string);
+            global_hooks.nplocate(item->string);
         }
-        global_hooks.deallocate(item);
+        global_hooks.nplocate(item);
         item = next;
     }
 }
@@ -426,7 +426,7 @@ static unsigned char* ensure(printbuffer * const p, size_t needed)
         newbuffer = (unsigned char*)p->hooks.reallocate(p->buffer, newsize);
         if (newbuffer == NULL)
         {
-            p->hooks.deallocate(p->buffer);
+            p->hooks.nplocate(p->buffer);
             p->length = 0;
             p->buffer = NULL;
 
@@ -439,7 +439,7 @@ static unsigned char* ensure(printbuffer * const p, size_t needed)
         newbuffer = (unsigned char*)p->hooks.allocate(newsize);
         if (!newbuffer)
         {
-            p->hooks.deallocate(p->buffer);
+            p->hooks.nplocate(p->buffer);
             p->length = 0;
             p->buffer = NULL;
 
@@ -449,7 +449,7 @@ static unsigned char* ensure(printbuffer * const p, size_t needed)
         {
             memcpy(newbuffer, p->buffer, p->offset + 1);
         }
-        p->hooks.deallocate(p->buffer);
+        p->hooks.nplocate(p->buffer);
     }
     p->length = newsize;
     p->buffer = newbuffer;
@@ -812,7 +812,7 @@ static cJSON_bool parse_string(cJSON * const item, parse_buffer * const input_bu
 fail:
     if (output != NULL)
     {
-        input_buffer->hooks.deallocate(output);
+        input_buffer->hooks.nplocate(output);
     }
 
     if (input_pointer != NULL)
@@ -1129,7 +1129,7 @@ static unsigned char *print(const cJSON * const item, cJSON_bool format, const i
         printed[buffer->offset] = '\0'; /* just to be sure */
 
         /* free the buffer */
-        hooks->deallocate(buffer->buffer);
+        hooks->nplocate(buffer->buffer);
     }
 
     return printed;
@@ -1137,12 +1137,12 @@ static unsigned char *print(const cJSON * const item, cJSON_bool format, const i
 fail:
     if (buffer->buffer != NULL)
     {
-        hooks->deallocate(buffer->buffer);
+        hooks->nplocate(buffer->buffer);
     }
 
     if (printed != NULL)
     {
-        hooks->deallocate(printed);
+        hooks->nplocate(printed);
     }
 
     return NULL;
@@ -1182,7 +1182,7 @@ CJSON_PUBLIC(char *) cJSON_PrintBuffered(const cJSON *item, int prebuffer, cJSON
 
     if (!print_value(item, &p))
     {
-        global_hooks.deallocate(p.buffer);
+        global_hooks.nplocate(p.buffer);
         return NULL;
     }
 
@@ -1920,7 +1920,7 @@ static cJSON_bool add_item_to_object(cJSON * const object, const char * const st
 
     if (!(item->type & cJSON_StringIsConst) && (item->string != NULL))
     {
-        hooks->deallocate(item->string);
+        hooks->nplocate(item->string);
     }
 
     item->string = new_key;
@@ -2928,5 +2928,5 @@ CJSON_PUBLIC(void *) cJSON_malloc(size_t size)
 
 CJSON_PUBLIC(void) cJSON_free(void *object)
 {
-    global_hooks.deallocate(object);
+    global_hooks.nplocate(object);
 }

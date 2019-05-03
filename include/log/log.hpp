@@ -29,6 +29,8 @@ const std::string SPLIT("/");
 const std::string SPACE_ELE(" ");
 const std::string WIN_SPLIT("\\");
 
+#define _CRT_SECURE_NO_WARNINGS 1
+
 class GLOG
 {
 public:
@@ -63,10 +65,15 @@ public:
 		//单例模式
 		if (nullptr == p_glog_)
 			p_glog_.reset(new GLOG("glog"));
-
+		boost::system::error_code ec;
 		for (int i = 0; i <= LV_SIZE; i++)
 		{
-			auto log_size = boost::filesystem::file_size(p_glog_->file_path_[i]);
+			auto log_size = boost::filesystem::file_size(p_glog_->file_path_[i],ec);
+			if (ec)
+			{
+				printf("获取文件大小失败 %d,%s\n", ec.value(), ec.message().c_str());
+				continue;
+			}
 			if (log_size >= p_glog_->block_size_)
 			{
 				p_glog_->init_log_file("glog",i);

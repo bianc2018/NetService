@@ -26,6 +26,8 @@ namespace net_service
 		HTTP_SERVICE_API void set_send_buff_size(size_t size);
 		HTTP_SERVICE_API void set_log_path(const std::string &path);
 		HTTP_SERVICE_API void set_thread_num(size_t size);
+		//获取ip port
+		HTTP_SERVICE_API HTTP_ADDRESSS get_client_address(HTTP_HANDLE handle);
 		//s
 		HTTP_SERVICE_API void set_time_out(size_t time_out);
 
@@ -36,6 +38,9 @@ namespace net_service
 
 		//请求
 		HTTP_SERVICE_API void new_request(HTTP_HANDLE handle);
+
+		HTTP_SERVICE_API int request_set_body_len(HTTP_HANDLE handle,size_t size);
+		HTTP_SERVICE_API size_t request_get_body_len(HTTP_HANDLE handle);
 
 		HTTP_SERVICE_API int request_set_method(HTTP_HANDLE handle,const std::string &value);
 		HTTP_SERVICE_API std::string request_get_method(HTTP_HANDLE handle);
@@ -63,6 +68,9 @@ namespace net_service
 		
 		//回复
 		HTTP_SERVICE_API void new_response(HTTP_HANDLE handle);
+
+		HTTP_SERVICE_API int response_set_body_len(HTTP_HANDLE handle, size_t size);
+		HTTP_SERVICE_API size_t response_get_body_len(HTTP_HANDLE handle);
 
 		HTTP_SERVICE_API int response_set_version(HTTP_HANDLE handle, const std::string &value);
 		HTTP_SERVICE_API std::string response_get_version(HTTP_HANDLE handle);

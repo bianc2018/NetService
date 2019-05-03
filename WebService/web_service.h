@@ -16,7 +16,7 @@ namespace net_service
 			int accept_num;
 			int timeout;
 			size_t recv_buff_size;
-			size_t set_buff_size;
+			size_t send_buff_size;
 
 			std::string mime_path;
 			std::string reason_path;

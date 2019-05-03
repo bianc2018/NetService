@@ -1,3 +1,0 @@
-[20960][21:21:40][ERROR] [web_server.cpp72net_service::web::WebServer::load_handler]json º”‘ÿ ß∞‹£°path=./handlers.json,ret=-1
-[16676][21:22:22][ERROR] [web_server.cpp146net_service::web::WebServer::deal_default]404 uri=./web_root/index.html
-[13316][21:22:27][ERROR] [web_server.cpp146net_service::web::WebServer::deal_default]404 uri=./web_root/index.html

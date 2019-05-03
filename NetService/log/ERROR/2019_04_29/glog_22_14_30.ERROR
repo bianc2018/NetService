@@ -1,4 +1,0 @@
-[ 25660 ][ 22:14:34 ][ ERROR ]  [ http_service_impl.cpp 197 net_service::http::HttpServiceImpl::recv_request_handler ] 关闭一个连接 ret= -3  
-[ 20872 ][ 22:14:34 ][ ERROR ]  [ http_service_impl.cpp 197 net_service::http::HttpServiceImpl::recv_request_handler ] 关闭一个连接 ret= -2  
-[ 25660 ][ 22:14:37 ][ ERROR ]  [ http_service_impl.cpp 197 net_service::http::HttpServiceImpl::recv_request_handler ] 关闭一个连接 ret= -3  
-[ 20872 ][ 22:14:37 ][ ERROR ]  [ http_service_impl.cpp 197 net_service::http::HttpServiceImpl::recv_request_handler ] 关闭一个连接 ret= -2  
