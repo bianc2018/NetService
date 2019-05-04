@@ -338,7 +338,7 @@
                 '{"new":' + new_to_json(now_new) + '}',
                 function (data) {
                     if (data.result == 0) {
-                        is_edit = false;
+                        
                         var json = '{"new_id":"' + now_new.code + '","status":' + 3 + '}';
 
                         $.post("reset_new_status.action", json, function (data) {
@@ -348,6 +348,8 @@
                             }
                             else {
                                 alert("发布成功");
+                                is_edit = false;
+                                $('#new_is_edit').html('');
                                 change_staus(3);
                             }
                         });

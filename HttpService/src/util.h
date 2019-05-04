@@ -8,7 +8,7 @@ namespace net_service
 	namespace http
 	{
 		const size_t BODY_MAX_SIZE(1024 * 1024 * 10);
-		const std::string BODY_CACHE_PATH("./http_body_cache");
+		const std::string BODY_CACHE_PATH("./cache/http_body_cache");
 		//request ÐÐÍ·
 		const int REQ_METHOD(0);
 		const int REQ_URI(1);

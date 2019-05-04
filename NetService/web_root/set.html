@@ -358,6 +358,7 @@
             $.post("/remove_new.action", '{"new_id":"'+new_id+'"}', function (data) {
                 if (data.result == 0) {
                     //window.location.href = '/set.html?menu=news_list';
+                    alert("已删除");
                     load_news_list();
                 }
                 else
@@ -368,7 +369,9 @@
             $.post("/delete_sessions.action", function (data) {
                 if (data.result == 0) {
                     //window.location.href = '/set.html?menu=news_list';
+                    alert("清理完毕")
                     load_sessions_list();
+                    
                 }
                 else {
                     if (data.result != null) {
@@ -382,6 +385,7 @@
             $.post("/delete_new.action",'{"new_id":"' + new_id + '"}', function (data) {
                 if (data.result == 0) {
                     //window.location.href = '/set.html?menu=news_list';
+                    alert("清理完毕");
                     load_news_list();
                 }
                 else
@@ -393,6 +397,7 @@
             $.post("/remove_user.action", '{"username":"' + username + '"}', function (data) {
                 if (data.result == 0) {
                     //window.location.href = '/set.html?menu=news_list';
+                    alert("操作成功");
                     load_users_list();
                 }
                 else

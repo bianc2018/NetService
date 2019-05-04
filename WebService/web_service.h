@@ -24,7 +24,6 @@ namespace net_service
 			std::string log_path;
 			std::string web_root;
 
-
 		};
 		WEB_SERVICE_API WEB_HANDLE start_server(WebSeviceConfigData config);
 

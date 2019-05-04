@@ -36,6 +36,8 @@
 			TCP_ERROR_LINK_HANDLE_ERROR = -10,
 			//服务句柄无效
 			TCP_ERROR_SERVER_HANDLE_ERROR = -11,
+			//申请缓存区失败
+			TCP_ERROR_RECV_BUFF_NEW_ERROR = -12,
 		};
 		//回调函数
 		//接收到连接

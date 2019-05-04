@@ -115,20 +115,29 @@ int SessionMgr::check_session(const std::string & code)
 	DBTable tb = db_.get(sql);
 	LOG(LDEBUG,  " session ", sql);
 	if (tb.get_rows_num() <= 0)
+	{
+		LOG(LDEBUG, " session 不存在");
 		return  -1;
+	}
 
 	//是否失效
 	int status = 0;
 	GET_CELL_INT0(tb, status);
 	if (0 == status)
+	{
+		LOG(LDEBUG, " session 无效");
 		return -2;
+	}
 
 	//是否活跃
 	size_t active_time;
 	size_t local_time = LOCAL_TIME;
 	GET_CELL_INT0(tb, active_time);//s
 	if (local_time - active_time > time_out_)
+	{
+		LOG(LDEBUG, " session 过期");
 		return -3;
+	}
 
 	return 0;
 }
@@ -250,10 +259,17 @@ int SessionMgr::init_db_table()
 	return db_.exec(NEWS_TABLE);
 }
 
+#include <boost/uuid/uuid.hpp>
+#include <boost/uuid/uuid_io.hpp>
+#include <boost/uuid/uuid_generators.hpp>
+
 int SessionMgr::get_unique_code(SessionInfo & user)
 {
+	boost::uuids::uuid a_uuid = boost::uuids::random_generator()(); // 这里是两个() ，因为这里是调用的 () 的运算符重载
+	user.code = boost::uuids::to_string(a_uuid);
 	////ip+username+login time
 	//std::hash<std::string> hash_string;
+	/*
 	int i = 0;
 	int p = ++code_p_;
 	while (true)
@@ -266,6 +282,6 @@ int SessionMgr::get_unique_code(SessionInfo & user)
 		}
 		i++;
 	}
-	
+	*/
 	return 0;
 }

@@ -107,6 +107,7 @@ void net_service::tcp::TcpServiceImpl::accept(TCP_HANDLE server_handle, ACCEPT_H
 	auto handle = start_link(psock);
 	std::lock_guard<std::mutex> lock(lock_link_server_);
 	link_server_.insert(std::make_pair(handle, server_handle));
+	LOG(LDEBUG, "accept ", server_handle, handle, ",all link=", links_.size());
 	accept_handler(server_handle, handle,err);
 }
 

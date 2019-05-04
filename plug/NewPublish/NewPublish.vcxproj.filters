@@ -46,6 +46,9 @@
     <Filter Include="资源文件\js">
       <UniqueIdentifier>{cf804946-8a73-480f-b53b-03f1bd3bb514}</UniqueIdentifier>
     </Filter>
+    <Filter Include="资源文件\test">
+      <UniqueIdentifier>{72b36d5b-179f-4e64-9067-9ceef9c22e67}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\include\log\log.cpp">
@@ -179,6 +182,12 @@
     </None>
     <None Include="..\..\NetService\web_root\js\user.js">
       <Filter>资源文件\js</Filter>
+    </None>
+    <None Include="..\..\NetService\permission.json">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="..\..\test\loc_test.py">
+      <Filter>资源文件\test</Filter>
     </None>
   </ItemGroup>
 </Project>

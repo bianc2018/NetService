@@ -33,6 +33,13 @@ enum HTTP_ERROR_CODE
 	//取数据
 	HTTP_READ_FILE_ERROR = -108,
 	HTTP_NOT_GET_FILE_LEN = -109,
+	//回复缓冲区申请失败
+	HTTP_SEND_BUFF_NEW_ERROR = -110,
+	//无效的请求
+	HTTP_INVALID_REQ_PTR = -111,
+	//无效的回复
+	HTTP_INVALID_RES_PTR = -112,
+
 };
 //解析状态
 enum PARSER_STATUS

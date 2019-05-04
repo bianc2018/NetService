@@ -312,6 +312,9 @@ int NewPublishImpl::before_filter(HTTP_HANDLE handle)
 	ret = filter_permission(handle);
 	if (ret != 0)
 		return ret;
+	ret = filter_index(handle);
+	if (ret != 0)
+		return ret;
 	return 0;
 }
 
@@ -359,6 +362,18 @@ NewPublishImpl::NewPublishImpl()
 	//./web_root/cache
 	uri_path_ = ini.get_config_string("NewPublish", "uri_path", "/cache");
 	web_root_ = ini.get_config_string("NewPublish", "web_root", "./web_root");
+	index_page_ = ini.get_config_string("NewPublish", "index", "");
+
+	std::string permission_path = ini.get_config_string("NewPublish", "permission_path", "./permission.json");
+	Json permission_json;
+	permission_json.from_file(permission_path);
+	auto per_array = permission_json.get_array("permission");
+	for (auto it : per_array)
+	{
+		auto uri = it.get_string_value("uri");
+		auto permission = it.get_int_value("permission");
+		permission_map_.insert(std::make_pair(uri, permission));
+	}
 	LOG(LINFO, "插件 NewPublishImpl 加载完毕");
 }
 
@@ -545,10 +560,26 @@ int NewPublishImpl::filter_permission(HTTP_HANDLE handle)
 	//比较权限
 	if (user_perm <= page_perm)
 		return 0;
-
+	LOG(LERROR, "权限不足，page_perm=", page_perm, ",user_perm=", user_perm, ",uri=", uri);
 	//权限不足
-	response_set_status_code(handle,"403");
+	Json result;
+	result.add_object_value("result", WEB_PERMISSION_DENIED);
+	//response_set_status_code(handle,"403");
+	write_json(handle, result);
 	return -1;
+}
+
+int NewPublishImpl::filter_index(HTTP_HANDLE handle)
+{
+	auto uri = request_get_uri(handle);
+	if ("/" == uri && index_page_!="")
+	{
+		uri = index_page_;
+		response_set_status_code(handle, "302");
+		response_set_header(handle,"Location", uri);
+		return -1;
+	}
+	return 0;
 }
 
 split_vector split(const std::string & s, const std::string & sub_split)

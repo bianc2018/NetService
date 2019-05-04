@@ -3,6 +3,7 @@
 #include "tcp_link.h"
 
 #include <map>
+#include <atomic>
 
 #include <boost/bind.hpp>
 #include "boost/function.hpp"
@@ -30,12 +31,9 @@ namespace net_service
 			std::shared_ptr<boost::asio::steady_timer> start_timer(int time_out, boost::function<void()> call);
 			int stop_timer(std::shared_ptr<boost::asio::steady_timer>);
 		private:
-			//³¬Ê±
-			std::vector<std::shared_ptr<boost::asio::steady_timer>> timers_;
+			
 			//Ì×½Ó×Ö
 			std::shared_ptr<boost::asio::ip::tcp::socket> sock_;
-			//Ëø
-			static std::mutex lock;
 		};
 	}
 }

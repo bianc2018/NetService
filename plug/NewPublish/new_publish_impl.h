@@ -125,6 +125,8 @@ private:
 	//路径
 	std::string uri_path_;
 	std::string web_root_;
+
+	std::string index_page_;
 private:
 	NewPublishImpl();
 
@@ -145,6 +147,8 @@ private:
 	int filter_session(HTTP_HANDLE handle);
 	//权限鉴别
 	int filter_permission(HTTP_HANDLE handle);
+	//首页重定位
+	int filter_index(HTTP_HANDLE handle);
 	
 };
 #endif

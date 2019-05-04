@@ -474,8 +474,17 @@ int NewsMgr::init_db_table()
 	return db_.exec(NEW_LIKE_TABLE);
 }
 
+#include <boost/uuid/uuid.hpp>
+#include <boost/uuid/uuid_io.hpp>
+#include <boost/uuid/uuid_generators.hpp>
+
 int  NewsMgr::get_unique_code(NewInfo & it)
 {
+
+	boost::uuids::uuid a_uuid = boost::uuids::random_generator()(); // 这里是两个() ，因为这里是调用的 () 的运算符重载
+	it.code = boost::uuids::to_string(a_uuid);
+	
+	/*
 	std::hash<std::string> hash_string;
 	int i = 0;
 	while (true)
@@ -489,6 +498,6 @@ int  NewsMgr::get_unique_code(NewInfo & it)
 			return 0;
 		}
 		i++;
-	}
+	}*/
 	return 0;
 }

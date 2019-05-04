@@ -1,0 +1,68 @@
+{
+  "permission": [
+    {
+      "uri": "/logout.action",
+      "permission": 2
+    },
+    {
+      "uri": "/create_new.action",
+      "permission": 1
+    },
+    {
+      "uri": "/save_new.action",
+      "permission": 1
+    },
+    {
+      "uri": "/upload_new_image.action",
+      "permission": 1
+    },
+    {
+      "uri": "/new_like.action",
+      "permission": 2
+    },
+    {
+      "uri": "/add_new_comment.action",
+      "permission": 2
+    },
+    {
+      "uri": "/remove_new.action",
+      "permission": 1
+    },
+    {
+      "uri": "/reset_password.action",
+      "permission": 2
+    },
+    {
+      "uri": "/get_users.action",
+      "permission": 0
+    },
+    {
+      "uri": "/remove_user.action",
+      "permission": 0
+    },
+    {
+      "uri": "/delete_user.action",
+      "permission": 0
+    },
+    {
+      "uri": "/delete_new.action",
+      "permission": 0
+    },
+    {
+      "uri": "/reset_user_permission.action",
+      "permission": 0
+    },
+    {
+      "uri": "/reset_new_status.action",
+      "permission": 1
+    },
+    {
+      "uri": "/get_sessions.action",
+      "permission": 0
+    },
+    {
+      "uri": "/delete_sessions.action",
+      "permission": 0
+    }
+  ]
+}

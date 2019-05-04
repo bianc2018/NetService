@@ -4,20 +4,19 @@
 
 #include "../include/log/log.hpp"
 
-std::mutex lock;
-
+std::mutex server_lock;
 net_service::tcp::TcpServer::TcpServer(io_service & service, boost::function<void(TCP_HANDLE handle, std::shared_ptr<boost::asio::ip::tcp::socket> psock,int err)> accept_call_back, std::string ip, int port, int accept_num ):\
 	service_(service), accept_handler_(accept_call_back), server_(service_)
 {
 	LOG(LINFO, "initing server£ºip=", ip, ":", port);
-
-	static TCP_HANDLE record = 1;
-	lock.lock();
+	static TCP_HANDLE record=0;
+	
+	server_lock.lock();
 	record++;
 	if (record < 0)
 		record = 1;
 	handle_ = record;
-	lock.unlock();
+	server_lock.unlock();
 
 	boost::asio::ip::tcp::resolver resolver(service_);
 	boost::asio::ip::tcp::endpoint endpoint = *resolver.resolve(ip, std::to_string(port)).begin();

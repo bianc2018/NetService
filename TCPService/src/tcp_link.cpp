@@ -4,39 +4,39 @@
 
 #include "../include/log/log.hpp"
 
-std::mutex net_service::tcp::TcpLink::lock;
-
+std::mutex link_lock;
 net_service::tcp::TcpLink::TcpLink(std::shared_ptr<boost::asio::ip::tcp::socket> sock):sock_(sock)
 {
-	static TCP_HANDLE record = 1;
-	lock.lock();
+	static TCP_HANDLE record=0;
+	link_lock.lock();
 	record++;
 	if (record < 0)
-		record = 1;
+		record = 0;
 	handle_ = record;
-	lock.unlock();
+	link_lock.unlock();
 }
 
 net_service::tcp::TcpLink::~TcpLink()
 {
-	//LOG(LDEBUG, "close timer", timers_.size());
-	lock.lock();
-	for (auto timer : timers_)
-	{
-		boost::system::error_code ec;
-		//LOG(LDEBUG, "close timer");
-		timer->cancel(ec);
-	}
-	//LOG(LDEBUG, "close timer in");
-	timers_.clear();
-	lock.unlock();
-	//LOG(LDEBUG, "close timer out");
+	
 }
 
 void net_service::tcp::TcpLink::async_recv(RECV_HANDLER recv_handler, int time_out,int buff_size)
 {
+	//申请buff
+	std::shared_ptr<char> buff_ptr;
+	try
+	{
+		buff_ptr = SHARED_BUFF_PTR(buff_size);
+	}
+	catch (std::bad_alloc &e)
+	{
+		LOG(LERROR, "申请接收缓存区失败,handle=", handle_);
+		recv_handler(handle_,nullptr,0, TCP_ERROR_RECV_BUFF_NEW_ERROR);
+		return;
+	}
 	//申请 读buff
-	auto buff_ptr = SHARED_BUFF_PTR(buff_size);
+	//auto buff_ptr = SHARED_BUFF_PTR(buff_size);
 	//开始计时
 	auto timer = start_timer(time_out, boost::bind(recv_handler, handle_, nullptr, 0, TCP_ERROR_CODE_RECV_TIME_OUT));
 	//读到数据后的回调函数
@@ -125,9 +125,9 @@ std::shared_ptr<boost::asio::steady_timer> net_service::tcp::TcpLink::start_time
 	
 	timer->expires_from_now(std::chrono::seconds(time_out));
 	timer->async_wait(time_out_handler);
-	lock.lock();
-	timers_.push_back(timer);
-	lock.unlock();
+	//lock.lock();
+	//timers_.push_back(timer);
+	//lock.unlock();
 	return timer;
 }
 
@@ -135,6 +135,7 @@ int net_service::tcp::TcpLink::stop_timer(std::shared_ptr<boost::asio::steady_ti
 {
 	boost::system::error_code ec;
 	timer->cancel(ec);
+	/*
 	lock.lock();
 	auto p = timers_.begin();
 	for (; p != timers_.end(); p++)
@@ -146,5 +147,6 @@ int net_service::tcp::TcpLink::stop_timer(std::shared_ptr<boost::asio::steady_ti
 		}
 	}
 	lock.unlock();
+	*/
 	return ec.value();
 }

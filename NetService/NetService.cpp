@@ -35,6 +35,7 @@ void print_version_info()
 
 int main()
 {
+	disable_console_edit();
 	print_version_info();
 	WebSeviceConfigData config;
 	
@@ -59,7 +60,6 @@ int main()
 
 	config.web_root = ini.get_config_string("web", "root", "./web_root");
 	
-
 	WEB_HANDLE handle= start_server(config);
 	if (nullptr == handle)
 	{

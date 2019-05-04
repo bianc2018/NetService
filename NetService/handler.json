@@ -21,9 +21,6 @@
       "func": "np_after",
       "dll": "./NEWPUBLISH.dll"
     },
-
-
-
     {
       "type": 1,
       "uri": "/get_news.action",

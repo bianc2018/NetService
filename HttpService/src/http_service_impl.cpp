@@ -99,7 +99,17 @@ void net_service::http::HttpServiceImpl::run()
 
 net_service::http::req_ptr net_service::http::HttpServiceImpl::new_req(HTTP_HANDLE handle)
 {
-	auto request = std::make_shared<HttpRequest>();
+	req_ptr request=nullptr;
+	try
+	{
+		request = std::make_shared<HttpRequest>();
+	}
+	catch (std::bad_alloc &e)
+	{
+		LOG(LERROR, "创建新的请求失败,handle=",handle);
+		return nullptr;
+	}
+
 	req_map_[handle] = request;
 //	req_map_.insert(std::make_pair(handle, request));
 	return request;
@@ -107,10 +117,19 @@ net_service::http::req_ptr net_service::http::HttpServiceImpl::new_req(HTTP_HAND
 
 net_service::http::res_ptr net_service::http::HttpServiceImpl::new_res(HTTP_HANDLE handle)
 {
-	auto response = std::make_shared<HttpResponse>();
+	res_ptr response = nullptr;
+	try
+	{
+		response = std::make_shared<HttpResponse>();
+	}
+	catch (std::bad_alloc &e)
+	{
+		LOG(LERROR, "创建新的回复失败,handle=", handle);
+		return nullptr;
+	}
+	
 	res_map_[handle] = response;
-	//res_map_.insert(std::make_pair(handle, response));
-	//LOG(LDEBUG, "new res addr=", (long long)response.get());
+	
 	return response;
 }
 
@@ -185,6 +204,12 @@ void net_service::http::HttpServiceImpl::accept_handler(TCP_HANDLE server_handle
 	if (TCP_ERROR_CODE_OK == err)
 	{
 		req_ptr req = new_req(link_handle);
+		if (nullptr == req)
+		{
+			LOG(LERROR, "无法申请新的请求，可能是内存空间不足,handle=", server_handle, "::", link_handle);
+			close_link(link_handle);
+			return;
+		}
 		tcp::async_recv(link_handle, \
 			std::bind(&HttpServiceImpl::recv_request_handler, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, server_handler, req),\
 			time_out_);
@@ -221,6 +246,13 @@ void net_service::http::HttpServiceImpl::recv_request_handler(TCP_HANDLE handle,
 		else if (PARSER_OVER == ret)
 		{
 			auto response = new_res(handle);
+			if (nullptr == response)
+			{
+				LOG(LERROR, "无法申请新的回复，可能是内存空间不足,handle=",handle);
+				close_link(handle);
+				return;
+			}
+
 			LOG(LINFO, "接收到一个请求,", request->get_uri(),handle);
 			//默认短链接
 			auto ka = request->get_head_value("Connection", "close");
@@ -249,7 +281,17 @@ void net_service::http::HttpServiceImpl::recv_request_handler(TCP_HANDLE handle,
 void net_service::http::HttpServiceImpl::send_response(TCP_HANDLE handle, res_ptr response, SERVER_HANDLER server_handler, size_t pos)
 {
 	//申请buff
-	auto buff_ptr = SHARED_BUFF_PTR(send_buff_size_);
+	std::shared_ptr<char> buff_ptr;
+	try
+	{
+		buff_ptr = SHARED_BUFF_PTR(send_buff_size_);
+	}
+	catch(std::bad_alloc &e)
+	{
+		LOG(LERROR, "申请发送缓存区失败,handle=", handle);
+		server_handler(handle, HTTP_SEND_BUFF_NEW_ERROR);
+		return;
+	}
 	//读数据
 	int readlen = response->get_content(buff_ptr.get(),pos, send_buff_size_);
 	auto p = get_res(handle);
