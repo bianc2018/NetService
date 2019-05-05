@@ -245,30 +245,7 @@ void net_service::http::HttpServiceImpl::recv_request_handler(TCP_HANDLE handle,
 		}//解析完毕，字节已接收完了
 		else if (PARSER_OVER == ret)
 		{
-			auto response = new_res(handle);
-			if (nullptr == response)
-			{
-				LOG(LERROR, "无法申请新的回复，可能是内存空间不足,handle=",handle);
-				close_link(handle);
-				return;
-			}
-
-			LOG(LINFO, "接收到一个请求,", request->get_uri(),handle);
-			//默认短链接
-			auto ka = request->get_head_value("Connection", "close");
-			response->set_head_value("Connection", ka);
-
-			if (nullptr == server_handler)
-			{
-				LOG(LERROR, "opt->server_handler is nullptr,link_handle=", handle);
-				close_link(handle);
-				return;
-			}
-			//处理
-			server_handler(handle, HTTP_ERROR_CODE_OK);
-
-			//发送
-			send_response(handle, response,server_handler,0);
+			tcp::post_task(std::bind(&HttpServiceImpl::deal_a_requset, this, handle, request, server_handler));
 		}
 	}
 	else
@@ -339,6 +316,35 @@ void net_service::http::HttpServiceImpl::send_response_handler(TCP_HANDLE handle
 		LOG(LERROR, "关闭一个连接 ret=", err);
 		close_link(handle);
 	}
+}
+
+void net_service::http::HttpServiceImpl::deal_a_requset(TCP_HANDLE handle, req_ptr request, SERVER_HANDLER server_handler)
+{
+	LOG(LINFO, "接收到一个请求,", request->get_uri(), handle);
+
+	auto response = new_res(handle);
+	if (nullptr == response)
+	{
+		LOG(LERROR, "无法申请新的回复，可能是内存空间不足,handle=", handle);
+		close_link(handle);
+		return;
+	}
+
+	//默认短链接
+	auto ka = request->get_head_value("Connection", "close");
+	response->set_head_value("Connection", ka);
+
+	if (nullptr == server_handler)
+	{
+		LOG(LERROR, "opt->server_handler is nullptr,link_handle=", handle);
+		close_link(handle);
+		return;
+	}
+	//处理
+	server_handler(handle, HTTP_ERROR_CODE_OK);
+
+	//发送
+	send_response(handle, response, server_handler, 0);
 }
 
 

@@ -45,6 +45,7 @@
 		//typedef void(*ACCEPT_HANDLER)(TCP_HANDLE server_handle,TCP_HANDLE link_handle);
 		//接收完数据 返回
 		typedef  std::function<void(TCP_HANDLE handle, std::shared_ptr<char> recv_data, int recv_len, int err_code)> RECV_HANDLER;
+
 		//typedef void(*RECV_HANDLER)(TCP_HANDLE handle, std::shared_ptr<char> recv_data, int recv_len);
 		//发送完数据
 		typedef  std::function<void(TCP_HANDLE handle, int err_code)> SEND_HANDLER;
@@ -53,6 +54,8 @@
 		typedef std::pair<std::string, int> ADDRESSS;
 		//句柄集合
 		typedef std::vector<TCP_HANDLE> TCP_HANDLE_VEC;
+		//任务
+		typedef  std::function<void()> TASK_HANDLER;
 		//动态数组指针
 #define SHARED_BUFF_PTR(size) std::shared_ptr<char>(new char[size], std::default_delete<char[]>())
 #define SHARED_ANY_PTR(type,size) std::shared_ptr<type>(new type[size], std::default_delete<type[]>())

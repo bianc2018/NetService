@@ -50,6 +50,7 @@ namespace net_service
 			void close_client(TCP_HANDLE handle);
 
 			void run_service();
+			void post_task(TASK_HANDLER task);
 			~TcpServiceImpl();
 		private:
 			TcpServiceImpl();

@@ -21,6 +21,12 @@ void net_service::tcp::run()
 	impl.run_service();
 }
 
+TCP_SERVICE_API void net_service::tcp::post_task(TASK_HANDLER task)
+{
+	net_service::tcp::TcpServiceImpl& impl = net_service::tcp::TcpServiceImpl::instance();
+	impl.post_task(task);
+}
+
 ADDRESSS net_service::tcp::get_remote_address(TCP_HANDLE handle)
 {
 	net_service::tcp::TcpServiceImpl& impl = net_service::tcp::TcpServiceImpl::instance();

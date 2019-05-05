@@ -256,3 +256,8 @@ void net_service::tcp::TcpServiceImpl::run_service()
 
 }
 
+void net_service::tcp::TcpServiceImpl::post_task(TASK_HANDLER task)
+{
+	service_.post(task);
+}
+

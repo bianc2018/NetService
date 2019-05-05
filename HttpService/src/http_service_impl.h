@@ -72,6 +72,9 @@ namespace net_service
 			void send_request(TCP_HANDLE handle, RESPONSE_HANDLER response_handler, req_ptr request);
 
 			void send_request_handler(TCP_HANDLE handle, int err, RESPONSE_HANDLER response_handler, req_ptr request);
+
+			//处理一个请求
+			void deal_a_requset(TCP_HANDLE handle,req_ptr request, SERVER_HANDLER server_handler);
 			
 		private:
 			

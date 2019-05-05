@@ -21,6 +21,8 @@ namespace net_service
 		TCP_SERVICE_API void async_send(TCP_HANDLE handle, std::shared_ptr<char> data, int len, SEND_HANDLER send_handler, int time_out);
 
 		TCP_SERVICE_API void run();
+		//提交任务
+		TCP_SERVICE_API void post_task(TASK_HANDLER task);
 		//获取远程用户的ip和port
 		TCP_SERVICE_API ADDRESSS get_remote_address(TCP_HANDLE handle);
 		//获取本地端的ip和port
@@ -40,7 +42,6 @@ namespace net_service
 		TCP_SERVICE_API int set_log_path(const std::string &path);
 		TCP_SERVICE_API int set_thread_num(size_t value);
 
-		TCP_SERVICE_API int set_thread_num();
 	
 	}
 }
