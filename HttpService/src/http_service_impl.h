@@ -33,6 +33,7 @@ namespace net_service
 			void set_recv_buff_size(size_t recv_buff_size);
 			void set_send_buff_size(size_t send_buff_size);
 			void set_log_path(const std::string& log_path);
+			void set_log_lv(int log_lv);
 			void set_thread_num(size_t thread_num);
 			void run();
 			
@@ -40,8 +41,8 @@ namespace net_service
 			req_ptr new_req(HTTP_HANDLE handle);
 			res_ptr new_res(HTTP_HANDLE handle);
 
-			//void delete_req(HTTP_HANDLE handle);
-			//void delete_res(HTTP_HANDLE handle);
+			void delete_req(HTTP_HANDLE handle);
+			void delete_res(HTTP_HANDLE handle);
 
 			req_ptr get_req(HTTP_HANDLE handle);
 			res_ptr get_res(HTTP_HANDLE handle);
@@ -84,6 +85,8 @@ namespace net_service
 			//队列
 			std::map<HTTP_HANDLE, req_ptr> req_map_;
 			std::map<HTTP_HANDLE, res_ptr> res_map_;
+			//请求回复队列
+			//std::map<HTTP_HANDLE, std::pair<req_ptr, res_ptr>> req_res_map_;
 
 			std::map<std::string, std::string> mime_map_;
 			std::map<std::string, std::string> reason_map_;

@@ -3,6 +3,25 @@
 #include "ini/ini.h"
 
 using namespace net_service::http;
+std::string replace(const std::string &src, const std::string &token, const std::string &rep)
+{
+	std::string dst;
+	size_t pos = 0;
+	do
+	{
+		auto token_pos = src.find(token, pos);
+		dst += src.substr(pos, token_pos - pos);
+
+		if (std::string::npos == token_pos)
+			break;
+
+		dst += rep;
+		pos = token_pos + token.size();
+
+	} while (pos < src.size());
+
+	return dst;
+}
 
 NewPublishImpl & NewPublishImpl::instance()
 {
@@ -56,7 +75,7 @@ int NewPublishImpl::deal_get_datas(HTTP_HANDLE handle)
 	if (page > 0)
 		beg = (page - 1)*size;
 	//结尾
-	int end = page * size; //<=0 表示获取全部
+	int len =  size; //<=0 表示获取全部
 
 	if (byuser == 1)
 	{
@@ -70,15 +89,15 @@ int NewPublishImpl::deal_get_datas(HTTP_HANDLE handle)
 	//获取数据
 	if ("new" == type)
 	{
-		get_news(result, _where, orderby, beg, end, transfer_content);
+		get_news(result, _where, orderby, beg, len, transfer_content);
 	}
 	else if ("session" == type)
 	{
-		get_sessions(result, _where, orderby, beg, end);
+		get_sessions(result, _where, orderby, beg, len);
 	}
 	else if ("user" == type)
 	{
-		get_users(result, _where, orderby, beg, end);
+		get_users(result, _where, orderby, beg, len);
 	}
 	else
 	{
@@ -93,7 +112,7 @@ int NewPublishImpl::deal_get_datas(HTTP_HANDLE handle)
 int NewPublishImpl::deal_get_news(HTTP_HANDLE handle)
 {
 	LOG(LINFO, "deal a /get_news_action");
-	vec_new_info news;
+	Json news;
 	Json json, result;
 	std::string session_id = get_cookie(handle,"session_id","");
 
@@ -139,25 +158,17 @@ int NewPublishImpl::deal_get_news(HTTP_HANDLE handle)
 	if (page > 0)
 		beg = (page - 1)*size;
 	//结尾
-	int end = page * size; //<=0 表示获取全部
+	int len = size; //<=0 表示获取全部
 	//获取数据
-	ret = new_mgr_.get_datas(news, _where, orderby, beg, end);
+	size_t all = 0;
+	ret = new_mgr_.get_datas(news, _where, orderby, beg, len,&all);
 
 	if (ret >= 0)
 	{
-		Json arr;
-		arr.init_array();
-		for (auto n : news)
-		{
-			//不传输内容
-			if (transfer_content == 0)
-				n.content = "";
-			arr.add_array_value(n.to_json());
-		}
 		//返回
-		result.add_object_value("news", arr);
-		result.add_object_value("size", news.size());
-		result.add_object_value("all", ret);
+		result.add_object_value("news", news);
+		result.add_object_value("size", ret);
+		result.add_object_value("all", all);
 		result.add_object_value("result", WEB_OK);
 	}
 	else
@@ -171,7 +182,7 @@ int NewPublishImpl::deal_get_news(HTTP_HANDLE handle)
 int NewPublishImpl::deal_get_sessions(HTTP_HANDLE handle)
 {
 	LOG(LINFO, "deal a /get_sessions_action");
-	vec_session_info sessions;
+	Json sessions;
 	Json json, result;
 	std::string session_id = get_cookie(handle, "session_id", "");
 
@@ -204,22 +215,16 @@ int NewPublishImpl::deal_get_sessions(HTTP_HANDLE handle)
 	if (page > 0)
 		beg = (page - 1)*size;
 	//结尾
-	int end = page * size; //<=0 表示获取全部
-	//获取数据
-	ret = session_mgr_.get_datas(sessions, _where, orderby, beg, end);
+	int len = size; 
+	size_t all = 0;
+	ret = session_mgr_.get_datas(sessions, _where, orderby, beg, len,&all);
 
 	if (ret >= 0)
 	{
-		Json arr;
-		arr.init_array();
-		for (auto n : sessions)
-		{
-			arr.add_array_value(n.to_json());
-		}
 		//返回
-		result.add_object_value("sessions", arr);
-		result.add_object_value("size", sessions.size());
-		result.add_object_value("all", ret);
+		result.add_object_value("sessions", sessions);
+		result.add_object_value("size", ret);
+		result.add_object_value("all", all);
 		result.add_object_value("result", WEB_OK);
 	}
 	else
@@ -233,7 +238,7 @@ int NewPublishImpl::deal_get_sessions(HTTP_HANDLE handle)
 int NewPublishImpl::deal_get_users(HTTP_HANDLE handle)
 {
 	LOG(LINFO, "deal a /get_sessions_action");
-	vec_user_info users;
+	Json users;
 	Json json, result;
 	std::string session_id = get_cookie(handle, "session_id", "");
 
@@ -266,22 +271,16 @@ int NewPublishImpl::deal_get_users(HTTP_HANDLE handle)
 	if (page > 0)
 		beg = (page - 1)*size;
 	//结尾
-	int end = page * size; //<=0 表示获取全部
-	//获取数据
-	ret = user_mgr_.get_users(users, _where, orderby, beg, end);
+	int len =  size; 
+	size_t all = 0;
+	ret = user_mgr_.get_users(users, _where, orderby, beg, len,&all);
 
 	if (ret >= 0)
 	{
-		Json arr;
-		arr.init_array();
-		for (auto n : users)
-		{
-			arr.add_array_value(n.to_json());
-		}
 		//返回
-		result.add_object_value("users", arr);
-		result.add_object_value("size", users.size());
-		result.add_object_value("all", ret);
+		result.add_object_value("users", users);
+		result.add_object_value("size", ret);
+		result.add_object_value("all", all);
 		result.add_object_value("result", WEB_OK);
 	}
 	else
@@ -331,24 +330,24 @@ NewPublishImpl::NewPublishImpl()
 	auto ret = ini.parser("./config.ini");
 	if (0 != ret)
 	{
-		LOG(LERROR,"读取配置文件 ./config.ini 失败,使用默认配置初始化");
-		//new_mgr_.init("./db/server.data.news.db3");
-		//user_mgr_.init("./db/server.data.users.db3");
-		//session_mgr_.init("./db/server.data.sessions.db3");
+		LOG(LFATAL,"读取配置文件 ./config.ini 失败,使用默认配置初始化");
+		
 		return ;
 	}
+	int log_lv = ini.get_config_int("log", "log_lv", 4);
+	SET_OUTPUT_LV(log_lv);
 	std::string path = ini.get_config_string("NewPublish", "db_new", "./db/server.data.news.db3");
 	ret = new_mgr_.init(path);
 	if (0 != ret)
 	{
-		LOG(LERROR, "new_mgr_ 初始化失败 ,path=",path);
+		LOG(LFATAL, "new_mgr_ 初始化失败 ,path=",path);
 		return;
 	}
 	path = ini.get_config_string("NewPublish", "db_user", "./db/server.data.users.db3");
 	ret = user_mgr_.init(path);
 	if (0 != ret)
 	{
-		LOG(LERROR, "user_mgr_ 初始化失败 ,path=", path);
+		LOG(LFATAL, "user_mgr_ 初始化失败 ,path=", path);
 		return;
 	}
 	path = ini.get_config_string("NewPublish", "db_session", "./db/server.data.sessions.db3");
@@ -356,7 +355,7 @@ NewPublishImpl::NewPublishImpl()
 	ret = session_mgr_.init(path, tout);
 	if (0 != ret)
 	{
-		LOG(LERROR, "session_mgr_ 初始化失败 ,path=", path);
+		LOG(LFATAL, "session_mgr_ 初始化失败 ,path=", path);
 		return;
 	}
 	//./web_root/cache
@@ -381,13 +380,13 @@ int NewPublishImpl::write_json(HTTP_HANDLE handle, const Json & json)
 {
 	std::string body=json.to_string();
 	response_set_header(handle, CONTENT_TYPE, get_mime("json"));
-	LOG(LINFO, "write json\n", body);
+	LOG(LDEBUG, "write json\n", body);
 	return response_set_body(handle, body);;
 }
 
 int NewPublishImpl::read_json(HTTP_HANDLE handle, Json & json)
 {
-	auto body_len = std::stoi(request_get_header(handle, BODY_LEN, "0"));
+	auto body_len = request_get_body_len(handle);
 	if (0 == body_len)
 	{
 		LOG(LERROR, "输入参数 body_len=0");
@@ -437,27 +436,19 @@ std::string NewPublishImpl::get_uri_value(HTTP_HANDLE handle, const std::string 
 	return p->second;
 }
 
-void NewPublishImpl::get_news(Json & result, const std::string & _where, const std::string & orderby, int beg, int end, int tran)
+void NewPublishImpl::get_news(Json & result, const std::string & _where, const std::string & orderby, int beg, int len, int tran)
 {
-	vec_new_info news;
+	Json news;
 	//获取数据
-	auto ret = new_mgr_.get_datas(news, _where, orderby, beg, end);
+	size_t all = 0;
+	auto ret = new_mgr_.get_datas(news, _where, orderby, beg, len,&all);
 
 	if (ret >= 0)
 	{
-		Json arr;
-		arr.init_array();
-		for (auto n : news)
-		{
-			//不传输内容
-			if (tran == 0)
-				n.content = "";
-			arr.add_array_value(n.to_json());
-		}
 		//返回
-		result.add_object_value("news", arr);
-		result.add_object_value("size", news.size());
-		result.add_object_value("all", ret);
+		result.add_object_value("news", news);
+		result.add_object_value("size", ret);
+		result.add_object_value("all",all);
 		result.add_object_value("result", WEB_OK);
 	}
 	else
@@ -466,24 +457,19 @@ void NewPublishImpl::get_news(Json & result, const std::string & _where, const s
 	}
 }
 
-void NewPublishImpl::get_sessions(Json & result, const std::string & _where, const std::string & orderby, int beg, int end)
+void NewPublishImpl::get_sessions(Json & result, const std::string & _where, const std::string & orderby, int beg, int len)
 {
-	vec_session_info sessions;
+	Json sessions;
 	//获取数据
-	auto ret = session_mgr_.get_datas(sessions, _where, orderby, beg, end);
+	size_t all = 0;
+	auto ret = session_mgr_.get_datas(sessions, _where, orderby, beg, len,&all);
 
 	if (ret >= 0)
 	{
-		Json arr;
-		arr.init_array();
-		for (auto n : sessions)
-		{
-			arr.add_array_value(n.to_json());
-		}
 		//返回
-		result.add_object_value("sessions", arr);
-		result.add_object_value("size", sessions.size());
-		result.add_object_value("all", ret);
+		result.add_object_value("sessions", sessions);
+		result.add_object_value("size", ret);
+		result.add_object_value("all", all);
 		result.add_object_value("result", WEB_OK);
 	}
 	else
@@ -492,24 +478,19 @@ void NewPublishImpl::get_sessions(Json & result, const std::string & _where, con
 	}
 }
 
-void NewPublishImpl::get_users(Json & result, const std::string & _where, const std::string & orderby, int beg, int end)
+void NewPublishImpl::get_users(Json & result, const std::string & _where, const std::string & orderby, int beg, int len)
 {
-	vec_user_info users;
+	Json users;
 	//获取数据
-	auto ret = user_mgr_.get_users(users, _where, orderby, beg, end);
+	size_t all = 0;
+	auto ret = user_mgr_.get_users(users, _where, orderby, beg, len, &all);
 
 	if (ret >= 0)
 	{
-		Json arr;
-		arr.init_array();
-		for (auto n : users)
-		{
-			arr.add_array_value(n.to_json());
-		}
 		//返回
-		result.add_object_value("users", arr);
-		result.add_object_value("size", users.size());
-		result.add_object_value("all", ret);
+		result.add_object_value("users", users);
+		result.add_object_value("size", ret);
+		result.add_object_value("all", all);
 		result.add_object_value("result", WEB_OK);
 	}
 	else
@@ -615,7 +596,7 @@ int NewPublishImpl::deal_get_new(HTTP_HANDLE handle)
 	}
 
 	std::string code = json.get_string_value("code");
-	NewInfo info;
+	Json info;
 
 	ret = new_mgr_.get_data(info, code);
 
@@ -624,7 +605,7 @@ int NewPublishImpl::deal_get_new(HTTP_HANDLE handle)
 	else
 		result.add_object_value("result", WEB_DATA_OPERATION);
 
-	result.add_object_value("new", info.to_json());
+	result.add_object_value("new", info);
 	result.add_object_value("like_status", new_mgr_.get_like_status(session_mgr_.get_username(session_id), code));
 
 	write_json(handle,result);
@@ -635,7 +616,7 @@ int NewPublishImpl::deal_get_now_user(HTTP_HANDLE handle)
 {
 	std::string session_id = get_cookie(handle,"session_id");
 	Json ret_json;
-	UserInfo user;
+	Json user;
 	std::string username = session_mgr_.get_username(session_id);
 
 	int ret = WEB_DATA_OPERATION;
@@ -656,7 +637,7 @@ int NewPublishImpl::deal_get_now_user(HTTP_HANDLE handle)
 		ret = 1;//游客
 
 	ret_json.add_object_value("result", ret);
-	ret_json.add_object_value("user", user.to_json());
+	ret_json.add_object_value("user", user);
 
 	write_json(handle,ret_json);
 	return ret;
@@ -665,41 +646,42 @@ int NewPublishImpl::deal_get_now_user(HTTP_HANDLE handle)
 int NewPublishImpl::deal_login(HTTP_HANDLE handle)
 {
 	Json login_info;
-	UserInfo login_user;
 	Json data;
 	std::string session_id = get_cookie(handle, "session_id");
 	session_mgr_.logout(session_id);
 
 	read_json(handle, login_info);
 	
-	login_user.username = login_info.get_string_value("username", "");
-	login_user.password = login_info.get_string_value("password", "");
+	auto username = login_info.get_string_value("username", "");
+	auto password = login_info.get_string_value("password", "");
 
-	if (login_user.username == "" || login_user.password == "")
+	if (username == "" || password == "")
 	{
 		data.add_object_value("result", WEB_PARAMETERS_INCORRECT_USER_PWD_NULL);
 		write_json(handle,data);
 		return WEB_PARAMETERS_INCORRECT_USER_PWD_NULL;
 	}
 
-	int ret = user_mgr_.check_password(login_user.username, login_user.password);
+	int ret = user_mgr_.check_password(username, password);
 
 	if (ret == 0)
 	{
-		SessionInfo s;
-		s.username = login_user.username;
+		Json session;
 		auto addr = get_client_address(handle);
-		s.ip =addr.first;
-		s.port = addr.second;
-		user_mgr_.get_user_permission(s.username, s.permission);
-		ret = session_mgr_.login(s);
+		session.add_object_value("username", username);
+		session.add_object_value("ip", addr.first);
+		session.add_object_value("port", addr.second);
+		int permission = 3;
+		user_mgr_.get_user_permission(username, permission);
+		session.add_object_value("permission", permission);
+		ret = session_mgr_.login(session);
 
 		//登录成功
 		if (0 == ret)
 		{
-			data.add_object_value("session", s.to_json());
+			data.add_object_value("session", session);
 			//新的会话
-			set_cookie(handle, "session_id", s.code);
+			set_cookie(handle, "session_id", session.get_string_value("code"));
 			data.add_object_value("result", WEB_OK);
 		}
 		else
@@ -726,29 +708,29 @@ int NewPublishImpl::deal_register(HTTP_HANDLE handle)
 		return ret;
 	}
 
-	UserInfo register_user;
+	
 	std::string admin_password = json.get_string_value("admin_password");
 
-	register_user.username = json.get_string_value("username");
-	register_user.password = json.get_string_value("password");
-	register_user.permission = json.get_int_value("permission");
+	auto username = json.get_string_value("username");
+	auto password = json.get_string_value("password");
+	auto permission = json.get_int_value("permission");
 	
 	//用户名为空
-	if (register_user.username == "")
+	if (username == "")
 	{
 		result.add_object_value("result", WEB_PARAMETERS_INCORRECT_USER_PWD_NULL);
 		write_json(handle, result);
 		return WEB_PARAMETERS_INCORRECT_USER_PWD_NULL;
 	}
 	//用户名重复
-	if (user_mgr_.check_user(register_user.username) == 0)
+	if (user_mgr_.check_user(username) == 0)
 	{
 		result.add_object_value("result", WEB_PARAMETERS_INCORRECT_USER_REPEAT);
 		write_json(handle, result);
 		return WEB_PARAMETERS_INCORRECT_USER_REPEAT;
 	}
 	//创建权限 管理员 编辑 用户 需要管理员权限及密码
-	if (register_user.permission < 2)
+	if (permission < 2)
 	{
 		std::string username =session_mgr_.get_username(session_id);
 		int p = session_mgr_.get_user_permission(session_id);
@@ -767,7 +749,11 @@ int NewPublishImpl::deal_register(HTTP_HANDLE handle)
 		}
 
 	}
-
+	Json register_user;
+	register_user.add_object_value("username", username);
+	register_user.add_object_value("password", password);
+	register_user.add_object_value("permission", permission);
+	
 	ret = user_mgr_.create(register_user);
 	if (0 == ret)
 		result.add_object_value("result", WEB_OK);
@@ -821,18 +807,18 @@ int NewPublishImpl::deal_create_new(HTTP_HANDLE handle)
 {
 	Json result;
 	std::string session_id = get_cookie(handle, "session_id", "");
-	NewInfo _new;
-
-	_new.author = session_mgr_.get_username(session_id);
-	_new.create_user = _new.author;
-	_new.create_time = LOCAL_TIME;
-
+	Json _new;
+	auto author = session_mgr_.get_username(session_id);
+	_new.add_object_value("author", author);
+	_new.add_object_value("create_user", author);
+	_new.add_object_value("create_time", (size_t)time(nullptr));
+	
 	int ret = new_mgr_.create(_new);
 	if (0 == ret)
 		result.add_object_value("result", WEB_OK);
 	else
 		result.add_object_value("result", WEB_DATA_OPERATION);
-	result.add_object_value("new", _new.to_json());
+	result.add_object_value("new", _new);
 
 	write_json(handle, result);
 	return 0;
@@ -842,7 +828,6 @@ int NewPublishImpl::deal_save_new(HTTP_HANDLE handle)
 {
 	Json json, result;
 	std::string session_id = get_cookie(handle, "session_id", "");
-	NewInfo info;
 	auto ret = read_json(handle, json);
 	if (0 != ret)
 	{
@@ -852,15 +837,15 @@ int NewPublishImpl::deal_save_new(HTTP_HANDLE handle)
 		return ret;
 	}
 
-	Json data = json.get_object("new");
-	ret = info.from_json(data);
+	Json new_data = json.get_object("new");
 	if (ret == 0)
 	{
-		info.modify_user = session_mgr_.get_username(session_id);
-		info.modify_time = LOCAL_TIME;
+		new_data.add_object_value("modify_user", session_mgr_.get_username(session_id));
+		new_data.add_object_value("modify_time", (size_t)time(nullptr));
 		//+转化为%20
-		info.content = replace(info.content, "+", "%20");
-		ret = new_mgr_.save(info);
+		new_data.add_object_value("content", replace(new_data.get_string_value("content"), "+", "%20"));
+		
+		ret = new_mgr_.save(new_data);
 		if (0 == ret)
 			result.add_object_value("result", WEB_OK);
 		else
@@ -995,17 +980,17 @@ int NewPublishImpl::deal_add_new_comment(HTTP_HANDLE handle)
 		write_json(handle, result);
 		return ret;
 	}
-	NewInfo _new;
+	Json _new;
+	auto author = session_mgr_.get_username(session_id);
+	_new.add_object_value("author", author);
+	_new.add_object_value("create_user", author);
+	_new.add_object_value("modify_user", author);
 	
-	_new.author = session_mgr_.get_username(session_id);
-	_new.create_user = _new.author;
-	_new.modify_user = _new.author;
-
-	_new.parent = json.get_string_value("new_id");
-	_new.property = 1; //评论
-	_new.content = json.get_string_value("comment");
-	_new.title = "comment";
-
+	_new.add_object_value("parent", json.get_string_value("new_id"));
+	_new.add_object_value("property",1);
+	_new.add_object_value("content", json.get_string_value("comment"));
+	_new.add_object_value("title", "comment");
+	
 	ret = new_mgr_.comment(_new);
 	if (0 == ret)
 		result.add_object_value("result", WEB_OK);

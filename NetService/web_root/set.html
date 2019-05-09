@@ -44,6 +44,9 @@
                 load_user_set();
             });
             $('#news_list').on('click', function () {
+                page = 1;
+                page_size = 5;
+                
                 $('#user_set').removeClass('menu_head');
                 $('#users_list').removeClass('menu_head');
                 $('#sessions_list').removeClass('menu_head');
@@ -54,6 +57,9 @@
                 //window.location.href = '/set.html?menu=news_list';
             });
             $('#sessions_list').on('click', function () {
+                page = 1;
+                page_size = 5;
+                
                 $('#user_set').removeClass('menu_head');
                 $('#users_list').removeClass('menu_head');
                 $('#news_list').removeClass('menu_head');
@@ -65,6 +71,9 @@
                 //window.location.href = '/set.html?menu=news_list';
             });
             $('#users_list').on('click', function () {
+                page = 1;
+                page_size = 5;
+                
                 $('#user_set').removeClass('menu_head');
                 $('#news_list').removeClass('menu_head');
                 $('#users_list').addClass('menu_head');
@@ -99,6 +108,7 @@
             );
         }
         function load_users_list() {
+           
             //document.getElementById('search_text').value
             var search_text = document.getElementById('search_text').value;
             var search_order_by = document.getElementById('search_order_by').value;

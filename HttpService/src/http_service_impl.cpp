@@ -57,14 +57,8 @@ void net_service::http::HttpServiceImpl::close_link(HTTP_HANDLE handle)
 {
 	tcp::close_link(handle);
 
-	auto p1 = req_map_.find(handle);
-	if (p1 != req_map_.end())
-		req_map_.erase(p1);
-
-	auto p2 = res_map_.find(handle);
-	if (p2 != res_map_.end())
-		res_map_.erase(p2);
-
+	delete_req(handle);
+	delete_res(handle);
 }
 
 void net_service::http::HttpServiceImpl::set_time_out(size_t time_out)
@@ -85,6 +79,12 @@ void net_service::http::HttpServiceImpl::set_send_buff_size(size_t send_buff_siz
 void net_service::http::HttpServiceImpl::set_log_path(const std::string & log_path)
 {
 	tcp::set_log_path(log_path);
+}
+
+void net_service::http::HttpServiceImpl::set_log_lv(int log_lv)
+{
+	SET_OUTPUT_LV(log_lv);
+	tcp::set_log_lv(log_lv);
 }
 
 void net_service::http::HttpServiceImpl::set_thread_num(size_t thread_num)
@@ -131,6 +131,21 @@ net_service::http::res_ptr net_service::http::HttpServiceImpl::new_res(HTTP_HAND
 	res_map_[handle] = response;
 	
 	return response;
+}
+
+void net_service::http::HttpServiceImpl::delete_req(HTTP_HANDLE handle)
+{
+	auto p1 = req_map_.find(handle);
+	if (p1 != req_map_.end())
+		req_map_.erase(p1);
+
+}
+
+void net_service::http::HttpServiceImpl::delete_res(HTTP_HANDLE handle)
+{
+	auto p2 = res_map_.find(handle);
+	if (p2 != res_map_.end())
+		res_map_.erase(p2);
 }
 
 net_service::http::req_ptr net_service::http::HttpServiceImpl::get_req(HTTP_HANDLE handle)
@@ -186,10 +201,10 @@ net_service::http::HttpServiceImpl::~HttpServiceImpl()
 	
 }
 
-net_service::http::HttpServiceImpl::HttpServiceImpl() :time_out_(5)
+net_service::http::HttpServiceImpl::HttpServiceImpl() :time_out_(5), send_buff_size_(1024 * 1024 * 20)
 {
 	set_log_path("./log");
-
+	set_log_lv(4);
 	set_recv_buff_size(1024 * 1024 * 20);
 
 	set_send_buff_size(1024 * 1024 * 20);
@@ -245,7 +260,8 @@ void net_service::http::HttpServiceImpl::recv_request_handler(TCP_HANDLE handle,
 		}//解析完毕，字节已接收完了
 		else if (PARSER_OVER == ret)
 		{
-			tcp::post_task(std::bind(&HttpServiceImpl::deal_a_requset, this, handle, request, server_handler));
+			//tcp::post_task(std::bind(&HttpServiceImpl::deal_a_requset, this, handle, request, server_handler));
+			deal_a_requset(handle, request, server_handler);
 		}
 	}
 	else
@@ -257,6 +273,7 @@ void net_service::http::HttpServiceImpl::recv_request_handler(TCP_HANDLE handle,
 
 void net_service::http::HttpServiceImpl::send_response(TCP_HANDLE handle, res_ptr response, SERVER_HANDLER server_handler, size_t pos)
 {
+	delete_req(handle);
 	//申请buff
 	std::shared_ptr<char> buff_ptr;
 	try
@@ -271,13 +288,12 @@ void net_service::http::HttpServiceImpl::send_response(TCP_HANDLE handle, res_pt
 	}
 	//读数据
 	int readlen = response->get_content(buff_ptr.get(),pos, send_buff_size_);
-	auto p = get_res(handle);
 	//LOG(LDEBUG, "get addr=", (long long)p.get(), ", res addr=", (long long)response.get());
 	pos += readlen;
 	//读完
 	if (0 == readlen)
 	{
-		LOG(LDEBUG, "发送response handle=",handle ,",code",response->get_status_code());
+		LOG(LDEBUG, "发送response handle=",handle , ",all response num=", res_map_.size());
 		if ("close" == response->get_head_value("Connection", "close"))
 		{
 			close_link(handle);
@@ -320,7 +336,7 @@ void net_service::http::HttpServiceImpl::send_response_handler(TCP_HANDLE handle
 
 void net_service::http::HttpServiceImpl::deal_a_requset(TCP_HANDLE handle, req_ptr request, SERVER_HANDLER server_handler)
 {
-	LOG(LINFO, "接收到一个请求,", request->get_uri(), handle);
+	LOG(LINFO, "接收到一个请求,", request->get_uri(), handle,",all request num=",req_map_.size());
 
 	auto response = new_res(handle);
 	if (nullptr == response)

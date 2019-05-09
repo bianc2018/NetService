@@ -116,7 +116,7 @@ HTTP_PARSER_API int cookie_parser_after(unsigned long long handle)
 {
 	std::map<std::string, std::string> *cookie_map = (std::map<std::string, std::string> *)request_get_ext_data(handle, "cookie_map");
 	std::map<std::string, std::string> *set_cookie_map = (std::map<std::string, std::string> *)response_get_ext_data(handle, "set_cookie_map");
-	if (nullptr != set_cookie_map)
+	if (nullptr != set_cookie_map && set_cookie_map->size()>0)
 	{
 		//Set-Cookie
 		std::string cookie_cache = "";

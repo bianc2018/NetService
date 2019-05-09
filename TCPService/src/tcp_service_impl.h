@@ -45,7 +45,7 @@ namespace net_service
 			void set_buff_size(size_t buff_size);
 			void set_thread_num(size_t thread_num);
 			void set_log_path(std::string log_path);
-
+			void set_log_lv(int lv);
 			void close_server(TCP_HANDLE handle);
 			void close_client(TCP_HANDLE handle);
 
@@ -83,6 +83,7 @@ namespace net_service
 			size_t buff_size_;
 			size_t thread_num_;
 			std::string log_path_;
+			int log_lv_;
 			std::atomic<bool> run_flag_;
 		};
 	}

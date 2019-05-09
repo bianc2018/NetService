@@ -311,7 +311,7 @@
             json+='"create_user":  "'+now_new.create_user+'",';
             json+='"modify_time":  '+now_new.modify_time+',';
             json+='"modify_user":  "'+now_new.modify_user+'",';
-            json += '"publish_time": ' + now_new.publish_time + '';
+            json += '"publish_time": ' + now_new.publish_time + '';//now_new.publish_time
             json += '}';
             return json;
         }
@@ -371,7 +371,12 @@
                         window.location.href="/set.html?menu=news_list";
                     }
                     else
-                        load_comment();
+                    {
+                        now_new.comment_num = now_new.comment_num - 1;
+                        document.getElementById('new_comment_num').value = now_new.comment_num;
+                        load_comment()
+                    }
+                        
                 }
                 else
                     alert("É¾³ýÊ§°Ü£º" + Error_Code(data.result));

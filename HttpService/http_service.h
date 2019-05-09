@@ -25,6 +25,7 @@ namespace net_service
 		HTTP_SERVICE_API void set_recv_buff_size(size_t size);
 		HTTP_SERVICE_API void set_send_buff_size(size_t size);
 		HTTP_SERVICE_API void set_log_path(const std::string &path);
+		HTTP_SERVICE_API void set_log_lv(int lv);
 		HTTP_SERVICE_API void set_thread_num(size_t size);
 		//ªÒ»°ip port
 		HTTP_SERVICE_API HTTP_ADDRESSS get_client_address(HTTP_HANDLE handle);

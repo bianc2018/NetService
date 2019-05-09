@@ -65,6 +65,12 @@ HTTP_SERVICE_API void net_service::http::set_log_path(const std::string & path)
 	impl.set_log_path(path);
 }
 
+HTTP_SERVICE_API void net_service::http::set_log_lv(int lv)
+{
+	net_service::http::HttpServiceImpl &impl = net_service::http::HttpServiceImpl::instance();
+	impl.set_log_lv(lv);
+}
+
 HTTP_SERVICE_API void net_service::http::set_thread_num(size_t size)
 {
 	net_service::http::HttpServiceImpl &impl = net_service::http::HttpServiceImpl::instance();

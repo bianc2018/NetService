@@ -74,10 +74,14 @@ public:
 	int add_array_value( std::vector<Json>value, const std::string& path = "");
 	//在path_ 下数组添加一个Json
 	int add_array_value(Json value, const std::string& path = "");
+	
+	size_t get_array_size(const std::string& path = "");
+
 	//获取 json_root_
 	cJSON *get_json_root();
 	//转移 json_root_ 本身的json_root_将会置为空
 	cJSON *move();
+	Json& move(Json &json);
 private:
 	//释放json_root_
 	int clear();

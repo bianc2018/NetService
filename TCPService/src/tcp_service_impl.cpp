@@ -12,7 +12,7 @@ int net_service::tcp::TcpServiceImpl::start()
 {
 	SET_LOG_PATH(log_path_);
 	SET_FILL(" ");
-	SET_OUTPUT_LV(5);
+	SET_OUTPUT_LV(log_lv_);
 	run_flag_ = true;
 	//运行工作线程
 	run_thread_vector_.reserve(thread_num_);
@@ -187,6 +187,11 @@ void net_service::tcp::TcpServiceImpl::set_log_path(std::string log_path)
 	log_path_ = log_path;
 }
 
+void net_service::tcp::TcpServiceImpl::set_log_lv(int lv)
+{
+	log_lv_ = lv;
+}
+
 void net_service::tcp::TcpServiceImpl::close_server(TCP_HANDLE handle)
 {
 	{
@@ -233,7 +238,7 @@ void net_service::tcp::TcpServiceImpl::close_client(TCP_HANDLE handle)
 		if (p != link_server_.end())
 			link_server_.erase(p);
 	}
-	//LOG(LDEBUG, "close");
+	LOG(LDEBUG, "close a link(",handle,") ,all link = ",links_.size());
 }
 
 net_service::tcp::TcpServiceImpl::~TcpServiceImpl()

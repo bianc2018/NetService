@@ -35,7 +35,8 @@ net_service::web::WebServer::WebServer(WebSeviceConfigData config):config_data_(
 	http::set_send_buff_size(config.send_buff_size);
 	http::set_thread_num(config.accept_num);
 	http::set_time_out(config.timeout);
-
+	http::set_log_lv(config.log_output);
+	SET_OUTPUT_LV(config.log_output);
 	//init mime
 	Json mime, reason;
 	mime.from_file(config.mime_path);

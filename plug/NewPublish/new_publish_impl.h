@@ -5,9 +5,9 @@
 
 #include "http_service.h"
 
-#include "db/news/news_mgr.h"
-#include "db/user/user_mgr.h"
-#include "db/session/session_mgr.h"
+#include "db/news_mgr.h"
+#include "db/user_mgr.h"
+#include "db/session_mgr.h"
 
 #include "json/json.h"
 #include "log/log.hpp"
@@ -46,7 +46,7 @@ enum WEB_FUNC_ERR_CODE
 };
 #define SHARED_BUFF_PTR(size) std::shared_ptr<char>(new char[size], std::default_delete<char[]>())
 #define SHARED_ANY_PTR(type,size) std::shared_ptr<type>(new type[size], std::default_delete<type[]>())
-
+std::string replace(const std::string &src, const std::string &token, const std::string &rep);
 class NewPublishImpl: public boost::noncopyable
 {
 public:

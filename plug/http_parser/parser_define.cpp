@@ -24,7 +24,7 @@ std::string time_to_string(time_t t, const std::string & fmt, const std::string 
 	if (0 == t)
 		t = ::time(0);
 
-	char ch[1024];
+	char ch[1024] = {0};
 	//本地数据
 	if (type == "LOCAL")
 		::strftime(ch, sizeof(ch), fmt.c_str(), ::localtime(&t));

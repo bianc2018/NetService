@@ -56,7 +56,7 @@ public:
 		}
 		if (LFATAL == lv)
 		{
-			exit(LFATAL);
+			abort();
 		}
 	}
 	//获取日志实例
@@ -113,7 +113,7 @@ private:
 	string log_lv_[LV_SIZE + 1];
 	string file_path_[LV_SIZE + 1];
 
-	int isdebug_;
+	//int isdebug_;
 	std::mutex lock_;
 	static std::shared_ptr<GLOG> p_glog_;
 	size_t block_size_; //log文件的最大size

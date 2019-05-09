@@ -18,18 +18,6 @@
     <Filter Include="include\db">
       <UniqueIdentifier>{bdceac78-e0b4-4923-ac41-cf405d09b1eb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="include\db\base">
-      <UniqueIdentifier>{7889e590-1db7-4a19-bd36-4d2139f8a1c9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\db\new">
-      <UniqueIdentifier>{2204d075-0501-4e0b-a539-755475dee868}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\db\user">
-      <UniqueIdentifier>{4d4103ec-e499-4625-9502-745e381f7695}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\db\session">
-      <UniqueIdentifier>{fb159ff4-5ab7-414e-8952-c4604643adba}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src">
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
@@ -60,39 +48,27 @@
     <ClCompile Include="..\..\include\json\json.cpp">
       <Filter>include\json</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\include\db\basedb\base_db.cpp">
-      <Filter>include\db\base</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\include\db\basedb\db_table.cpp">
-      <Filter>include\db\base</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\include\db\basedb\sql_format.cpp">
-      <Filter>include\db\base</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\include\db\news\new.cpp">
-      <Filter>include\db\new</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\include\db\news\news_mgr.cpp">
-      <Filter>include\db\new</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\include\db\session\session.cpp">
-      <Filter>include\db\session</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\include\db\session\session_mgr.cpp">
-      <Filter>include\db\session</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\include\db\user\user.cpp">
-      <Filter>include\db\user</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\include\db\user\user_mgr.cpp">
-      <Filter>include\db\user</Filter>
-    </ClCompile>
     <ClCompile Include="new_publish_impl.cpp">
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="new_publish.cpp" />
     <ClCompile Include="..\..\include\ini\ini.cpp">
       <Filter>include\ini</Filter>
+    </ClCompile>
+    <ClCompile Include="db\db_base.cpp">
+      <Filter>include\db</Filter>
+    </ClCompile>
+    <ClCompile Include="db\db_mgr.cpp">
+      <Filter>include\db</Filter>
+    </ClCompile>
+    <ClCompile Include="db\news_mgr.cpp">
+      <Filter>include\db</Filter>
+    </ClCompile>
+    <ClCompile Include="db\session_mgr.cpp">
+      <Filter>include\db</Filter>
+    </ClCompile>
+    <ClCompile Include="db\user_mgr.cpp">
+      <Filter>include\db</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -105,39 +81,27 @@
     <ClInclude Include="..\..\include\json\json.h">
       <Filter>include\json</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\db\basedb\base_db.h">
-      <Filter>include\db\base</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\db\basedb\db_table.h">
-      <Filter>include\db\base</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\db\basedb\sql_format.h">
-      <Filter>include\db\base</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\db\news\new.h">
-      <Filter>include\db\new</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\db\news\news_mgr.h">
-      <Filter>include\db\new</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\db\session\session.h">
-      <Filter>include\db\session</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\db\session\session_mgr.h">
-      <Filter>include\db\session</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\db\user\user.h">
-      <Filter>include\db\user</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\db\user\user_mgr.h">
-      <Filter>include\db\user</Filter>
-    </ClInclude>
     <ClInclude Include="new_publish.h" />
     <ClInclude Include="new_publish_impl.h">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\include\ini\ini.h">
       <Filter>include\ini</Filter>
+    </ClInclude>
+    <ClInclude Include="db\db_base.h">
+      <Filter>include\db</Filter>
+    </ClInclude>
+    <ClInclude Include="db\db_mgr.h">
+      <Filter>include\db</Filter>
+    </ClInclude>
+    <ClInclude Include="db\news_mgr.h">
+      <Filter>include\db</Filter>
+    </ClInclude>
+    <ClInclude Include="db\session_mgr.h">
+      <Filter>include\db</Filter>
+    </ClInclude>
+    <ClInclude Include="db\user_mgr.h">
+      <Filter>include\db</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

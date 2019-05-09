@@ -41,7 +41,7 @@ namespace net_service
 		TCP_SERVICE_API int set_recv_buff(size_t value);
 		TCP_SERVICE_API int set_log_path(const std::string &path);
 		TCP_SERVICE_API int set_thread_num(size_t value);
-
+		TCP_SERVICE_API int set_log_lv(int lv);
 	
 	}
 }

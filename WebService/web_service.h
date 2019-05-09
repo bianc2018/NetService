@@ -12,7 +12,7 @@ namespace net_service
 		struct WebSeviceConfigData
 		{
 			std::string ip;
-			int port;
+			int port=8000;
 			int accept_num;
 			int timeout;
 			size_t recv_buff_size;
@@ -22,6 +22,7 @@ namespace net_service
 			std::string reason_path;
 
 			std::string log_path;
+			int log_output = 1;
 			std::string web_root;
 
 		};

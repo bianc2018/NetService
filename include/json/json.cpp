@@ -411,6 +411,16 @@ int Json::add_array_value( Json value, const std::string & path)
 	return 0;
 }
 
+size_t Json::get_array_size(const std::string & path)
+{
+	auto sub = get_object(path);
+	if (cJSON_Array == sub->type)
+	{
+		return cJSON_GetArraySize(sub);
+	}	
+	return 0;
+}
+
 
 cJSON * Json::get_json_root()
 {
@@ -422,6 +432,14 @@ cJSON * Json::move()
 	cJSON * p = json_root_;
 	json_root_ = nullptr;
 	return p;
+}
+
+Json & Json::move(Json & json)
+{
+	this->json_root_ = json.json_root_;
+	json.json_root_ = nullptr;
+	// TODO: 在此处插入 return 语句
+	return *this;
 }
 
 int Json::clear()

@@ -78,16 +78,17 @@ class MyTaskSet(TaskSet):
         r = random.sample('zyxwvutsrqponmlkjihgfedcba',5)
         name = "".join(r);
         per =  random.randint(0,3);
-        print name,per
+        #print name,per
         response = self.register(name,name,"admin",per);
         if json.loads(response.content)['result']==0:
             self.login({'username':name,"password":name});
         pass
 
-    @task(1)
-    def do_logout_in(self):
-        self.logout()
-        self.login({'username':"admin","password":"admin"})
+
+    #@task(1)
+    #def do_logout_in(self):
+    #    self.logout()
+    #    self.login({'username':"admin","password":"admin"})
 
     @task(10)
     def do_index(self):
@@ -109,22 +110,22 @@ class MyTaskSet(TaskSet):
     @task(2)
     def do_set(self):
         self.session.get("/set.html")
-        self.get_now_user()
+    #    self.get_now_user()
     
     @task(3)
     def do_new(self):
         self.session.get("/new.html")
-        self.get_now_user()
+    #    self.get_now_user()
 
     @task(2)
     def do_login(self):
         self.session.get("/login.html")
-        self.get_now_user()
+     #   self.get_now_user()
     
     @task(2)
     def do_edit(self):
         self.session.get("/edit.html")
-        self.get_now_user()
+     #   self.get_now_user()
 # r = self.client.get("/homepage/list_header.html")
 #        if json.loads((r.content))["result"] != 100:
 #            r.failure("Got wrong response:"+r.content)

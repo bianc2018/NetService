@@ -84,6 +84,13 @@ int net_service::tcp::set_thread_num(size_t value)
 	return 0;
 }
 
+TCP_SERVICE_API int net_service::tcp::set_log_lv(int lv)
+{
+	net_service::tcp::TcpServiceImpl& impl = net_service::tcp::TcpServiceImpl::instance();
+	impl.set_log_lv(lv);
+	return 0;
+}
+
 TCP_HANDLE net_service::tcp::start_server(const std::string & ip, int port, ACCEPT_HANDLER accept_handler, int accept_num)
 {
 	net_service::tcp::TcpServiceImpl& impl = net_service::tcp::TcpServiceImpl::instance();
