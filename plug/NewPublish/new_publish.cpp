@@ -1,6 +1,11 @@
 #include "new_publish.h"
 #include "new_publish_impl.h"
 
+WEB_PLUG_SERVICE_API void init()
+{
+	NewPublishImpl &impl = NewPublishImpl::instance();
+}
+
 WEB_PLUG_SERVICE_API int np_get_news(unsigned long long handle)
 {
 	NewPublishImpl &impl = NewPublishImpl::instance();

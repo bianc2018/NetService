@@ -3,11 +3,13 @@
 #include <mutex>
 
 #include "../include/log/log.hpp"
-
+//锁，保证句柄唯一
 std::mutex link_lock;
+
 net_service::tcp::TcpLink::TcpLink(std::shared_ptr<boost::asio::ip::tcp::socket> sock):sock_(sock)
 {
 	static TCP_HANDLE record=0;
+	//递增
 	link_lock.lock();
 	record++;
 	if (record < 0)
@@ -18,7 +20,11 @@ net_service::tcp::TcpLink::TcpLink(std::shared_ptr<boost::asio::ip::tcp::socket>
 
 net_service::tcp::TcpLink::~TcpLink()
 {
-	
+	//关闭套接字
+	boost::system::error_code ec;
+	sock_->cancel(ec);
+	sock_->close(ec);
+
 }
 
 void net_service::tcp::TcpLink::async_recv(RECV_HANDLER recv_handler, int time_out,int buff_size)
@@ -51,7 +57,7 @@ void net_service::tcp::TcpLink::async_recv(RECV_HANDLER recv_handler, int time_o
 			recv_handler(handle_, nullptr, 0, TCP_ERROR_CODE_RECV_ERROR);
 			return;
 		}
-		//必须重新创建变量，不然数据无法传递给after_async_read
+		//必须重新创建变量，不然数据无法传递给after_async_read 原理未明
 		auto n_handle_ = handle_;
 		auto n_buff_ptr_ = buff_ptr;
 		auto n_size_ = s;

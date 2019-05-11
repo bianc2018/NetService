@@ -127,10 +127,11 @@ int MultipartFormParser::parser(HTTP_HANDLE handle)
 							form_it.add_object_value("uuid", tmp_uuid);
 							//tmp_uuid
 							form_data.add_array_value(form_it);
-							LOG(LDEBUG, "parser over", handle, "\n", form_data.to_string());
+							LOG(LDEBUG, "parser over0", handle, "\n", form_data.to_string());
 							std::string *str = new std::string(form_data.to_string());
+							LOG(LDEBUG, "parser over1", handle);
 							net_service::http::request_set_ext_data(handle, "form_json", str);
-
+							LOG(LDEBUG, "parser over2", handle);
 							return 0;
 						}
 						//两个都找不到
@@ -245,6 +246,7 @@ int MultipartFormParser::parser(HTTP_HANDLE handle)
 int MultipartFormParser::unparser(HTTP_HANDLE handle)
 {
 	//std::string *str = new std::string(form_data.to_string());
+	LOG(LERROR, "删除缓存");
 	std::string *str = (std::string*)net_service::http::request_get_ext_data(handle, "form_json");
 	if (nullptr != str)
 	{

@@ -5,6 +5,8 @@
 
 #define WEB_PLUG_SERVICE_API  extern "C" __declspec( dllexport )
 
+WEB_PLUG_SERVICE_API  void init();
+
 WEB_PLUG_SERVICE_API  int np_get_news(unsigned long long handle);
 
 WEB_PLUG_SERVICE_API  int np_get_now_user(unsigned long long handle);

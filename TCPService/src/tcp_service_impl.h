@@ -19,11 +19,13 @@ namespace net_service
 		{
 		public:
 			static TcpServiceImpl &instance();
+			//启动
 			int start();
+			//停止
 			int stop();
-
+			//开启服务
 			TCP_HANDLE start_server(const std::string &ip, int port, ACCEPT_HANDLER accept_handler,int accept_num = 4);
-
+			//开启连接
 			TCP_HANDLE start_client(const std::string &ip, int port);
 
 			//接收数据
@@ -40,22 +42,25 @@ namespace net_service
 			
 			//根据连接句柄获取服务器句柄
 			TCP_HANDLE get_server_handle(TCP_HANDLE link);
+			//获取服务器下的所有连接句柄
 			std::vector<TCP_HANDLE> get_links_handle(TCP_HANDLE server);
-
+			//设置参数
 			void set_buff_size(size_t buff_size);
 			void set_thread_num(size_t thread_num);
 			void set_log_path(std::string log_path);
 			void set_log_lv(int lv);
+			//关闭
 			void close_server(TCP_HANDLE handle);
 			void close_client(TCP_HANDLE handle);
-
+			//启动服务
 			void run_service();
+			//推送一个任务
 			void post_task(TASK_HANDLER task);
 			~TcpServiceImpl();
 		private:
 			TcpServiceImpl();
 			
-
+			//根据句柄获取实例
 			std::shared_ptr<TcpLink> get_link(TCP_HANDLE handle);
 			std::shared_ptr<TcpServer> get_server(TCP_HANDLE handle);
 

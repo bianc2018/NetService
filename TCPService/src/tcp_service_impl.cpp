@@ -15,7 +15,7 @@ int net_service::tcp::TcpServiceImpl::start()
 	SET_OUTPUT_LV(log_lv_);
 	run_flag_ = true;
 	//运行工作线程
-	run_thread_vector_.reserve(thread_num_);
+	//run_thread_vector_.reserve(thread_num_);
 	for (int i = 0; i < thread_num_; ++i)
 	{
 		//运行
@@ -64,8 +64,10 @@ TCP_HANDLE net_service::tcp::TcpServiceImpl::start_server(const std::string & ip
 		start();
 
 	//TcpServer(io_service &service,ACCEPT_CALL_BACK accept_call_back, std::string ip, int port);
+	//启动一个服务器
 	std::shared_ptr<TcpServer> server = \
 		std::make_shared<TcpServer>(service_,boost::bind(&TcpServiceImpl::accept,this, _1, accept_handler,_2,_3), ip, port,accept_num);
+	//记录
 	std::lock_guard<std::mutex> lock(lock_servers_);
 	servers_.insert(std::make_pair(server->handle_, server));
 	return server->handle_;
@@ -194,14 +196,14 @@ void net_service::tcp::TcpServiceImpl::set_log_lv(int lv)
 
 void net_service::tcp::TcpServiceImpl::close_server(TCP_HANDLE handle)
 {
-	{
-		std::lock_guard<std::mutex> lock(lock_servers_);
-		auto p = servers_.find(handle);
-		if (p != servers_.end())
-			servers_.erase(p);
-	}
+	//停止服务
+	auto p = servers_.find(handle);
+	p->second->stop();
+
 	auto links = get_links_handle(handle);
+	
 	{
+		//关闭连接
 		{
 			std::lock_guard<std::mutex> lock1(lock_links_);
 			for (auto link : links)
@@ -211,6 +213,7 @@ void net_service::tcp::TcpServiceImpl::close_server(TCP_HANDLE handle)
 					links_.erase(p);
 			}
 		}
+		//去除联系
 		{
 			std::lock_guard<std::mutex> lock2(lock_link_server_);
 			for (auto link : links)
@@ -220,6 +223,12 @@ void net_service::tcp::TcpServiceImpl::close_server(TCP_HANDLE handle)
 					link_server_.erase(p);
 			}
 		}
+	}
+	//关闭服务器
+	{
+		std::lock_guard<std::mutex> lock(lock_servers_);
+		if (p != servers_.end())
+			servers_.erase(p);
 	}
 }
 
@@ -255,7 +264,7 @@ log_path_("./log"),run_flag_(false)
 
 void net_service::tcp::TcpServiceImpl::run_service()
 {
-	//LOG(LINFO, "run_service beg");
+	LOG(LDEBUG, "run_service");
 	service_.run();
 	//LOG(LINFO, "run_service end");
 

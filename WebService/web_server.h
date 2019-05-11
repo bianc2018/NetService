@@ -13,7 +13,7 @@
 
 #include "http_service.h"
 #include "web_service.h"
-
+#define SHARED_BUFF_PTR(size) std::shared_ptr<char>(new char[size], std::default_delete<char[]>())
 typedef int(*P_WEN_HANDLER)(HTTP_HANDLE handle, int err);
 
 namespace net_service
@@ -58,6 +58,8 @@ namespace net_service
 			void* get_func(const std::string &path,const std::string &name);
 
 			//int set_res_mime(HTTP_HANDLE handle,const std::string& uri);
+			//不缓存返回 ""
+			const std::string & try_page_cache(const std::string uri);
 		private:
 			//处理回调
 			std::map<const std::string, WEB_HANDLER> func_map_;
@@ -66,6 +68,7 @@ namespace net_service
 			std::vector<WEB_HANDLER> before_filter_vec_;
 			std::vector<WEB_HANDLER> after_filter_vec_;
 
+			std::map<std::string, std::string> page_cache_map_;
 #ifdef  WIN
 			std::map<std::string, HINSTANCE> dll_map_;
 #endif

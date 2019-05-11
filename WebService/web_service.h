@@ -24,6 +24,8 @@ namespace net_service
 			std::string log_path;
 			int log_output = 1;
 			std::string web_root;
+			int page_cahe = 1;
+			int page_max_size = 1024 * 1024 * 1024;
 
 		};
 		WEB_SERVICE_API WEB_HANDLE start_server(WebSeviceConfigData config);

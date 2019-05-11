@@ -10,6 +10,7 @@
 int net_service::web::WebServer::http_handler(HTTP_HANDLE handle, int err_code)
 {
 	//before过滤
+	LOG(LDEBUG, "before过滤");
 	for (auto filter : before_filter_vec_)
 	{
 		if (0 != filter(handle,err_code))
@@ -19,8 +20,9 @@ int net_service::web::WebServer::http_handler(HTTP_HANDLE handle, int err_code)
 	//处理
 	LOG(LDEBUG, "get a request uri=", uri);
 	call(uri,handle,err_code);
-
+	
 	//after过滤
+	LOG(LDEBUG, "after过滤");
 	for (auto filter : after_filter_vec_)
 	{
 		filter(handle, err_code);
@@ -65,6 +67,10 @@ net_service::web::WebServer::~WebServer()
 	//释放
 	for (auto p : dll_map_)
 	{
+		//初始化
+		auto uninit_addr = GetProcAddress(p.second, "uninit");
+		if (nullptr != uninit_addr)
+			uninit_addr();
 		FreeLibrary(p.second);
 	}
 	//FreeLibrary(handle);
@@ -170,16 +176,24 @@ int net_service::web::WebServer::deal_default(HTTP_HANDLE handle, int err)
 		LOG(LERROR, "uri no find,handle=", handle);
 		return HTTP_SET_REQ_NO_EXIST;
 	}
-
-	if(0!=http::response_set_body_by_file(handle, config_data_.web_root + uri))
+	auto cache = try_page_cache(uri);
+	if ("" == cache)
 	{
-		LOG(LERROR, "404 uri=", config_data_.web_root + uri);
-		
-		auto ret1 = http::response_set_status_code(handle,"404");
-		auto ret2 = http::response_set_reason_phrase(handle, "not found");
+		if (0 != http::response_set_body_by_file(handle, config_data_.web_root + uri))
+		{
+			LOG(LERROR, "404 uri=", config_data_.web_root + uri);
 
-		LOG(LDEBUG, "404 handle=", handle, ret1, ret2);
-		return HTTP_SET_REQ_NO_EXIST;
+			auto ret1 = http::response_set_status_code(handle, "404");
+			auto ret2 = http::response_set_reason_phrase(handle, "not found");
+
+			LOG(LDEBUG, "404 handle=", handle, ret1, ret2);
+			return HTTP_SET_REQ_NO_EXIST;
+		}
+	}
+	else
+	{
+		LOG(LDEBUG, "get a page from cache");
+		http::response_set_body(handle,cache);
 	}
 	return HTTP_ERROR_CODE_OK;
 }
@@ -205,6 +219,10 @@ void* net_service::web::WebServer::get_func(const std::string & path, const std:
 	{
 		handle = LoadLibraryA(path.c_str());
 		dll_map_[path]= handle;
+		//初始化
+		auto init_addr = GetProcAddress(handle, "init");
+		if(nullptr != init_addr)
+			init_addr();
 	}
 	else
 	{
@@ -222,4 +240,57 @@ void* net_service::web::WebServer::get_func(const std::string & path, const std:
 	//FreeLibrary(handle);
 #endif
 	return func_addr;
+}
+
+const std::string & net_service::web::WebServer::try_page_cache(const std::string uri)
+{
+	//是否开启缓存
+	if (config_data_.page_cahe != 1)
+		return "";
+	
+	//文件是否存在
+	boost::system::error_code ec;
+	auto path = config_data_.web_root + uri;
+	if(!boost::filesystem::exists(path,ec))
+		return "";
+
+	//获取缓存
+	auto pos = page_cache_map_.find(path);
+	if (page_cache_map_.end() != pos)
+		return pos->second;
+
+	//获取大小
+	auto size = boost::filesystem::file_size(path,ec);
+	//if(!ec)
+	if (size > config_data_.page_max_size)
+		return "";
+
+	//缓存
+	std::fstream file(path, std::ios::binary | std::ios::in);
+	if (!file)
+	{
+		LOG(LERROR, "file not open! path=", path);
+		return "";
+	}
+	auto buff = SHARED_BUFF_PTR(size);
+	std::string cache;
+	while (true)
+	{
+		file.read(buff.get(), size);
+		auto count = file.gcount();
+		if (count == 0)
+		{
+			LOG(LDEBUG, "cache a page path=", path);
+			page_cache_map_.insert(std::make_pair(path, cache));
+			file.close();
+			return page_cache_map_[path];
+		}
+		else if (count < 0)
+		{
+			LOG(LERROR, "file not read! path=", path,",ret = ",count);
+			return "";
+		}
+		cache += std::string(buff.get(), count);
+
+	}
 }

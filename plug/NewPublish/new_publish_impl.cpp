@@ -36,7 +36,7 @@ int NewPublishImpl::deal_get_data(HTTP_HANDLE handle)
 
 int NewPublishImpl::deal_get_datas(HTTP_HANDLE handle)
 {
-	LOG(LINFO, "deal a /get_datas_action");
+	//LOG(LINFO, "deal a /get_datas_action");
 
 	Json json, result;
 	std::string session_id = get_cookie(handle, "session_id", "");
@@ -363,6 +363,13 @@ NewPublishImpl::NewPublishImpl()
 	web_root_ = ini.get_config_string("NewPublish", "web_root", "./web_root");
 	index_page_ = ini.get_config_string("NewPublish", "index", "");
 
+	//创建缓存区
+	auto cache = web_root_ + "/" + uri_path_;
+	if (!boost::filesystem::exists(cache))
+	{
+		boost::filesystem::create_directories(cache);
+	}
+
 	std::string permission_path = ini.get_config_string("NewPublish", "permission_path", "./permission.json");
 	Json permission_json;
 	permission_json.from_file(permission_path);
@@ -502,6 +509,7 @@ void NewPublishImpl::get_users(Json & result, const std::string & _where, const 
 int NewPublishImpl::filter_session(HTTP_HANDLE handle)
 {
 	std::string session_id = get_cookie(handle, "session_id");
+	LOG(LDEBUG, "session=", session_id);
 	//会话
 	if (session_id != "")
 	{
@@ -538,6 +546,7 @@ int NewPublishImpl::filter_permission(HTTP_HANDLE handle)
 	{
 		page_perm = p->second;
 	}
+	LOG(LDEBUG, "session_id=", session_id, ",uri=",uri);
 	//比较权限
 	if (user_perm <= page_perm)
 		return 0;
@@ -843,13 +852,23 @@ int NewPublishImpl::deal_save_new(HTTP_HANDLE handle)
 		new_data.add_object_value("modify_user", session_mgr_.get_username(session_id));
 		new_data.add_object_value("modify_time", (size_t)time(nullptr));
 		//+转化为%20
-		new_data.add_object_value("content", replace(new_data.get_string_value("content"), "+", "%20"));
-		
-		ret = new_mgr_.save(new_data);
+		//LOG(LDEBUG, "conntent", new_data.get_string_value("content"));
+		//new_data.add_object_value("content", replace(new_data.get_string_value("content"), "+", "%20"));
+		//LOG(LDEBUG, "conntent", replace(new_data.get_string_value("content"), "+", "%20"));
+
+		ret = new_mgr_.save_info(new_data);
 		if (0 == ret)
-			result.add_object_value("result", WEB_OK);
+		{
+			ret = new_mgr_.save_content(new_data.get_string_value("code"), replace(new_data.get_string_value("content"), "+", "%20"));
+			if (0 == ret)
+				result.add_object_value("result", WEB_OK);
+			else
+				result.add_object_value("result", WEB_DATA_OPERATION);
+		}
 		else
 			result.add_object_value("result", WEB_DATA_OPERATION);
+
+		
 	}
 	else
 	{
@@ -861,6 +880,7 @@ int NewPublishImpl::deal_save_new(HTTP_HANDLE handle)
 
 int NewPublishImpl::deal_upload_new_image(HTTP_HANDLE handle)
 {
+	LOG(LDEBUG, "upload a image,handle=", handle);
 	std::string uris;
 	Json form_data,result;
 	int ret = 1;
@@ -877,23 +897,23 @@ int NewPublishImpl::deal_upload_new_image(HTTP_HANDLE handle)
 	LOG(LINFO, "get form json\n", *form_json);
 	form_data.from_string(*form_json);
 	auto form = form_data.get_array();
+	LOG(LINFO, "form");
 	for (auto it : form)
 	{
 		if (1==it.get_int_value("is_cache") )
 		{
 			std::string data_path = new_mgr_.get_data_path(new_id);
 			std::string uri = uri_path_ +"/"+ new_id + "/";
-
+			LOG(LINFO, "data_path", data_path);
 			if (data_path == "")
 			{
-				std::string new_path = web_root_ + uri;
+				data_path = web_root_ + uri;
 
-				if (!boost::filesystem::exists(new_path))
-				{
-					boost::filesystem::create_directory(new_path);
-				}
-				new_mgr_.set_data_path(new_id, new_path);
-				data_path = new_path;
+				new_mgr_.set_data_path(new_id, data_path);
+			}
+			if (!boost::filesystem::exists(data_path))
+			{
+				boost::filesystem::create_directories(data_path);
 			}
 			//获取后缀
 			std::string ext = ".jpg";
@@ -980,15 +1000,24 @@ int NewPublishImpl::deal_add_new_comment(HTTP_HANDLE handle)
 		write_json(handle, result);
 		return ret;
 	}
+	auto new_id = json.get_string_value("new_id");
+	auto comment = json.get_string_value("comment");
+	if ("" == new_id || "" == comment)
+	{
+		LOG(LERROR, "input data is null");
+		result.add_object_value("result", WEB_PARAMETERS_INCORRECT);
+		write_json(handle, result);
+		return WEB_PARAMETERS_INCORRECT;
+	}
 	Json _new;
 	auto author = session_mgr_.get_username(session_id);
 	_new.add_object_value("author", author);
 	_new.add_object_value("create_user", author);
 	_new.add_object_value("modify_user", author);
 	
-	_new.add_object_value("parent", json.get_string_value("new_id"));
+	_new.add_object_value("parent", new_id);
 	_new.add_object_value("property",1);
-	_new.add_object_value("content", json.get_string_value("comment"));
+	_new.add_object_value("content", comment);
 	_new.add_object_value("title", "comment");
 	
 	ret = new_mgr_.comment(_new);

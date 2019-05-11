@@ -16,6 +16,26 @@ class MyTaskSet(TaskSet):
                 return response
             else:
                 response.failure("login err"+str(json.loads(response.content)['result']))
+
+    def like(self,new_id,blike=1):
+         with self.session.post("/new_like.action",json={"new_id":new_id,"blike":blike},catch_response = True) as response:
+            #result = json.loads(response.content)['result']
+            if json.loads(response.content)['result'] == 0:
+                response.success()
+                return response
+            else:
+                response.failure("code="+str(json.loads(response.content)['result']))
+                #/add_new_comment.action
+
+    def comment(self,new_id,comment_text):
+          with self.session.post("/add_new_comment.action",json={"new_id":new_id,"comment":comment_text},catch_response = True) as response:
+            #result = json.loads(response.content)['result']
+            if json.loads(response.content)['result'] == 0:
+                response.success()
+                return response
+            else:
+                response.failure("code="+str(json.loads(response.content)['result']))
+                #
     def register(self,username,password,admin_password="",permission=3):
         with self.session.post("/register.action",json={"username":username,"password":password,"admin_password":admin_password,"permission":permission},catch_response = True) as response:
              if json.loads(response.content)['result']==0:
@@ -42,7 +62,7 @@ class MyTaskSet(TaskSet):
              else:
                 response.failure("create new err"+str(json.loads(response.content)['result']))
 
-    def get_news(self,where="",size=1000,page=1,byuser=0,orderby="publish_time DESC",transfer_content=0):
+    def get_news(self,where="",size=10,page=1,byuser=0,orderby="publish_time DESC",transfer_content=0):
         with self.session.post("/get_news.action",json={"where":where,"size":size,"page":page,"byuser":byuser,"orderby":orderby,"transfer_content":transfer_content},catch_response = True) as response:
              if json.loads(response.content)['result']==0:
                 response.success()
@@ -79,7 +99,10 @@ class MyTaskSet(TaskSet):
         name = "".join(r);
         per =  random.randint(0,3);
         #print name,per
+        
         response = self.register(name,name,"admin",per);
+        if response == None:
+            return
         if json.loads(response.content)['result']==0:
             self.login({'username':name,"password":name});
         pass
@@ -102,13 +125,18 @@ class MyTaskSet(TaskSet):
                 for n in news:
                     if 0 != n['status']:
                         code = n['code'];
-                        self.get_new(code);
+                        json_new = self.get_new(code);
+                        #print json_new.content
+                        new_code = json.loads(json_new.content)['new']['code']
+                        self.like(new_code)
+                        self.comment(new_code,"pinglsssssss")
              else:
                 response.failure("create err"+response.content)
 
   
     @task(2)
     def do_set(self):
+        self.create_new();
         self.session.get("/set.html")
     #    self.get_now_user()
     

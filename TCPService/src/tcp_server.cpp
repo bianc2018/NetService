@@ -109,10 +109,11 @@ void net_service::tcp::TcpServer::accept()
 					{
 						LOG(LINFO, "获得连接：套接字错误");
 					}
+					//重复接收
+					accept();
 				}
 			}
-			//重复接收
-			accept();
+			
 		});
 	}
 }

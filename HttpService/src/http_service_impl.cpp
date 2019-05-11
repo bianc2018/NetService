@@ -42,6 +42,8 @@ void net_service::http::HttpServiceImpl::close_server(HTTP_HANDLE handle)
 	auto links = tcp::get_links_handle(handle);
 	for (auto link : links)
 	{
+		close_link(handle);
+		/*
 		auto p1 = req_map_.find(handle);
 		if (p1 != req_map_.end())
 			req_map_.erase(p1);
@@ -49,6 +51,7 @@ void net_service::http::HttpServiceImpl::close_server(HTTP_HANDLE handle)
 		auto p2 = res_map_.find(handle);
 		if (p2 != res_map_.end())
 			res_map_.erase(p2);
+			*/
 	}
 	tcp::close_server(handle);
 }
@@ -83,7 +86,9 @@ void net_service::http::HttpServiceImpl::set_log_path(const std::string & log_pa
 
 void net_service::http::HttpServiceImpl::set_log_lv(int log_lv)
 {
+	//设置http 的log
 	SET_OUTPUT_LV(log_lv);
+	//设置tcp的
 	tcp::set_log_lv(log_lv);
 }
 
@@ -138,7 +143,6 @@ void net_service::http::HttpServiceImpl::delete_req(HTTP_HANDLE handle)
 	auto p1 = req_map_.find(handle);
 	if (p1 != req_map_.end())
 		req_map_.erase(p1);
-
 }
 
 void net_service::http::HttpServiceImpl::delete_res(HTTP_HANDLE handle)
@@ -284,6 +288,7 @@ void net_service::http::HttpServiceImpl::send_response(TCP_HANDLE handle, res_pt
 	{
 		LOG(LERROR, "申请发送缓存区失败,handle=", handle);
 		server_handler(handle, HTTP_SEND_BUFF_NEW_ERROR);
+		close_link(handle);
 		return;
 	}
 	//读数据

@@ -7,7 +7,7 @@
 #include "ini/ini.h"
 
 using namespace net_service::web;
-#define VERSION "v2.0 @"##__TIMESTAMP__
+#define VERSION "v2.0 Release @"##__TIMESTAMP__
 void disable_console_edit()
 {
 #ifdef _WIN32
@@ -46,7 +46,7 @@ int main(){
 		return -1;
 	}
 	config.log_path = ini.get_config_string("log", "path", "./log");
-	config.log_output = ini.get_config_int("log", "log_output", 1);
+	config.log_output = ini.get_config_int("log", "log_lv", 1);
 	config.ip = ini.get_config_string("tcp", "ip","0.0.0.0");
 	config.port = ini.get_config_int("tcp", "port",8000);
 	config.accept_num = ini.get_config_int("tcp", "accept_num", 16);
@@ -58,6 +58,8 @@ int main(){
 	config.reason_path = ini.get_config_string("http", "reason_path");
 
 	config.web_root = ini.get_config_string("web", "root", "./web_root");
+	config.page_cahe = ini.get_config_int("web", "page_cahe", 0);
+	config.page_max_size = ini.get_config_int("web", "page_max_size", 2048*1024);
 	
 	WEB_HANDLE handle= start_server(config);
 	if (nullptr == handle)
