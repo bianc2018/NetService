@@ -52,9 +52,6 @@ class NewPublishImpl: public boost::noncopyable
 public:
 	static NewPublishImpl &instance();
 public:
-	int deal_get_data(HTTP_HANDLE handle);
-	int deal_get_datas(HTTP_HANDLE handle);
-	
 	int deal_get_news(HTTP_HANDLE handle);
 	int deal_get_sessions(HTTP_HANDLE handle);
 	int deal_get_users(HTTP_HANDLE handle);
@@ -137,10 +134,6 @@ private:
 	int set_cookie(HTTP_HANDLE handle, const std::string &key, const std::string &value);
 
 	std::string get_uri_value(HTTP_HANDLE handle, const std::string &key, const std::string &notfond = "");
-
-	void get_news(Json &data,const std::string& _where,const std::string &orderby,int beg,int end,int tran=0);
-	void get_sessions(Json &data, const std::string& _where, const std::string &orderby, int beg, int end);
-	void get_users(Json &data, const std::string& _where, const std::string &orderby, int beg, int end);
 private:
 	//过滤函数
 	//cookie 更新
@@ -149,6 +142,7 @@ private:
 	int filter_permission(HTTP_HANDLE handle);
 	//首页重定位
 	int filter_index(HTTP_HANDLE handle);
-	
+	//addhead
+	int add_res_header(HTTP_HANDLE handle);
 };
 #endif

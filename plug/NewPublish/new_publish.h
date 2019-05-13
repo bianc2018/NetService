@@ -51,9 +51,6 @@ WEB_PLUG_SERVICE_API  int np_reset_new_status(unsigned long long handle);
 
 WEB_PLUG_SERVICE_API  int np_delete_sessions(unsigned long long handle);
 
-WEB_PLUG_SERVICE_API  int np_get_data(unsigned long long handle);
-WEB_PLUG_SERVICE_API  int np_get_datas(unsigned long long handle);
-
 WEB_PLUG_SERVICE_API  int np_before(unsigned long long handle);
 WEB_PLUG_SERVICE_API  int np_after(unsigned long long handle);
 #endif

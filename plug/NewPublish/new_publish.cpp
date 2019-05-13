@@ -132,12 +132,6 @@ WEB_PLUG_SERVICE_API int np_reset_password(unsigned long long handle)
 	return impl.deal_reset_password(handle);
 }
 
-WEB_PLUG_SERVICE_API int np_get_datas(unsigned long long handle)
-{
-	NewPublishImpl &impl = NewPublishImpl::instance();
-	return impl.deal_get_datas(handle);
-}
-
 WEB_PLUG_SERVICE_API int np_before(unsigned long long handle)
 {
 	NewPublishImpl &impl = NewPublishImpl::instance();
