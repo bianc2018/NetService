@@ -81,6 +81,18 @@ int SessionMgr::get_user_permission(const std::string & code, int notfind)
 	return session.get_int_value("permission", notfind);
 }
 
+int SessionMgr::remove_session_by_username(const std::string & username)
+{
+	db::DbStmt stmt = mgr_.new_stmt("UPDATE " + SESSION_TABLE_NAME + " SET status=0 WHERE username=?;");
+	return stmt.bind_exec(username);
+}
+
+int SessionMgr::delete_session_by_username(const std::string & username)
+{
+	db::DbStmt stmt = mgr_.new_stmt("DELETE FROM " + SESSION_TABLE_NAME + "  WHERE username=?;");
+	return stmt.bind_exec(username);
+}
+
 int SessionMgr::active(const std::string & code)
 {
 	static db::DbStmt stmt = mgr_.new_stmt("UPDATE " + SESSION_TABLE_NAME + " SET active_time=? WHERE code=? AND status!=0; ");
@@ -198,8 +210,6 @@ Json SessionMgr::get_all()
 int SessionMgr::reset_status( const std::string & code, int status)
 {
 	db::DbStmt stmt = mgr_.new_stmt("UPDATE "+SESSION_TABLE_NAME+" SET status=? WHERE code=?;");
-	Json json;
-	//"DESC" "ASC"
 	return stmt.bind_exec(status,code);
 }
 

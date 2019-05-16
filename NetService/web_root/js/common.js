@@ -222,7 +222,7 @@ function check_password(password) {
 }
 
 function check_author(author) {
-    reg = /^[\u4e00-\u9fa5A-Za-z0-9-_]{3,20}$/;
+    reg = /^[\u4e00-\u9fa5A-Za-z0-9-_ ]{3,20}$/;
     if (check_str(reg, author) == -1) {
         alert("输入的作者名不正确! 只能中英文，数字，下划线，减号。 长度在3-20之间");
         return -2;

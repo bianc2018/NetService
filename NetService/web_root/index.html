@@ -26,7 +26,7 @@
         function load_news(where,orderby)
         {
             //alert("loading " + where + " " + size + " " + orderby);
-            if(page==0)
+            if(page==1)
                 $('#body').html('');
             if (where == "")
             {
@@ -37,7 +37,7 @@
                 where += ' AND status=3 AND property=\'0\'';
             }
 
-            $.post('/get_datas.action', '{"type":"new","where":"' + where + '","page":' + page + ',"size":' + size + ',"orderby":"' + orderby + '","byuser":0,"transfer_content":0}', function (data) {
+            $.post('/get_news.action', '{"where":"' + where + '","page":' + page + ',"size":' + size + ',"orderby":"' + orderby + '","byuser":0,"transfer_content":0}', function (data) {
                 if (data.result != 0) {
                     alert("无法获取数据 " + Error_Code(data.result));
                     return -1;
@@ -83,7 +83,7 @@
             <a href="login.html">登录页</a>
         </div>
         <div id="search">
-            <input id="search_text" />&nbsp;<input type="button" value="搜索" onclick="load_news('title like \'%' + ecode_json_value(document.getElementById('search_text').value) + '%\'', 10, 'publish_time DESC')" />
+            <input id="search_text" />&nbsp;<input type="button" value="搜索" onclick="page = 1;load_news('title like \'%' + ecode_json_value(document.getElementById('search_text').value) + '%\'', 10, 'publish_time DESC')" />
         </div>
     </div>
     <div id="body">

@@ -567,6 +567,7 @@ int NewPublishImpl::deal_login(HTTP_HANDLE handle)
 
 
 	write_json(handle,data);
+	return ret;
 }
 
 int NewPublishImpl::deal_register(HTTP_HANDLE handle)
@@ -955,6 +956,12 @@ int NewPublishImpl::deal_remove_user(HTTP_HANDLE handle)
 		ret = user_mgr_.remove_and_active(username);
 		if (ret != 0)
 			ret = WEB_DATA_OPERATION;
+		else
+		{//删除对应会话
+			ret = session_mgr_.remove_session_by_username(username);
+			if (ret != WEB_OK)
+				ret = WEB_DATA_OPERATION;
+		}
 	}
 
 	result.add_object_value("result", ret);
@@ -976,6 +983,7 @@ int NewPublishImpl::deal_delete_user(HTTP_HANDLE handle)
 	}
 
 	const std::string username = json.get_string_value("username");
+	//用户名为空
 	if (username == "")
 	{
 		ret = WEB_PARAMETERS_INCORRECT_USER_PWD_NULL;
@@ -986,9 +994,16 @@ int NewPublishImpl::deal_delete_user(HTTP_HANDLE handle)
 	}
 	else
 	{
+		//删除用户
 		ret = user_mgr_.delete_user(username);
 		if (ret != WEB_OK)
 			ret = WEB_DATA_OPERATION;
+		else
+		{//删除对应会话
+			ret = session_mgr_.delete_session_by_username(username);
+			if (ret != WEB_OK)
+				ret = WEB_DATA_OPERATION;
+		}
 	}
 	result.add_object_value("result", ret);
 	write_json(handle, result);

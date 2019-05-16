@@ -228,7 +228,10 @@
             });
             $('#new_remove').on('click', function () {
                 //alert("将返回设置页");
-                rm_new(new_id);
+                if (confirm("是否确定删除？"))
+                {
+                    rm_new(new_id);
+                }
             });
             //new_back
             $('#new_back').on('click', function () {
@@ -244,10 +247,10 @@
                                 window.location.href = '/set.html?menu=news_list';
                             })
                         }
+                        else
+                            window.location.href = '/set.html?menu=news_list';
                         return;
                     }
-                    else
-                        window.location.href = '/set.html?menu=news_list';
                 }
                 else
                     window.location.href = '/set.html?menu=news_list';

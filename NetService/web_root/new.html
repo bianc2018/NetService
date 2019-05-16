@@ -110,6 +110,7 @@
                         //more_comment
                         $('#more_comment').on('click', function () {
                             page = page + 1;
+                            size = 5;
                             load_comment(new_id);
                         });
                     }
@@ -165,14 +166,14 @@
                             var entry = data.news[i];
                             var entryIndex = all - (page - 1) * size-i;
 
-                            var it = '';
-                            it += '<div class="comment_it" id="' + entry.code + '">';
-                            it += '<div id="comment_title">#' + entryIndex + '&nbsp;' + entry.author + ':</div><hr/>';
-                            it += '<div id="comment_content">' + escape_decode(entry.content) + '</div><hr/>';
+                            var it = '<hr/>';
+                            it += '<div class="comment_it" >';
+                            it += '<div id="comment_title">#' + entryIndex + '&nbsp;' + entry.author + ':</div>';
+                            it += '<div class="comment_content">' + escape_decode(entry.content) + '</div>';
                             it += '<div id="comment_time">' + time_to_string(entry.publish_time);
-                            it += '&nbsp;<span style="cursor: pointer;" onclick="like_comment(\'' + entry.code + '\',1)">ÔÞ[' + entry.like_num + ']</span>';
+                            it += '&nbsp;<span style="cursor: pointer;" onclick="like_comment(\'' + entry.code + '\',1)" >ÔÞ[' + entry.like_num + ']</span>';
                             it += '&nbsp;<span style="cursor: pointer;" onclick="like_comment(\'' + entry.code + '\',-1)">²È[' + entry.unlike_num + ']</span>' + '</div>';
-                            it += '</div>';
+                            it += '</div><hr/>';
 
                             $('#new_comment').append(it);
                         }
@@ -229,6 +230,8 @@
                     return;
                 }
                 var new_id = get_query_string('new_id');
+                size = (page) * size;
+                page = 1;
                 load_comment(new_id);
             }, "json");
         }

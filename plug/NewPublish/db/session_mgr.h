@@ -16,6 +16,8 @@ public:
 	size_t get_count();
 	std::string get_username(const std::string &session_id, const std::string &notfind="");
 	int get_user_permission(const std::string &code,int notfind =3);
+	int remove_session_by_username(const std::string&username);
+	int delete_session_by_username(const std::string&username);
 	//活动 更新时间
 	int active(const std::string &code);
 	//查看会话是否过期 超时 -1 不存在 -2 已失效 -3 超时 0 活跃

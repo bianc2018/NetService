@@ -29,12 +29,6 @@
     },
     {
       "type": 1,
-      "uri": "/get_datas.action",
-      "func": "np_get_datas",
-      "dll": "./NEWPUBLISH.dll"
-    },
-    {
-      "type": 1,
       "uri": "/get_new.action",
       "func": "np_get_new",
       "dll": "./NEWPUBLISH.dll"

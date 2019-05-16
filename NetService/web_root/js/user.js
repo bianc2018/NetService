@@ -18,6 +18,11 @@ function user_status()
                 return -2;
             }
             else if (data.result == 0) {
+                if (data.user.username == null || data.user.username == "")
+                {
+                    rm_session('');
+                    return;
+                }
                 //$('#person').append('<a href="set.html">' + data.user.username + '(' + session_id + ') 的个人空间</a>&nbsp;<a href="/logout.action">登出</a>');
                 $('#person').append('<a href="set.html">' + data.user.username + ' 的个人空间</a>&nbsp;<a style="cursor: pointer;" onclick="rm_session(\'\')">登出</a>');
                 //$('#forward').append('<a href="edit.html">新闻发布</a>  ');

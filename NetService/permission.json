@@ -1,10 +1,6 @@
 {
   "permission": [
     {
-      "uri": "/logout.action",
-      "permission": 2
-    },
-    {
       "uri": "/create_new.action",
       "permission": 1
     },

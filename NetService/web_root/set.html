@@ -145,20 +145,32 @@
                     var tr = '<tr>';
                     tr += '<td> ' + (((page - 1) * page_size) + entryIndex + 1) + '</td>';
                     tr += '<td> ' + entry.username + '</td>';
-                    tr += '<td title="点击修改用户权限" style="cursor: pointer;" onClick="reset_user_permission(\'' + entry.username + '\')"> ' + user_lv(entry.permission) + '</td>';
-                    if (entry.status == 1)
-                        tr += '<td>有效</td>';
-                    else
-                        tr += '<td>无效</td>';
-                    tr += '<td> <a style="cursor: pointer;" onclick="reset_password(\'' + entry.username + '\')" >修改密码</a></td>';
+                    if ("admin" == entry.username)
+                    {
 
-                    if (entry.status == 0)
-                        tr += '<td> <a style="cursor: pointer;" onclick="remove_user(\'' + entry.username + '\')">激活</a></td>';
-                    else
-                        tr += '<td> <a style="cursor: pointer;" onclick="remove_user(\'' + entry.username + '\')">取消</a></td>';
+                        tr += '<td  style="color:brown">管理员</td>';
+                        tr += '<td style="color:brown">有效</td>';
+                        tr += '<td style="color:brown"> 修改密码</td>';
+                        tr += '<td style="color:brown"> 取消</td>';
+                        tr += '<td style="color:brown"> 删除</td>';
+                        tr += '</tr>'
+                    }
+                    else {
+                        tr += '<td title="点击修改用户权限" style="cursor: pointer;" onClick="reset_user_permission(\'' + entry.username + '\')"> ' + user_lv(entry.permission) + '</td>';
+                        if (entry.status == 1)
+                            tr += '<td>有效</td>';
+                        else
+                            tr += '<td>无效</td>';
+                        tr += '<td> <a style="cursor: pointer;" onclick="reset_password(\'' + entry.username + '\')" >修改密码</a></td>';
 
-                    tr += '<td> <a style="cursor: pointer;" onclick="delete_user(\'' + entry.username + '\')"">删除</a></td>';
-                    tr += '</tr>'
+                        if (entry.status == 0)
+                            tr += '<td> <a style="cursor: pointer;" onclick="remove_user(\'' + entry.username + '\')">激活</a></td>';
+                        else
+                            tr += '<td> <a style="cursor: pointer;" onclick="remove_user(\'' + entry.username + '\')">取消</a></td>';
+
+                        tr += '<td> <a style="cursor: pointer;" onclick="delete_user(\'' + entry.username + '\')"">删除</a></td>';
+                        tr += '</tr>'
+                    }
                     //new_win
                     $('#users_table').append(tr);
                 });
@@ -365,65 +377,74 @@
         }
         function rm_new(new_id)
         {
-            $.post("/remove_new.action", '{"new_id":"'+new_id+'"}', function (data) {
-                if (data.result == 0) {
-                    //window.location.href = '/set.html?menu=news_list';
-                    alert("已删除");
-                    load_news_list();
-                }
-                else
-                    alert("删除失败：" + Error_Code(data.result));
-            })
+            if (confirm("是否确定删除新闻？")) {
+                $.post("/remove_new.action", '{"new_id":"' + new_id + '"}', function (data) {
+                    if (data.result == 0) {
+                        //window.location.href = '/set.html?menu=news_list';
+                        alert("已删除");
+                        load_news_list();
+                    }
+                    else
+                        alert("删除失败：" + Error_Code(data.result));
+                })
+            }
         }    
         function cls_session() {
-            $.post("/delete_sessions.action", function (data) {
-                if (data.result == 0) {
-                    //window.location.href = '/set.html?menu=news_list';
-                    alert("清理完毕")
-                    load_sessions_list();
-                    
-                }
-                else {
-                    if (data.result != null) {
-                        alert("清理失败：" + Error_Code(data.result));
+            if (confirm("是否清理会话？")) {
+                $.post("/delete_sessions.action", function (data) {
+                    if (data.result == 0) {
+                        //window.location.href = '/set.html?menu=news_list';
+                        alert("清理完毕")
+                        load_sessions_list();
+
                     }
-                }
-            })
+                    else {
+                        if (data.result != null) {
+                            alert("清理失败：" + Error_Code(data.result));
+                        }
+                    }
+                })
+            }
         }
         function delete_new(new_id) {
-
-            $.post("/delete_new.action",'{"new_id":"' + new_id + '"}', function (data) {
-                if (data.result == 0) {
-                    //window.location.href = '/set.html?menu=news_list';
-                    alert("清理完毕");
-                    load_news_list();
-                }
-                else
-                    alert("清理失败：" + Error_Code(data.result));
-            })
+            if (confirm("是否确定清除数据？")) {
+                $.post("/delete_new.action", '{"new_id":"' + new_id + '"}', function (data) {
+                    if (data.result == 0) {
+                        //window.location.href = '/set.html?menu=news_list';
+                        alert("清理完毕");
+                        load_news_list();
+                    }
+                    else
+                        alert("清理失败：" + Error_Code(data.result));
+                })
+            }
         }
         function remove_user(username)
         {
-            $.post("/remove_user.action", '{"username":"' + username + '"}', function (data) {
-                if (data.result == 0) {
-                    //window.location.href = '/set.html?menu=news_list';
-                    alert("操作成功");
-                    load_users_list();
-                }
-                else
-                    alert("错误：" + Error_Code(data.result));
-            })
+            if (confirm("是否确定取消/激活用户账户？")) {
+                $.post("/remove_user.action", '{"username":"' + username + '"}', function (data) {
+                    if (data.result == 0) {
+                        //window.location.href = '/set.html?menu=news_list';
+                        alert("操作成功");
+                        load_users_list();
+                    }
+                    else
+                        alert("错误：" + Error_Code(data.result));
+                })
+            }
         }
         function delete_user(username) {
-            $.post("/delete_user.action" ,'{"username":"' + username + '"}', function (data) {
-                if (data.result == 0) {
-                    //window.location.href = '/set.html?menu=news_list';
-                    alert("已删除");
-                    load_users_list();
-                }
-                else
-                    alert("删除失败：" + Error_Code(data.result));
-            })
+            if (confirm("是否删除用户？")) {
+                $.post("/delete_user.action", '{"username":"' + username + '"}', function (data) {
+                    if (data.result == 0) {
+                        //window.location.href = '/set.html?menu=news_list';
+                        alert("已删除");
+                        load_users_list();
+                    }
+                    else
+                        alert("删除失败：" + Error_Code(data.result));
+                })
+            }
         }
         function register_user()
         {
